@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual DCS AI</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para la iconografía -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Estilos personalizados mínimos para transiciones */
+        .app-section { display: none; }
+        .app-section.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar-text { transition: opacity 0.3s; }
+        .hide-text { opacity: 0; width: 0; overflow: hidden; display: none; }
+    </style>
+</head>
+<body class="flex h-screen bg-[#f8fafc] font-sans text-slate-800 overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="bg-white border-r border-slate-200 transition-all duration-300 w-64 flex flex-col z-20 shrink-0">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-4 border-b border-slate-100 shrink-0 overflow-hidden">
+            <div class="flex items-center gap-2 text-[#5e4b8a] font-bold text-lg w-full justify-center lg:justify-start">
+                <i data-lucide="shield" class="w-6 h-6 shrink-0"></i>
+                <span class="sidebar-text whitespace-nowrap">Manual AI DCS</span>
+            </div>
+        </div>
+
+        <!-- Menú -->
+        <div class="flex-1 py-6 px-3 overflow-y-auto space-y-1">
+            <button id="btn-inicio" onclick="switchSection('inicio', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors bg-[#5e4b8a] text-white font-medium shadow-md">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_intro">Introducción</span>
+            </button>
+            <button id="btn-consultar" onclick="switchSection('consultar', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="search" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_consult">Consultar Documentos</span>
+            </button>
+            <button id="btn-cargar" onclick="switchSection('cargar', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="upload-cloud" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_load">Cargar Documento</span>
+            </button>
+            <button id="btn-editar" onclick="switchSection('editar', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="edit-3" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_edit">Editar y Actualizar</span>
+            </button>
+            <button id="btn-notif" onclick="switchSection('notificaciones', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="bell" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_notif">Notificaciones</span>
+            </button>
+        </div>
+
+        <!-- Footer Sidebar -->
+        <div class="p-4 border-t border-slate-100 text-center shrink-0">
+            <div id="sidebar-footer" class="text-[10px] text-slate-400 font-medium">
+                TP.ai FAB Operate™<br/><span data-i18n="header_office">Oficina de Procesos</span> MR
+            </div>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- HEADER -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0">
+            <button onclick="toggleSidebar()" class="p-2 text-slate-400 hover:text-[#5e4b8a] hover:bg-slate-50 rounded-lg transition">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="flex items-center gap-4">
+                <span class="text-sm font-medium text-slate-600 hidden sm:block" data-i18n="header_doc">Documentación V1.0</span>
+                
+                <!-- Selector de Idioma -->
+                <div class="flex items-center bg-slate-100 rounded-lg p-1 border border-slate-200">
+                    <i data-lucide="globe" class="w-4 h-4 text-slate-400 mx-2"></i>
+                    <button onclick="changeLang('es')" id="lang-es" class="px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm">ES</button>
+                    <button onclick="changeLang('en')" id="lang-en" class="px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800">EN</button>
+                </div>
+
+                <div class="w-8 h-8 bg-blue-100 text-[#0078d4] rounded-full flex items-center justify-center font-bold border-2 border-white shadow-sm ml-2">AG</div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO SCROLL -->
+        <div class="flex-1 overflow-y-auto p-8 lg:p-12">
+            <div class="max-w-5xl mx-auto relative">
+
+                <!-- SECCIÓN: INICIO -->
+                <div id="sec-inicio" class="app-section active">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-[#3b3e56] mb-2" data-i18n="inicio_title">Bienvenido a DCS AI</h1>
+                        <p class="text-slate-500 text-lg" data-i18n="inicio_subtitle">Document Control System - Oficina de Procesos TP MR</p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-[#5e4b8a] to-[#3b3e56] rounded-2xl p-8 text-white shadow-lg mb-8 relative overflow-hidden">
+                        <div class="relative z-10 max-w-2xl">
+                            <h2 class="text-2xl font-bold mb-4" data-i18n="inicio_cardTitle">Tu nuevo centro de control documental</h2>
+                            <p class="text-white/80 leading-relaxed mb-6" data-i18n="inicio_cardDesc">Hemos rediseñado por completo la forma en que consultas, cargas y gestionas los informes y documentos de Internal AI, Shared Services, Ratios y SG&A. Todo centralizado, rápido y seguro.</p>
+                            <button onclick="document.getElementById('btn-consultar').click()" class="px-5 py-2.5 bg-white text-[#5e4b8a] font-semibold rounded-lg hover:bg-slate-50 transition flex items-center gap-2 w-max">
+                                <span data-i18n="inicio_btn">Aprender a Consultar</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <i data-lucide="book-open" class="absolute -right-10 -bottom-10 w-64 h-64 text-white opacity-10"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-800 mb-4" data-i18n="inicio_screenTitle">Pantalla de Inicio</h3>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-8 flex items-center justify-center">
+                        <div class="max-w-3xl w-full">
+                            <!-- IMAGEN DE INICIO CONFIGURADA PARA GITHUB -->
+                             <!-- Carrusel Principal -->
+                    <div id="carousel-principal" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-principal" src="" alt="Paso" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <!-- <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i>
+                                        <span>Falta enlace web correcto en el Javascript</span>
+                                    </div> -->
+                                </div>
+                                <button onclick="prevStep('principal')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-principal" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-principal" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-principal" class="text-slate-600 leading-relaxed text-sm">Descripción.</p>
+                                <div id="dots-principal" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                            <!-- <img src="https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Home%20menu.JPG" alt="Inicio" class="w-full rounded shadow border border-slate-200" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden flex-col items-center text-slate-400 font-medium py-12 border-2 border-dashed border-slate-300 rounded-lg bg-white">
+                                <i data-lucide="image" class="w-12 h-12 mb-2 text-slate-300"></i>
+                                <span>Pega tu enlace Raw de GitHub en el atributo src de esta imagen</span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: CONSULTAR -->
+                <div id="sec-consultar" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="search" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="consultar_title">Consultar Documentos</h1>
+                            <p class="text-slate-500" data-i18n="consultar_subtitle">Encuentra reportes rápidamente usando la jerarquía regional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Carrusel Consultar -->
+                    <div id="carousel-consultar" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-consultar" src="" alt="Paso" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <!-- <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i>
+                                        <span>Falta enlace web correcto en el Javascript</span>
+                                    </div> -->
+                                </div>
+                                <button onclick="prevStep('consultar')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                <button onclick="nextStep('consultar')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-consultar" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-consultar" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-consultar" class="text-slate-600 leading-relaxed text-sm">Descripción.</p>
+                                <div id="dots-consultar" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-[#0078d4] p-5 rounded-r-lg">
+                        <div class="flex gap-3">
+                            <i data-lucide="info" class="text-[#0078d4] w-6 h-6 shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1" data-i18n="consultar_tipTitle">Tip de Rendimiento</h4>
+                                <p class="text-sm text-slate-600" data-i18n="consultar_tipDesc">Para evitar que tu aplicación se congele, la tabla principal está programada para mostrar un máximo de 50 registros a la vez de forma descendente. ¡Usa los filtros para encontrar archivos más antiguos!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: CARGAR -->
+                <div id="sec-cargar" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="cargar_title">Cargar Nuevo Documento</h1>
+                            <p class="text-slate-500" data-i18n="cargar_subtitle">Guarda un nuevo registro en SharePoint y notifica al equipo.</p>
+                        </div>
+                    </div>
+                    <!-- Carrusel Cargar -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-cargar" src="" alt="Paso Carga" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <!-- <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i><span>Falta enlace web correcto en el Javascript</span>
+                                    </div> -->
+                                </div>
+                                <button onclick="prevStep('cargar')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                <button onclick="nextStep('cargar')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-cargar" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-cargar" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-cargar" class="text-slate-600 leading-relaxed text-sm">Descripción</p>
+                                <div id="dots-cargar" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: EDITAR -->
+                <div id="sec-editar" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="edit-3" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="editar_title">Editar y Actualizar</h1>
+                            <p class="text-slate-500" data-i18n="editar_subtitle">Modifica registros existentes sin borrar su historial.</p>
+                        </div>
+                    </div>
+                    <!-- Carrusel Editar -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-editar" src="" alt="Paso Editar" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <!-- <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i><span>Falta enlace web correcto en el Javascript</span>
+                                    </div> -->
+                                </div>
+                                <button onclick="prevStep('editar')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                <button onclick="nextStep('editar')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-editar" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-editar" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-editar" class="text-slate-600 leading-relaxed text-sm">Descripción</p>
+                                <div id="dots-editar" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: NOTIFICACIONES -->
+                <div id="sec-notificaciones" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="bell" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="notif_title">Flujo de Notificaciones</h1>
+                            <p class="text-slate-500" data-i18n="notif_subtitle">¿Qué pasa después de hacer clic en 'Cargar Documento'?</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Tarjeta Teams -->
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                            <div class="w-12 h-12 bg-[#5e4b8a]/10 rounded-full flex items-center justify-center text-[#5e4b8a] mb-4"><i data-lucide="layout-dashboard" class="w-6 h-6"></i></div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2" data-i18n="notif_teamsTitle">Tarjeta Adaptable en Teams</h3>
+                            <p class="text-slate-600 text-sm mb-4" data-i18n="notif_teamsDesc">Cada destinatario seleccionado recibirá un mensaje individual a través de Power Automate (Flow Bot). La tarjeta muestra los metadatos clave y contiene botones directos para:</p>
+                            <ul class="space-y-2 mb-4 text-sm text-slate-600">
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> <span data-i18n="notif_teamsL1">Abrir el documento web</span></li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> <span data-i18n="notif_teamsL2">Ir directamente al aplicativo</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Tarjeta Email -->
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                            <div class="w-12 h-12 bg-[#0078d4]/10 rounded-full flex items-center justify-center text-[#0078d4] mb-4"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2" data-i18n="notif_mailTitle">Correo Electrónico V2</h3>
+                            <p class="text-slate-600 text-sm mb-4" data-i18n="notif_mailDesc">Paralelamente, se envía un correo electrónico global (con copia a todos los revisores) que contiene la plantilla corporativa en HTML.</p>
+                            <ul class="space-y-2 mb-4 text-sm text-slate-600">
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i> <span data-i18n="notif_mailL1">Archivo adjunto físicamente en el correo</span></li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i> <span data-i18n="notif_mailL2">Prevención de errores con el punto y coma final</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        // 1. Inicializar Iconos Lucide
+        lucide.createIcons();
+
+        // 2. Control del Sidebar
+        let sidebarOpen = true;
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const texts = document.querySelectorAll('.sidebar-text');
+            sidebarOpen = !sidebarOpen;
+
+            if (sidebarOpen) {
+                sidebar.classList.replace('w-20', 'w-64');
+                texts.forEach(t => t.classList.remove('hide-text'));
+                document.getElementById('sidebar-footer').innerHTML = `TP.ai FAB Operate™<br/>${translations[currentLang].header_office} MR`;
+            } else {
+                sidebar.classList.replace('w-64', 'w-20');
+                texts.forEach(t => t.classList.add('hide-text'));
+                document.getElementById('sidebar-footer').innerHTML = 'TP';
+            }
+        }
+
+        // 3. Control de Pestañas (Secciones)
+        function switchSection(sectionId, btnElement) {
+            document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById('sec-' + sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]";
+            });
+
+            if (btnElement) {
+                btnElement.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors bg-[#5e4b8a] text-white font-medium shadow-md";
+            }
+        }
+
+        // 4. Diccionario de Traducciones
+        const translations = {
+            es: {
+                nav_intro: "Introducción", nav_consult: "Consultar Documentos", nav_load: "Cargar Documento", nav_edit: "Editar y Actualizar", nav_notif: "Notificaciones",
+                header_doc: "Documentación V1.0", header_office: "Oficina de Procesos", carousel_viewer: "Visualizador Interactivo",
+                inicio_title: "Bienvenido a DCS AI", inicio_subtitle: "Document Control System - Oficina de Procesos TP MR",
+                inicio_cardTitle: "Tu nuevo centro de control documental", 
+                inicio_cardDesc: "Hemos rediseñado por completo la forma en que consultas, cargas y gestionas los informes y documentos de Internal AI, Shared Services, Ratios y SG&A. Todo centralizado, rápido y seguro.",
+                inicio_btn: "Aprender a Consultar", inicio_screenTitle: "Pantalla de Inicio",
+                consultar_title: "Consultar Documentos", consultar_subtitle: "Encuentra reportes rápidamente usando la jerarquía regional.",
+                consultar_tipTitle: "Tip de Rendimiento", 
+                consultar_tipDesc: "Para evitar que tu aplicación se congele, la tabla principal está programada para mostrar un máximo de 50 registros a la vez de forma descendente. ¡Usa los filtros para encontrar archivos más antiguos!",
+                cargar_title: "Cargar Nuevo Documento", cargar_subtitle: "Guarda un nuevo registro en SharePoint y notifica al equipo.",
+                editar_title: "Editar y Actualizar", editar_subtitle: "Modifica registros existentes sin borrar su historial.",
+                notif_title: "Flujo de Notificaciones", notif_subtitle: "¿Qué pasa después de hacer clic en 'Cargar Documento'?",
+                notif_teamsTitle: "Tarjeta Adaptable en Teams", 
+                notif_teamsDesc: "Cada destinatario seleccionado recibirá un mensaje individual a través de Power Automate (Flow Bot). La tarjeta muestra los metadatos clave y contiene botones directos para:",
+                notif_teamsL1: "Abrir el documento web", notif_teamsL2: "Ir directamente al aplicativo",
+                notif_mailTitle: "Correo Electrónico V2", 
+                notif_mailDesc: "Paralelamente, se envía un correo electrónico global (con copia a todos los revisores) que contiene la plantilla corporativa en HTML.", 
+                notif_mailL1: "Archivo adjunto físicamente en el correo",
+                notif_mailL2: "Prevención de errores con el punto y coma final"
+            },
+            en: {
+                nav_intro: "Introduction", nav_consult: "Consult Documents", nav_load: "Upload Document", nav_edit: "Edit & Update", nav_notif: "Notifications",
+                header_doc: "Documentation V1.0", header_office: "Process Office", carousel_viewer: "Interactive Viewer",
+                inicio_title: "Welcome to DCS AI", inicio_subtitle: "Document Control System - TP MR Process Office",
+                inicio_cardTitle: "Your new document control center", 
+                inicio_cardDesc: "We have completely redesigned how you consult, upload, and manage reports and documents for Internal AI, Shared Services, Ratios, and SG&A. Everything centralized, fast, and secure.",
+                inicio_btn: "Learn to Consult", inicio_screenTitle: "Home Screen",
+                consultar_title: "Consult Documents", consultar_subtitle: "Find reports quickly using the regional hierarchy.",
+                consultar_tipTitle: "Performance Tip", 
+                consultar_tipDesc: "To prevent your application from freezing, the main table is programmed to display a maximum of 50 records at a time in descending order. Use the filters to find older files!",
+                cargar_title: "Upload New Document", cargar_subtitle: "Save a new record in SharePoint and notify the team.",
+                editar_title: "Edit and Update", editar_subtitle: "Modify existing records without deleting their history.",
+                notif_title: "Notification Flow", notif_subtitle: "What happens after clicking 'Upload Document'?",
+                notif_teamsTitle: "Adaptive Card in Teams", 
+                notif_teamsDesc: "Each selected recipient will receive an individual message through Power Automate (Flow Bot). The card displays key metadata and contains direct buttons to:",
+                notif_teamsL1: "Open the web document", notif_teamsL2: "Go directly to the application",
+                notif_mailTitle: "Email V2", 
+                notif_mailDesc: "At the same time, a global email is sent (copied to all reviewers) containing the corporate HTML template.", 
+                notif_mailL1: "File physically attached to the email",
+                notif_mailL2: "Error prevention with the final semicolon"
+            }
+        };
+
+        // 5. Textos e Imágenes de los Carruseles configurados para extraer desde GitHub
+        // NOTA: Reemplaza "TU_USUARIO" y "TU_REPO" con los datos de tu repositorio real en GitHub.
+        // Los espacios en los nombres de archivo se cambian automáticamente por %20 en las URL web.
+        const carouselData = {
+            principal: {
+                  es: [
+                      { t: "Pantalla Principal y Navegación",
+                      d: "1. En la esquina superior derecha encontrarás el botón para alternar el idioma de la plataforma (Español/Inglés). 2. En el centro, cuentas con accesos rápidos para 'Consultar Documento' o 'Cargar Documento'.",
+                      img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Home%20menu.JPG"                  
+                      }
+                    ],
+                en: [
+                      {
+                      t: "Pantalla Principal y Navegación",
+                      d: "1. En la esquina superior derecha encontrarás el botón para alternar el idioma de la plataforma (Español/Inglés). 2. En el centro, cuentas con accesos rápidos para 'Consultar Documento' o 'Cargar Documento'.",
+                      img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Home%20menu.JPG"
+                      }
+                    ]
+            },
+
+            consultar: {
+                es: [
+                    { t: "Vista de Tabla y Filtros", d: "1. En la esquina superior derecha, puedes alternar entre 'Vista Documento' y 'Tabla'. 2. Utiliza los filtros en cascada (Región, Sub-Región, País, Cliente, etc.) para refinar tu búsqueda. 3. Selecciona un registro para habilitar el menú de opciones. 4. Visualiza los resultados en la tabla principal.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Table.JPG" },
+                    { t: "Opciones de Registro en Tabla", d: "Al seleccionar un registro, se habilitará el menú de Opciones (1): (A) Detalles rápidos, (B) Descargar archivo, (C) Abrir ruta en SharePoint y (D) Reenviar por correo electrónico.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Table_options.JPG" },
+                    { t: "Previsualización de Documentos", d: "En la Vista Documento, el repositorio lateral (1) le permite seleccionar archivos. En el área principal (3) podrá ver detalles específicos, previsualizar y usar acciones rápidas como 'Abrir PDF' o 'Descargar'.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_DocumentView.JPG" }
+                ],
+                en: [
+                    { t: "Table View and Filters", d: "1. In the top right corner, toggle between 'Document View' and 'Table'. 2. Use the cascading filters (Region, Sub-Region, Country, Client, etc.) to refine your search. 3. Select a record to enable the options menu. 4. View the results in the main table.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Table.JPG" },
+                    { t: "Record Options in Table", d: "Selecting a record enables the Options menu (1): (A) Quick details, (B) Download file, (C) Open path in SharePoint, and (D) Forward via email.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Table_options.JPG" },
+                    { t: "Document Preview", d: "In Document View, the side repository (1) lets you select files. In the main area (3), you can see specific details, preview, and use quick actions like 'Open PDF' or 'Download'.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_DocumentView.JPG" }
+                ]
+            },
+            cargar: {
+                es: [
+                    { t: "Información Básica y Metadatos", d: "Completa la información: (1 y 2) Nombre y Descripción. (3 al 8) Selecciona la jerarquía de metadatos en cascada (Región, Sub-Región, País, Cliente, Workstream, Stream). (9) Busca y agrega los destinatarios. (10) Arrastra o adjunta un único archivo en la zona designada.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/fbe4eca2ef3c3da1f42540d976652dd8422d5a8a/Upload%20menu.JPG" },
+                    { t: "Asignar Destinatarios", d: "En el área de Selección de Destinatarios (9), busque por nombre o correo corporativo y agregue a las personas que recibirán la notificación de la carga.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/fbe4eca2ef3c3da1f42540d976652dd8422d5a8a/Upload%20menu.JPG" },
+                    { t: "Adjuntar Archivo y Revisión", d: "Revise que la Información (1), Destinatarios (2) y Metadatos (3) estén correctos. Finalmente, en el área de Adjuntos (4), seleccione un único tipo de archivo antes de cargar.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Upload%20menu_Review.JPG" }
+                ],
+                en: [
+                    { t: "Basic Information and Metadata", d: "Fill in the details: (1 & 2) Name and Description. (3 to 8) Select the cascading metadata hierarchy (Region, Sub-Region, Country, Client, Workstream, Stream). (9) Search and add recipients. (10) Drag or attach a single file in the designated area.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/fbe4eca2ef3c3da1f42540d976652dd8422d5a8a/Upload%20menu.JPG" },
+                    { t: "Assign Recipients", d: "In the Recipients Selection area (9), search by name or corporate email and add the people who will receive the upload notification.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/fbe4eca2ef3c3da1f42540d976652dd8422d5a8a/Upload%20menu.JPG" },
+                    { t: "Attach File and Review", d: "Verify that the Information (1), Recipients (2), and Metadata (3) are correct. Finally, in the Attachments area (4), select a single type file before uploading.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Upload%20menu_Review.JPG" }
+                ]
+            },
+            editar: {
+                es: [
+                    { t: "Modificar Detalles Básicos", d: "Seleccione un documento existente para editar. En el formulario podrá actualizar el Nombre y Descripción (1), así como modificar los Metadatos jerárquicos previamente cargados (2).", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Review.JPG" },
+                    { t: "Actualizar Archivo Adjunto", d: "En la sección de Documentos Adjuntos (3), puede validar el archivo actual. Si sube uno nuevo en esta vista, este reemplazará al archivo anterior creando una nueva versión.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Review.JPG" },
+                    { t: "Notificar de Cambios", d: "Al realizar una actualización o usar la opción de reenviar, aparecerá un panel emergente. Aquí podrá buscar y seleccionar a los destinatarios a los cuales se les notificará de los cambios.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_ForwardChanges.JPG" }
+                ],
+                en: [
+                    { t: "Modify Basic Details", d: "Select an existing document to edit. In the form, you can update the Name and Description (1), as well as modify previously loaded hierarchical Metadata (2).", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Review.JPG" },
+                    { t: "Update Attached File", d: "In the Attached Documents section (3), you can validate the current file. Uploading a new one here will replace the previous file, creating a new version.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_Review.JPG" },
+                    { t: "Notify Changes", d: "When updating or using the forward option, a pop-up panel will appear. Here you can search and select recipients who will be notified about the changes.", img: "https://raw.githubusercontent.com/Gbandres97/Insights-Hub-app/a13df8bcc8deb2e501fd19d12dfb5c2a2e4ea0d2/Search%20Document_ForwardChanges.JPG" }
+                ]
+            }
+        };
+
+        let currentLang = 'en';
+        let carouselState = { principal: 0, consultar: 0, cargar: 0, editar: 0 };
+
+        // 6. Cambiar Idioma
+        function changeLang(lang) {
+            currentLang = lang;
+            
+            // Estilos de los botones
+            document.getElementById('lang-es').className = lang === 'es' ? 'px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm' : 'px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800';
+            document.getElementById('lang-en').className = lang === 'en' ? 'px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm' : 'px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800';
+
+            // Reemplazar textos estáticos
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Actualizar carruseles
+            updateCarousel('principal');
+            updateCarousel('consultar');
+            updateCarousel('cargar');
+            updateCarousel('editar');
+            if(sidebarOpen) document.getElementById('sidebar-footer').innerHTML = `TP.ai FAB Operate™<br/>${translations[lang].header_office} MR`;
+        }
+
+        // 7. Lógica del Carrusel
+        function updateCarousel(id) {
+            const data = carouselData[id][currentLang];
+            const index = carouselState[id];
+            
+            document.getElementById(`title-${id}`).innerText = data[index].t;
+            document.getElementById(`desc-${id}`).innerText = data[index].d;
+            document.getElementById(`count-${id}`).innerText = index + 1;
+            
+            // Setear Imagen
+            document.getElementById(`img-${id}`).src = data[index].img;
+            document.getElementById(`img-${id}`).style.display = 'block';
+
+            // Pintar los "puntitos" (dots)
+            let dotsHtml = '';
+            for(let i=0; i<data.length; i++) {
+                let dotClass = i === index ? 'w-8 bg-[#5e4b8a]' : 'w-2 bg-slate-200 hover:bg-slate-300 cursor-pointer';
+                dotsHtml += `<div onclick="goToStep('${id}', ${i})" class="h-2 rounded-full transition-all duration-300 ${dotClass}"></div>`;
+            }
+            document.getElementById(`dots-${id}`).innerHTML = dotsHtml;
+        }
+
+        function nextStep(id) {
+            carouselState[id] = (carouselState[id] + 1) % carouselData[id][currentLang].length;
+            updateCarousel(id);
+        }
+
+        function prevStep(id) {
+            const len = carouselData[id][currentLang].length;
+            carouselState[id] = (carouselState[id] - 1 + len) % len;
+            updateCarousel(id);
+        }
+
+        function goToStep(id, index) {
+            carouselState[id] = index;
+            updateCarousel(id);
+        }
+
+        // Inicializar
+        changeLang('en');
+
+    </script>
+</body>
+</html>

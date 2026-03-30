@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status CEO - Technical Manual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --brand-main: #848DAC;
+            --brand-secondary: #C2C7CC;
+            --brand-bg: #EAEBEF;
+            --brand-dark: #2D3748;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--brand-bg);
+        }
+
+        .sidebar-link.active {
+            background-color: var(--brand-main);
+            color: white;
+        }
+
+        .slideshow-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 2px solid var(--brand-secondary);
+        }
+
+        .slide {
+            display: none;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--brand-main);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .btn-control {
+            background-color: white;
+            border: 1px solid var(--brand-secondary);
+            color: var(--brand-main);
+            transition: all 0.3s ease;
+        }
+
+        .btn-control:hover {
+            background-color: var(--brand-main);
+            color: white;
+            border-color: var(--brand-main);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-secondary); border-radius: 4px; }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Sidebar Navigation -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-slate-900 text-white p-6 z-50 hidden md:block shadow-2xl">
+        <div class="flex items-center gap-3 mb-10 border-b border-slate-700 pb-6">
+            <div class="p-2 rounded-lg" style="background-color: var(--brand-main);">
+                <i class="fas fa-chart-line text-xl"></i>
+            </div>
+            <h2 class="font-bold text-lg tracking-tight">Status CEO</h2>
+        </div>
+        
+        <nav class="space-y-2">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">Sections</p>
+            <a href="#welcome" class="sidebar-link flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 transition-all">
+                <i class="fas fa-home w-5"></i> Home
+            </a>
+            <a href="#registration" class="sidebar-link flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 transition-all">
+                <i class="fas fa-sync-alt w-5"></i> Update Registry
+            </a>
+            <a href="#database" class="sidebar-link flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 transition-all">
+                <i class="fas fa-database w-5"></i> DB Configuration
+            </a>
+            <a href="#compliance" class="sidebar-link flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 transition-all">
+                <i class="fas fa-shield-alt w-5"></i> Compliance Rules
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="md:ml-64 p-4 md:p-10">
+        
+        <!-- Header Section -->
+        <header id="welcome" class="max-w-5xl mx-auto mb-16 pt-6">
+            <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-sm border border-slate-200 flex flex-col lg:flex-row items-center gap-10">
+                <div class="flex-1">
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block" style="background-color: var(--brand-bg); color: var(--brand-main);">Version 1.0 Official</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">STATUS CEO <br><span style="color: var(--brand-main);">Technical Documentation</span></h1>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Welcome to the Status CEO management manual. This guide will walk you through system updates and database architecture adjustments from the Status CEO App, designed for biweekly updates.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#registration" class="px-6 py-3 rounded-xl text-white font-semibold shadow-lg transition-transform hover:scale-105" style="background-color: var(--brand-main);">Explore Updates</a>
+                    </div>
+                </div>
+                <div class="flex-1 w-full lg:w-1/2">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgh8511KVVaH36cb0Hs1ZQFaNCruvOPfUtywJJ-t_Yjh5q9Flgw3aGp_afd5j7pnrqD1PpMiOnTWlBe-WXN6JjZznz2npeaZRGHZ9OBnL1o8Irmfy3PSu3P6TuKYhyeIsxjFeA4Cl_OjX7FpGwFiX7YobFbvR2aDSjGlagnsb3bVpFRW2ITojpguY07H__Y/s1600/1.png" 
+                         class="rounded-3xl shadow-2xl border-4 border-white transform lg:rotate-2 hover:rotate-0 transition-all duration-500" alt="Status CEO Welcome">
+                </div>
+            </div>
+        </header>
+
+        <!-- Section 1: Update Registration -->
+        <section id="registration" class="max-w-5xl mx-auto mb-24">
+            <div class="flex items-center justify-between mb-8 px-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 uppercase">Bi-Weekly Update</h2>
+                    <p class="text-slate-500">Step-by-step guide to the biweekly update in the new registration section.</p>
+                </div>
+                <div class="hidden sm:flex gap-3">
+                    <button onclick="prevSlide('reg')" class="btn-control w-12 h-12 rounded-full shadow-sm">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button onclick="toggleAuto('reg')" id="btn-pause-reg" class="w-12 h-12 rounded-full shadow-lg text-white" style="background-color: var(--brand-main);">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button onclick="nextSlide('reg')" class="btn-control w-12 h-12 rounded-full shadow-sm">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="slideshow-container" id="slideshow-reg">
+                <div class="absolute bottom-0 left-0 w-full bg-slate-100 h-1.5">
+                    <div id="progress-reg" class="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Database Settings -->
+        <section id="database" class="max-w-5xl mx-auto mb-20 pt-10 border-t-2" style="border-color: var(--brand-secondary);">
+            <div class="flex items-center justify-between mb-8 px-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 uppercase">Database Settings</h2>
+                    <p class="text-slate-500">Database Display Functionality</p>
+                </div>
+                <div class="hidden sm:flex gap-3">
+                    <button onclick="prevSlide('db')" class="btn-control w-12 h-12 rounded-full shadow-sm">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button onclick="toggleAuto('db')" id="btn-pause-db" class="w-12 h-12 rounded-full shadow-lg text-white bg-slate-700">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button onclick="nextSlide('db')" class="btn-control w-12 h-12 rounded-full shadow-sm">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="slideshow-container" id="slideshow-db">
+                <div class="absolute bottom-0 left-0 w-full bg-slate-100 h-1.5">
+                    <div id="progress-db" class="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Important Policies & Compliance -->
+        <section id="compliance" class="max-w-5xl mx-auto mb-20 pt-10 border-t-2" style="border-color: var(--brand-secondary);">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 uppercase px-4">Key Operational Policies</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Text Bullets -->
+                <div class="space-y-6 px-4">
+                    <div class="flex gap-4 items-start p-6 bg-white rounded-2xl shadow-sm border-l-4" style="border-color: var(--brand-main);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-white" style="background-color: var(--brand-main);">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">System Availability Window</h3>
+                            <p class="text-slate-600 leading-relaxed">The system will be enabled for updates starting <strong>4 days before</strong> until <strong>1 day after</strong> the assigned Monday of each bi-weekly update week.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start p-6 bg-white rounded-2xl shadow-sm border-l-4" style="border-color: var(--brand-main);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-white" style="background-color: var(--brand-main);">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">Microsoft Teams Notifications</h3>
+                            <p class="text-slate-600 leading-relaxed">Automated alerts are sent via Microsoft Teams. Notifications begin <strong>4 days prior</strong> to the deadline and continue until the day of the update.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start p-6 bg-white rounded-2xl shadow-sm border-l-4" style="border-color: var(--brand-main);">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-white" style="background-color: var(--brand-main);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">Automatic Compliance Enforcement</h3>
+                            <p class="text-slate-600 leading-relaxed">Once the deadline passes, the application will <strong>automatically register</strong> any unsubmitted information. These entries will be marked with a <strong>0% compliance status</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Static Image Section -->
+                <div class="px-4">
+                    <div class="bg-white p-4 rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+                        <p class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-widest text-center">Teams Alert Sample</p>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgqEC7S9bNyMiESMw2LxUNwlNPYD159VYTs-5UWwDGPaCSSjSsJpHbc1bZkY0oRnlIqh3FbgkJqgqpQPBoCRGJUNdu8j6xktZyfT1BwEvvKEb6_VVg-ODajd9HXW5KlvsNkQP-HTGnc2lJhMqH9CsEBRiJ-e4tzPm37qq74bAtjBOkoo9s_hzNjYgfG0Mq/s1600/Alerta%20Teams.png" 
+                             class="w-full h-auto rounded-xl border border-slate-100" alt="Teams Alert Preview">
+                        <p class="mt-4 text-sm text-center italic text-slate-500 font-medium">Visual representation of the automated update reminder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="max-w-5xl mx-auto text-center py-12 border-t" style="border-color: var(--brand-secondary);">
+            <p class="text-slate-400 text-sm font-medium">Status CEO Enterprise Environment © 2024</p>
+        </footer>
+    </main>
+
+    <script>
+        const descriptionsReg = [
+            "To create a new entry, select the 'New Record' button.",
+            "We are entering the BI-WEEKLY update module.",
+            "Start by selecting the REGION (Americas, US-Canada, and LATAM).",
+            "Select the corresponding Region.",
+            "Proceed to select the SUBREGION. Options will vary based on the selected REGION.",
+            "Select the corresponding Subregion.",
+            "Choose the COUNTRY. NOTE: This is the only field that remains blank for 'Americas' as it is a GLOBAL update.",
+            "Select the corresponding Country.",
+            "Categorize the SUB-STREAM (QA, Recruiting, Supervisors, Training, and WFM).",
+            "Select the corresponding Sub-Stream.",
+            "Select the update date. Enabled from 4 days before to 1 day after the assigned Monday.",
+            "Select the corresponding Week - Date.",
+            "Begin updating core fields: Current Status, Key Risks, and Next Steps.",
+            "Enter the information in CURRENT STATUS (no character limit).",
+            "Proceed with updating the Key Risks.",
+            "Enter the information in KEY RISKS (no character limit).",
+            "Complete the update by filling in the Next Steps.",
+            "Enter the information in NEXT STEPS (no character limit).",
+            "To finalize and register the information, press the SAVE button.",
+            "The update will be stored and can be viewed in the data table."
+        ];
+
+        const descriptionsDb = [
+            "Open the 'Database' settings from the main panel.",
+            "View information from various BI-WEEKLY report updates with filters for Week, Region, and Stream.",
+            "Filter options will display. The WEEK field only shows weeks already updated.",
+            "Applying a Region filter will isolate specific update data.",
+            "Selecting a row enables the pencil icon for editing.",
+            "The pencil icon opens a pop-up window to modify the entry.",
+            "Updates are restricted to CURRENT STATUS, KEY RISKS, and NEXT STEPS.",
+            "Enter updated status details with unlimited character count.",
+            "Once fields are complete, click the SAVE button.",
+            "Information is automatically updated across the database.",
+            "Rows can also be removed from the system if necessary.",
+            "Select the DELETE button to proceed with removal.",
+            "Information will be permanently purged from the database records.",
+            "Download filtered information directly into an Excel file.",
+            "Clicking DOWNLOAD opens a pop-up with the file generated for export.",
+            "Clear filters at any time using the clear button to reset the view.",
+            "Access the full, unfiltered database information for oversight."
+        ];
+
+        const config = {
+            reg: {
+                urls: [
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkz9l7cOyth-VeKMbZ7KGN7yez2ho3LK4CGRxTtHgYyPgPoc20ga8uXQcDPCRH3yY4WcshHnBTPqLNbxQKjCqupaE1_xIEfCYrszE5ExLL3vkAKzplxfsHHTARqMiSI5-a-OHRzCxxpOErwJOvGIIIYW71C4u_w15FjzWMU3McVDMWR-ezKiFipasKw665/s1600/3.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtX3H-68LKQDv8gtTnKwdSOrDAGIFaLJjOjuWjTyoHmGF1VTZHHM84GR6TEuWaqjoKKOCZBbja8YnLipKkjqqb0I4qddnq5a6KhMkHO87eU-N9xcUSlHMsvkSsY-nXXJeugJtE_6hyphenhyphentFy59KS-H0xp98BB9ALipJlQD2gC7Pw6dwA0gkz0wyEx6j6P9fZv/s1600/4.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC6FZ2EEXwAgvTNCaiM7KF973MGIgGam9361A8wdQ8DQ5X4pQ6rlBdpHDYmPVKzvE2oPOtAha4ENqC703m7O43-nl3yeZA3PY-N-DCSDHLpLAl-Pw7nAKZD_ZY34F3KW96Z6IkSsg1tRD6LLZjtWHZIPb-LxSt4fmH_9gYCefGuWGHxF9ubIj8cMgAoi9_/s1600/5.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTIqo2GbNYf3Apj4CMWF70U1RfV_9l4ZTN3-y3wyWlL79GKCb5OBFKnbiVRAbezAkz5Fh9OxfSHosMxKLQ20wemYvAh8Gjt9I63jnnDXBZ1Xbq5LmicxDQxuezqOMnjkNc7MSBPwVg4uvTabIzH8C773zxqsc4GYUktjq2ITfdQrgZZ9tA4u5avKYrmzxB/s1600/6.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-VucGZwjsAYeun1nF1Pjs06rF6i178CNB0pBkexyxATb_g9O-DOvJO5L-2NwT_PVbYFMXei9QLd_mlhzoR55ocvknO9Hng7GUA1aelR4oa9IpMYUEZnpoSh9tN0duekOCuGYuEcoeTg2M4PRmEvp4qXFJVCdElG-r9OS5jYOOCzK8fNGnHdgHZVwaO4Cb/s1600/7.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvvszWZ4cZU89uVgdDHunHBqDNPtjWvom7Z4vKRccdYli3xD3fDqPMfCcgj28n2zgQ9UzKDqqPICRAXz3ZvshyeWldcuiIs-sJ8zXyahGEOB9yq4RRQws1eSOnr69Ddfe6d5glOHpDNSPJMwwgwCxkzO1iu50pZv-ON-mKj_3RgUyAMofIxxb15T2FO69k/s1600/8.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNlgWmxq1S7y7vTD4VIpvFDKDYYSn7nzkwjQm1G8cmEUbD_GwPjHAk6fYulp_XcdyyGtvPurb7F2bJ9iOFgaO4OQAjiorniDvzT9P-j6nz8ObqOynvh9IsAkj9OMr-i40XwgFxmOP8a57nYyylDqv50OcAsydbEOTH60pG-WQjEhMR3TEFPMvMlz_QdbE7/s1600/9.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNsnsLY0EScucr4UdcZgbGY3pkSXkfrlLRIljvhvLUjl0MkB-c1L0oLgUayEB8suVtY-xpBFniu4c7qdWj7RaK_5CALhbrG9RMyYBI-sjOvrgS8cMfv6u8Cyx8eMNRZ3H_96UEqkL-xUmFsCw1EWDH2inz_M41J3Rgs_G75Sa3dDG5U5EUTNDFcpFyYPLB/s1600/10.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi__cu0Zqzy1vq2CX8_SI9Z9v2RVAB1PihywY4rtUebs0nfpRi9uRWYniOttTYk1DRAl89ZUdd60XGOgIj4JSdYsq9cyeJi7VXIcqKpWIUyoXmr2nrkY6SRID2jgE6rmsKlojYDrAukZ0MQ_WbC2nP9S-QYuX9fruTUosH3zjOISrg-1SWM5dtUoE6WBt-0/s1600/11.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9ptY0_ldaBKxQO_u9cl-PC-w7vojgz6Ag_OIeOhAkwzUx3fDPlRjRCbt_l8F8HUdGz-OEyMINfOsh6m5KWLxoUSUUUdHEOEauzg_lCS_wnicjRGMy4Q6O43xQEh9ZOX4RwBY5jDR8hP00OUjNZWoGZU5KUkpiFNNNKpcTLuXYagLU3SKK-cx9h6NX-vQD/s1600/12.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmhdMuyuQ4i0bRJmGMBkTrxOoAJAywlmWVPbaGHEHiKe448JZn3-NBCb6ca5QF-yTURadeRnmWSHYzyNiSZ4UxtsF-AF4nAFCovlBlXZKAmhE9wK4DOqTVvZk-yQRQWV8f-dfcQ_ert5aBVja1zo3hNkgD6C-Roo7rEsA9Uqk4IDCRumRZV7QJGUzsBPdt/s1600/13.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjN6EiEAIkDxPJacfLopx1JXW6ntjCp0RCF61DKBU-j2WEjtwqBDqPBLeZ2KE7dvpkRH5_bpcSS5fc2MUMQFY88uChgcjVOSTZaDVWVHMhxbboddy0jsYf449fAlxKRJgSQ1hMw6ujieB89v2So461PgPeAjRe0PHH89PdY6S_OSUoGEMPt4wnqmc3OFB7o/s1600/14.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDx0s3PF3e0W04LnZmfJvw7XK-4zszw3UIL2av6jjJyiIKG-7IZycJT3qZJFo-RyTIrZcgWeOpSEFotTe6ZeLUZejblztiwFoQI92CZQEAp3IgMc1ZSomTCIXK-r-hPmQkEFHA2LDNdftlfXDklciPGBuhoqwTQQz4_FBTjZDvS__DkamJO7hhv5Gh_roE/s1600/15.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2pwKzty5-TLv_ViclgQYd0TPQuxgSqRjqwrBaEG4CQrA9aocuuGvaAAnjtAhSKGXpfseVE3eGZe7IhBkhGyFPbbCfNLixQ5ZASXvQ4So9aT0A829VCcw2ZjkoE60zcIIOxX8ZJuslZCPJv2dsAmHrFnoWM3omMSJ2HTbdvahJjXnYcVA1vJPwUdohBYgF/s1600/16.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhauqBrQj8aA0pObARPed2hAH_HVWtzBJxXcBsjVHZL4sU-Mhu1_pR7gebC4Gl9MZUtvYl12-kFRhtXMTJVpE6npxmS5NrLGOC8I0kjqDBhtkMgb4RxXUG63Au2I_AbOkFetrXlf8L_bcNP6YwU8yLGAvcmnHImt6y2Ztn86gPE2o-QUYXqZdAutORl8fVS/s1600/17.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiO-uuyzoN4atb4D-bhNj2Y3Y3D2jCPS7AEmFrw-SIzORM092kC2aDlKCkcRYuqJ_yX5lp8LFN3kBVYPlrbYK-xLTxyI3Sgz2UN63bIwKxud7w7CrsFAWS5M-KKMd2GWWKeXgJGiPnCnKB8XbYovUz4jZZ7ucuS06RVT1eqk_Fn0dWZ1mkdxQqisWqq0Os6/s1600/18.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiunT5PLXceDSg4r-SzvJoyLFmtcVuv_JhpsPDuQkZra9wXSLdLs828RRd7XDYrnVlvNrzUmLdfxpUFWm7Hq_3AGEYasBhv_7MLLnXsws2kRIg7kQOKsVa7Jo1bqvdpi6eA_BLBugcPUGbuHd6XPSFNa3mjqxLPC-0HJJ-67yRaL_w1TtpmMJF2J09RuIyV/s1600/19.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIZHW58z8ah7CKpbm8nXWkJZfNir20P3JiHHVFhTkghH9h0IeOkuql8PU7q8F50vSQhq8h8DbYEJ7MU_2OVPe2QSw-mC0Rp3W1jx77lg6IdJSOhQN1_Y0ptwXFE9jcsV-Y3O9yKBsCgZiQdkhkSrORH80N5bXeP2lZTnfDjJ1GnUM5yek2PoM7TqZomZaJ/s1600/20.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjay382sIdcyXqlxmDIOnW4XXBMQ0kzJ9dyHBIT-xBKErdsKaFd4yWBPHXoUvkTeBbomDMQa01SYfG39Vf_YCM3zhxBpNJe4bF1ikyIJesifFgA1-_2KXAKP0Dr_iL875dlrOBT-jyaTqas46Vg2a-iZFJ_xTPBqYiti-2ENZOY203f65YftXxlfbXgCdCa/s1600/21.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq5P09C10qpyK3v4hQVZdzG8254RVOKI9G6H640Q8c8W8pPqW_kcFUaVyKq9rk3KvZItAaFW51Swb4rb6bHZ6OhiC7q-vlHy3eIs0WReQwumhFryA6aah_8Fjqj-I9iaWCS1yHiwCxPYsr_zK14LTTqJfEf_wiZOBcOtblGj7PwbE5DSe0gT_qvWEsMDyS/s1600/22.png"
+],
+                descriptions: descriptionsReg,
+                currentIndex: 0,
+                isPaused: false,
+                interval: 4000,
+                type: 'Update Procedure'
+            },
+            db: {
+                urls: [
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOfuA1pEBHPJp8zefMVOfc1-E7lczVRN9u0ijXtZTMwf413q0_8oNUUQ91Tzj5W_7t45AJ37vQ2jYx5ciFGdqkYdRqeWiZAbtKePquVFPLHGNxPNYAUDYIN0fyCfvdDRsY589RxsX6PswiBXMue_PYJN9Na7xEE81cYbM8BqMmug1IkOoBsrAKNfSddL_u/s1600/1.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl-ts40FuIQ13lK_TsJS8VQI1uILSM1usghNOqZLrWEKxL9EMwnn9gomEnT3CaLlVfqO2Nv9OQKWUDAqtcU-SqdhV5WghAkH6WOj8ewAyE9lC9IM4IA9xfHLxrTF1wWS5L6F1jCOpaSsbL-vi2Q1fr1z5yZyYB8Ogf0HhlgvTlcEigT8Rp43FNlBIF8drF/s1600/2.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0l8iTYKJp45U-DUHYoYjj2bapdE8N3jxB88pEo9DoBZzr7MmyhxZGl82uqqHGzLgiObNCfACT4nPjB9B4bw0jYpNjuAKUWEtJyxYxBn36beIcsKPID_rRTjKWwcuoOhUrCxekCfWm0akXZl_Z7NzATx__La1CJOdfddoAUb6k7iL1qYRqpbqQOoGUv6aX/s1600/3.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3ptXS75wpsiGTZQ1Mjnns0VqQMuHm3RZA9hLfyI3rojZCk6NHjnWNEDbfQJQP3EKA9xPKxiirqrGsNPaZpw_5KM8YrWGeI7tYN9YXadCi0zuvvuZ7V3cMn_WDQxclhU1zNQPeyhDVaTzWb3gDlY_L4TaceDskxtdhaYXWF_7xV7N-TKvf6DtgwBoresqd/s1600/4.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikLE7P2OB6Dyphx_AsutWy6S48iS65s9gOil51GrlZ376PCq3pgxc1_SV2Bu4m53jT6osen2o4C6jd-Z4c-0GX3XFvwOC8uB0Nh2ofpaU1oJE_Rm9Q78SJOi3DZo5ZinM2GV2OZ_vTmhQiGv4BVERdBOU1AtDM6Vt81uFCnejy47XekZjpI_-EJwE4Cx_p/s1600/5.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizDRfvj6GrZA_ggrAxvlt3tprKqQVG-hiPpxY4bMC5UzLMKCrERrPg_zetgw8qeybFi8vaVvOGhTy0zzyIDD2EkCAuTCmp0sCbFf8E18QrZTkr8sBdmvgUy8w20SwOVIeJjSezXmevIdgR4OlDTKbg_iGOD8gLiimDxsFpAWlF_DP0xlsgaU-pkEwQGYFc/s1600/6.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuV6SNUeomlzup_2cRJcp0MVWhnfrm0y5RJQDO25BByXL2_0fT6jYNhU7f4PYsJaaRne-XFMLbANtSW3OX6mrz3uvskXLCBhYsav6_FWr2BaVPPxIYk6v7QUCGp4ZEDeGXvr6kur7qqN7XHy2_n_u26hjr1m_fuWZe8Pir4CxmR_Lc4KOEqnq5SvKz4imv/s1600/7.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnPW0sx_tOuM6gIDJ1LCu_pRDt3hVuYYPHe_T-2OFKPSLNZyKaFr7iOEFF080BUSsXPWvrrM5sGk88sEDhaj8p_lcznnW484Tnq1rhgRPhPZ27D7ePG6Q_JZaznyS-x8biQdshg7gKx1QNYFpV5_Ev-iq8zzf0OuR2XG6RFd4zxt3LKuzRLqEuVTCHZs9C/s1600/8.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiO4RfQ4d1nkrwHaMKiZylWt9sjIIbYazopw87D3NFSrkiZAdbggbw-z7xlhmhd-cVec3IPXZKI5D8bwARQxBBH-V-jq7s32QkVED6nmh1zCbIEpxzETZR5qwiw3lFhM7aqGRDXeSkYbuO9t3aP3-Z5Bp49RzRYcvHAugoKELQiISzXk4USh0wZXq9XlJtu/s1600/10.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzR8EX62aE5gzCQl7hzNPz_5qLLn4BBZlMaOgn5RxIOBKQ122gcJo872axHpJPGeLiW4a_yR-ohlYWx1qVDZQjNA5arTbdYlyMI-g5g_hyphenhyphengVoXsxKPv1Cl1AvhmjwFZv-bq6nQcsu_Cro7sg6ZCibFzKdyJoyAVAtd4IE9G509rdk8ZkeRoB_sAv8tAgjN/s1600/11.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguf24Ozb-t7H3BB-tXECzHgK6I2VOUnS9zvHvRNNNhXRWCdtYqLVbkLxJmAETafZloGSD4hy92lVLXokiWDW_nygjOHfaEssXnnnx2jIn-akWaeJte0d9k_h1M0fd2Q-jZnvEEWvSxXh1hGomXe-DzNJ6HkDrVlf-E3Nc-5LyoMQTtG7CD5f0k9pKjSVMG/s1600/12.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLW7-PK5v3ex7ZQoe96nGlRIYXbKihBQ8lNtTelsWj7bUFp_HhHEK-j_pzHyyNTwmIy6qvUKj8soVkIbNu7Ki4X3a4mLm5SkXQitVJU1dd5O_zKuQK0DE1cib17neyhe4Ix7Yw6Egix6xPGQCawDts0yJnLeucTtO46rFeQrAtL3c_RZYsbC2fskKX87Y2/s1600/13.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUrKl0Q5-08VRW9zoU8D85qKZnCGdRL596VgU6UlZgJnH9cGbMTniWW9s4kPq0zK-TG1q9ABLKbbmEGNhTBzRCwBHCldXiwrTb9Z-WsJnfXgEeI8KKmU_gASbeTT_044lcJcYYrm7mHDTdytsTNpG0ypauaK6MYEvyVoYIcVnerjKZTa96nlmq6uIedacp/s1600/14.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBilIRHw1KSnf0AXoSd7e2JUaQqUcsH7ZtXPz9o7lZv_RedTS0XR_TmIsuOFHDqPBC-9MxRV1Tbk_v6d_b4QTi8-0psdr7Zro_YA9xCCEkRa-uaMeXedptVpUXcpVTQ0IjsUKUKBgxlqMoJHyda7LbAudeDwTHC5_b1yUYH5kme9RXpRVL7oHHe_WnJ2jp/s1600/15.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5dPgZD8hsXLviuOIiCiOCsbu29EZITOEcC6r7pyS-hkDdi9txPXAfX1kK0k5AFpissgjY9x0dHlUqmDig_mTwapnbvtwZTeMlQNWAubF1VJDbzx8EdlNd0JPtj0QaTOFUlV74yKkB6Uc1r1WnreTO0vAuFio0PZLS5X5vhQAVkgc7nxKMvSrmD5fzL1OX/s1600/16.png",
+"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2gj2yIzxQxlF1NSDMiiO3ST3rIjHDKbYIMXnN8NF2PUjjbyR4g1OyfmEeHvvnvxWi_egQ_X7Cu_odCk-PGhqOZxyW5yLyGF8_bWmjlsoGYTXBuYUT3keEk4_z9Yvo7VzPgoLlstP1yAiRq-jh3u7apDSI30skkhzP_IzlCBYUAJq2BzIN0EzcfahnsR9u/s1600/17.png"
+],
+                descriptions: descriptionsDb,
+                currentIndex: 0,
+                isPaused: false,
+                interval: 4000,
+                type: 'Configuration Step'
+            }
+        };
+
+        function initSlideshows() {
+            Object.keys(config).forEach(key => {
+                const container = document.getElementById(`slideshow-${key}`);
+                const data = config[key];
+                
+                data.urls.forEach((url, i) => {
+                    const slide = document.createElement('div');
+                    slide.className = `slide ${i === 0 ? 'active' : ''}`;
+                    slide.innerHTML = `
+                        <div class="flex flex-col lg:flex-row bg-white">
+                            <div class="lg:w-2/3 p-4 bg-slate-50 flex items-center justify-center min-h-[400px]">
+                                <img src="${url}" class="max-w-full h-auto rounded-lg shadow-lg border border-slate-200" alt="${data.type} ${i+1}">
+                            </div>
+                            <div class="lg:w-1/3 p-8 flex flex-col justify-center border-l-0 lg:border-l-2" style="border-color: var(--brand-bg);">
+                                <div class="mb-6">
+                                    <span class="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-widest text-white mb-4 inline-block" style="background-color: var(--brand-main);">
+                                        ${data.type} ${i+1}
+                                    </span>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-4 uppercase">Technical Step</h3>
+                                    <p class="text-slate-600 leading-relaxed font-medium italic">"${data.descriptions[i]}"</p>
+                                </div>
+                                <div class="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center text-slate-400 font-bold text-sm">
+                                    <span>PROGRESS TRACKER</span>
+                                    <span>${i+1} / ${data.urls.length}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(slide);
+                });
+
+                data.timer = setInterval(() => {
+                    if(!data.isPaused) nextSlide(key);
+                }, data.interval);
+
+                animateProgress(key);
+            });
+        }
+
+        function animateProgress(key) {
+            const bar = document.getElementById(`progress-${key}`);
+            const data = config[key];
+            let start = Date.now();
+            
+            function frame() {
+                if (data.isPaused) {
+                    start = Date.now() - (parseFloat(bar.style.width) / 100 * data.interval);
+                    requestAnimationFrame(frame);
+                    return;
+                }
+                const elapsed = Date.now() - start;
+                const progress = Math.min((elapsed / data.interval) * 100, 100);
+                bar.style.width = progress + "%";
+                
+                if (progress < 100) {
+                    requestAnimationFrame(frame);
+                } else {
+                    bar.style.width = "0%";
+                    setTimeout(() => requestAnimationFrame(frame), 10);
+                    start = Date.now();
+                }
+            }
+            requestAnimationFrame(frame);
+        }
+
+        function showSlide(key, index) {
+            const data = config[key];
+            const slides = document.querySelectorAll(`#slideshow-${key} .slide`);
+            
+            slides[data.currentIndex].classList.remove('active');
+            
+            if (index >= data.urls.length) data.currentIndex = 0;
+            else if (index < 0) data.currentIndex = data.urls.length - 1;
+            else data.currentIndex = index;
+
+            slides[data.currentIndex].classList.add('active');
+            document.getElementById(`progress-${key}`).style.width = "0%";
+        }
+
+        function nextSlide(key) { showSlide(key, config[key].currentIndex + 1); }
+        function prevSlide(key) { showSlide(key, config[key].currentIndex - 1); }
+
+        function toggleAuto(key) {
+            const data = config[key];
+            const btn = document.getElementById(`btn-pause-${key}`);
+            data.isPaused = !data.isPaused;
+            btn.innerHTML = data.isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+            let current = '';
+
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) link.classList.add('active');
+            });
+        });
+
+        window.onload = initSlideshows;
+    </script>
+</body>
+</html>
