@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP.ai FAB - Soluciones de Transformación IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tp-purple': '#5b5b7d',
+                        'tp-dark-purple': '#3f3f5a',
+                        'tp-light-gray': '#f4f4f7',
+                        'tp-accent': '#7c7cb1',
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --tp-purple: #5b5b7d;
+            --tp-dark-purple: #3f3f5a;
+            --tp-light-gray: #f4f4f7;
+            --tp-accent: #7c7cb1;
+        }
+        .bg-tp-gradient {
+            background: linear-gradient(135deg, var(--tp-dark-purple) 0%, var(--tp-purple) 100%);
+        }
+        .text-tp-gradient {
+            background: linear-gradient(135deg, var(--tp-dark-purple) 0%, var(--tp-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-shape {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        /* Modal Transitions */
+        .modal-enter {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-exit {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-shape { clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%); }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Header / Navbar Comercial -->
+    <nav class="flex items-center justify-between px-6 lg:px-12 py-4 bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-gray-100 transition-all duration-300">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-tp-gradient rounded-sm shadow-inner flex items-center justify-center">
+                <i class="fa-solid fa-layer-group text-white text-xs"></i>
+            </div>
+            <a href="#hero" class="font-bold text-xl tracking-tight text-tp-dark-purple hover:opacity-80 transition">
+                TP.ai <span class="font-normal text-gray-500">FAB</span>
+            </a>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 font-medium text-sm tracking-wider text-gray-500">
+            <a href="#impacto" class="hover:text-tp-purple transition-colors"><span data-lang-id="nav1">Impacto & Beneficios</span></a>
+            <a href="#estrategia" class="hover:text-tp-purple transition-colors"><span data-lang-id="nav2">Estrategia</span></a>
+            <a href="#resultados" class="hover:text-tp-purple transition-colors"><span data-lang-id="nav3">Resultados</span></a>
+            <a href="#soluciones" class="hover:text-tp-purple transition-colors"><span data-lang-id="nav4">Apps (AI HUB)</span></a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <!-- Language Switcher -->
+            <div class="hidden md:flex items-center bg-tp-light-gray rounded-full p-1 border border-gray-200 mr-2">
+                <button id="btn-es" onclick="switchLang('es')" class="px-3 py-1 rounded-full bg-white text-tp-dark-purple text-xs font-bold shadow-sm transition">ES</button>
+                <button id="btn-en" onclick="switchLang('en')" class="px-3 py-1 rounded-full text-gray-400 hover:text-tp-dark-purple text-xs font-bold transition">EN</button>
+            </div>
+            <a href="#contacto" class="bg-tp-gradient text-white px-6 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg hover:opacity-90 transition transform hover:scale-105">
+                <span data-lang-id="navCta">Agendar Demo</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="bg-tp-gradient text-white pt-24 pb-40 px-6 lg:px-12 hero-shape relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-10 w-64 h-64 bg-tp-accent/20 rounded-full blur-2xl"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold mb-6 uppercase tracking-widest border border-white/30 animate-pulse">
+                    <i class="fa-solid fa-rocket mr-2"></i> <span data-lang-id="heroBadge">AI Transformation is Now</span>
+                </span>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                    <span data-lang-id="heroTitle1">Orchestrated</span> <br>
+                    <span class="font-light text-blue-100" data-lang-id="heroTitle2">intelligence that drives results</span>
+                </h1>
+                
+                <p class="text-lg text-gray-200 mb-8 max-w-lg leading-relaxed" data-lang-id="heroDesc">
+                    TP.ai FAB es la plataforma de Inteligencia Artificial que integra personas, procesos y tecnología para acelerar los resultados de tu negocio de forma segura y escalable.
+                </p>
+
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#soluciones" class="bg-white text-tp-dark-purple text-center px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+                        <span data-lang-id="heroBtn1">Ver Soluciones</span>
+                    </a>
+                    <a href="#contacto" class="border border-white/40 text-center text-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition">
+                        <span data-lang-id="heroBtn2">Hablar con un Asesor</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center relative">
+                <div class="relative w-full max-w-md aspect-video rounded-2xl border-4 border-white/20 shadow-2xl overflow-hidden flex items-center justify-center bg-tp-dark-purple/50 group">
+                    <img src="image (1).jpg" alt="TP.ai FAB Transformation" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="absolute inset-0 flex-col items-center justify-center text-white/50 text-sm hidden">
+                        <i class="fa-regular fa-image text-4xl mb-2"></i>
+                        <span>[image (1).jpg]</span>
+                    </div>
+                </div>
+                <div class="absolute -z-10 w-[120%] h-[120%] border border-white/10 rounded-full animate-[spin_60s_linear_infinite]"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: IMPACTO Y BENEFICIOS -->
+    <section id="impacto" class="py-20 px-6 lg:px-12 bg-white -mt-16 relative z-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+            <div class="md:w-1/3 text-center md:text-left">
+                <h2 class="text-5xl font-light mb-2 text-gray-500" data-lang-id="impactSub">Business</h2>
+                <h2 class="text-6xl font-bold mb-8 text-tp-dark-purple" data-lang-id="impactTitle">Impact</h2>
+                <div class="w-16 h-1 bg-tp-purple mx-auto md:mx-0 mb-8"></div>
+                <p class="text-gray-600 mb-8 text-sm leading-relaxed" data-lang-id="impactDesc">
+                    Nuestras soluciones y aplicativos no solo modernizan los procesos, sino que garantizan resultados y beneficios medibles a nivel corporativo, optimizando la cadena de valor completa.
+                </p>
+            </div>
+           
+            <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-tp-light-gray p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition group card-shadow">
+                    <i class="fa-solid fa-arrow-trend-up text-3xl text-tp-purple mb-4 group-hover:-translate-y-2 transition transform"></i>
+                    <h4 class="text-xl font-bold text-tp-dark-purple mb-2"><span data-lang-id="impactCard1Title">Eficiencia y Productividad</span></h4>
+                    <p class="text-sm text-gray-500"><span data-lang-id="impactCard1Desc">Automatización de tareas repetitivas y optimización de flujos de trabajo operativos de fin a fin.</span></p>
+                </div>
+                <div class="bg-tp-light-gray p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition group card-shadow">
+                    <i class="fa-solid fa-brain text-3xl text-tp-purple mb-4 group-hover:-translate-y-2 transition transform"></i>
+                    <h4 class="text-xl font-bold text-tp-dark-purple mb-2"><span data-lang-id="impactCard2Title">Mejor Toma de Decisiones</span></h4>
+                    <p class="text-sm text-gray-500"><span data-lang-id="impactCard2Desc">Datos centralizados, semaforización de riesgos y analítica predictiva para líderes estratégicos.</span></p>
+                </div>
+                <div class="bg-tp-light-gray p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition group card-shadow">
+                    <i class="fa-solid fa-lock text-3xl text-tp-purple mb-4 group-hover:-translate-y-2 transition transform"></i>
+                    <h4 class="text-xl font-bold text-tp-dark-purple mb-2"><span data-lang-id="impactCard3Title">Escalabilidad Segura</span></h4>
+                    <p class="text-sm text-gray-500"><span data-lang-id="impactCard3Desc">Desarrollado sobre el robusto ecosistema de Microsoft Platform garantizando la trazabilidad.</span></p>
+                </div>
+                <div class="bg-tp-light-gray p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition group card-shadow">
+                    <i class="fa-solid fa-seedling text-3xl text-tp-purple mb-4 group-hover:-translate-y-2 transition transform"></i>
+                    <h4 class="text-xl font-bold text-tp-dark-purple mb-2"><span data-lang-id="impactCard4Title">Crecimiento Sostenible</span></h4>
+                    <p class="text-sm text-gray-500"><span data-lang-id="impactCard4Desc">Reducción de exposición operativa, visibilidad de rentabilidad y alineación a metas corporativas.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: ESTRATEGIA (Arquitectura / Capas) -->
+    <section id="estrategia" class="py-20 px-6 lg:px-12 bg-tp-dark-purple text-white relative">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-5/12">
+                    <span class="text-tp-accent font-bold tracking-widest text-sm uppercase mb-2 block" data-lang-id="strategySub">Nuestra Estrategia</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6"><span data-lang-id="strategyTitle1">No es solo IA.</span> <br><span class="italic font-light text-blue-200" data-lang-id="strategyTitle2">Es Inteligencia Orquestada.</span></h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-lang-id="strategyDesc">
+                        Un ecosistema estratégico diseñado no solo para implementar tecnología, sino para transformar integralmente el servicio al cliente y la gestión interna corporativa.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-200"><i class="fa-solid fa-circle-check text-tp-accent text-xl mr-3"></i> <span data-lang-id="strategyLi1">Empodera a las personas con IA</span></li>
+                        <li class="flex items-center text-gray-200"><i class="fa-solid fa-circle-check text-tp-accent text-xl mr-3"></i> <span data-lang-id="strategyLi2">Optimiza procesos de fin a fin</span></li>
+                        <li class="flex items-center text-gray-200"><i class="fa-solid fa-circle-check text-tp-accent text-xl mr-3"></i> <span data-lang-id="strategyLi3">Se adapta a estándares de la industria (ej. McKinsey)</span></li>
+                    </ul>
+                </div>
+
+                <div class="lg:w-7/12 space-y-4">
+                    <h3 class="text-xl font-bold text-white mb-6" data-lang-id="strategyLayersTitle">Un Ecosistema. Tres Capas.</h3>
+                    <div class="flex items-stretch group hover:-translate-y-1 transition transform bg-white/10 rounded-2xl border border-white/10 overflow-hidden">
+                        <div class="bg-tp-purple text-white px-6 py-5 font-bold w-1/3 flex items-center">Blueprint Layer</div>
+                        <div class="px-6 py-5 flex-grow flex items-center justify-between text-sm text-gray-200">
+                            <span data-lang-id="strategyL1Desc">Soluciones listas para la industria y casos de uso</span>
+                        </div>
+                    </div>
+                    <div class="flex items-stretch group hover:-translate-y-1 transition transform bg-white/10 rounded-2xl border border-white/10 overflow-hidden">
+                        <div class="bg-tp-accent text-white px-6 py-5 font-bold w-1/3 flex items-center">AI Orchestration</div>
+                        <div class="px-6 py-5 flex-grow flex items-center justify-between text-sm text-gray-200">
+                            <span data-lang-id="strategyL2Desc">Personas y agentes de IA trabajando en conjunto</span>
+                        </div>
+                    </div>
+                    <div class="flex items-stretch group hover:-translate-y-1 transition transform bg-white/10 rounded-2xl border border-white/10 overflow-hidden">
+                        <div class="bg-gray-700 text-white px-6 py-5 font-bold w-1/3 flex items-center">Foundation Layer</div>
+                        <div class="px-6 py-5 flex-grow flex items-center justify-between text-sm text-gray-200">
+                            <span data-lang-id="strategyL3Desc">Infraestructura segura, flexible y nativa en la nube</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: RESULTADOS ESPERADOS POR SUB-STREAM -->
+    <section id="resultados" class="py-24 px-6 lg:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-tp-purple font-bold tracking-widest text-sm uppercase mb-2 block" data-lang-id="resultsSub">Cinco Pilares</span>
+                <h2 class="text-4xl font-bold mb-4 text-tp-dark-purple" data-lang-id="resultsTitle">Resultados por Sub-Stream</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto" data-lang-id="resultsDesc">Impactos y capacidades específicas desarrolladas para cada área fundamental del ecosistema TP.ai FAB.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-tp-light-gray p-8 rounded-3xl border border-gray-100 card-shadow text-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl text-tp-purple mx-auto mb-6">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-tp-dark-purple mb-3"><span data-lang-id="resRecTitle">Recruitment</span></h3>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span data-lang-id="resRecDesc">Experiencia basada en datos que utiliza IA para atraer, evaluar y seleccionar candidatos de mayor calidad, mejorando velocidad y consistencia (Smart Sourcing).</span></p>
+                </div>
+
+                <div class="bg-tp-light-gray p-8 rounded-3xl border border-gray-100 card-shadow text-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl text-tp-purple mx-auto mb-6">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-tp-dark-purple mb-3"><span data-lang-id="resTrainTitle">Training</span></h3>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span data-lang-id="resTrainDesc">Rutas de aprendizaje dinámicas y personalizadas basadas en habilidades. Integración de retroalimentación continua con micro-aprendizaje en tiempo real.</span></p>
+                </div>
+
+                <div class="bg-tp-light-gray p-8 rounded-3xl border border-gray-100 card-shadow text-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl text-tp-purple mx-auto mb-6">
+                        <i class="fa-solid fas fa-vector-square"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-tp-dark-purple mb-3"><span data-lang-id="resQATitle">QA (TP Lens)</span></h3>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span data-lang-id="resQADesc">Automatización del scoring impulsada por LLM, garantizando una cobertura alta/total. Acciones automatizadas de coaching, notificaciones y reportes estructurados.</span></p>
+                </div>
+
+                <div class="bg-tp-light-gray p-8 rounded-3xl border border-gray-100 card-shadow text-center lg:col-start-1 lg:ml-[15%]">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl text-tp-purple mx-auto mb-6">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-tp-dark-purple mb-3"><span data-lang-id="resSupTitle">Supervisors</span></h3>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span data-lang-id="resSupDesc">Empoderamiento a través de la gamificación de datos. Ofrece coaching personalizado, asistencia mediante bots para consultas y alertas de "Next best action".</span></p>
+                </div>
+
+                <div class="bg-tp-light-gray p-8 rounded-3xl border border-gray-100 card-shadow text-center lg:col-start-2 lg:ml-[15%]">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl text-tp-purple mx-auto mb-6">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-tp-dark-purple mb-3"><span data-lang-id="resWFMTitle">WFM</span></h3>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span data-lang-id="resWFMDesc">Estrategia inteligente de la fuerza laboral. Agendamiento adaptativo, emparejamiento inteligente de habilidades y planeación optimizada mediante pronóstico de demanda.</span></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: APPS - AI HUB -->
+    <section id="soluciones" class="py-24 px-6 lg:px-12 bg-tp-light-gray relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-tp-purple font-bold tracking-widest text-sm uppercase mb-2 block" data-lang-id="appsSub">Apps - AI HUB</span>
+                <h2 class="text-4xl font-bold mb-4 text-gray-800" data-lang-id="appsTitle">Portafolio de Aplicativos</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto" data-lang-id="appsDesc">Explora el conjunto de aplicaciones especializadas diseñadas para transformar cada pilar operativo y financiero de tu negocio.</p>
+            </div>
+
+            <!-- Aplicativo 1: Insights HUB -->
+            <div id="app-insights" class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12 flex flex-col lg:flex-row group">
+                <div class="lg:w-5/12 p-10 lg:p-12 bg-tp-dark-purple text-white relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="absolute -right-10 -bottom-10 opacity-10"><i class="fa-solid fa-folder-tree text-9xl"></i></div>
+                        <div class="mb-6 flex items-center justify-between">
+                            <span class="bg-tp-accent/20 text-blue-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" data-lang-id="app1Tag">Gestión Operativa</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Insights HUB</h3>
+                        <p class="text-tp-accent font-medium mb-6">DCS AI</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app1Desc">
+                            La solución definitiva a la saturación de correos corporativos. Un repositorio único, estandarizado y de autoservicio que centraliza el flujo de informes operativos, notificando automáticamente a directivos y CEOs.
+                        </p>
+                    </div>
+                    <button onclick="openModal('insights')" class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                        <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Ver Visor Interactivo</span>
+                    </button>
+                </div>
+                
+                
+                <div class="lg:w-7/12 p-10 lg:p-12">
+                    <h4 class="font-bold text-gray-800 mb-6 text-lg border-b pb-2" data-lang-id="app2FeatTitle">Funcionalidades Clave</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-purple mb-2 flex items-center"><span data-lang-id="app1F1T">Carga Controlada</span></h5>
+                                <p class="text-xs text-gray-500"><span data-lang-id="app1F1D">Jerarquía en cascada estricta y restricción de 1 documento por registro para mantener el orden.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-layer-group"></i></div>
+                            <div>
+                            <h5 class="font-bold text-tp-purple mb-2 flex items-center"> <span data-lang-id="app1F2T">Consulta Ágil</span></h5>
+                            <p class="text-xs text-gray-500"><span data-lang-id="app1F2D">Tabla delegada de alto rendimiento y previsualización de PDFs nativa sin descargas.</span></p>
+                        </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-solid fa-bell"></i></div>
+                            <div>
+                            <h5 class="font-bold text-tp-purple mb-2 flex items-center"><span data-lang-id="app1F3T">Alertas Inteligentes</span></h5>
+                            <p class="text-xs text-gray-500"><span data-lang-id="app1F3D">Integración con Teams (Adaptive Cards) y Outlook para notificaciones a demanda.</span></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Aplicativo 2: STATUS CEO -->
+            <div id="app-status" class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12 flex flex-col lg:flex-row-reverse group">
+                <div class="lg:w-5/12 p-10 lg:p-12 bg-tp-gradient text-white relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="absolute -left-10 -bottom-10 opacity-10"><i class="fa-solid fa-chart-pie text-9xl"></i></div>
+                        <div class="mb-6">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" data-lang-id="app2Tag">Visibilidad Ejecutiva</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">STATUS CEO</h3>
+                        <p class="text-blue-200 font-medium mb-6">Bi-Weekly App</p>
+                        <p class="text-gray-200 mb-8 leading-relaxed text-sm" data-lang-id="app2Desc">
+                            Ecosistema de Gobierno de Datos diseñado para la alta gerencia. Centraliza la información bi-semanal, calcula el compliance automáticamente y asegura la detección oportuna de riesgos a nivel global.
+                        </p>
+                    </div>
+                    <button onclick="openModal('status')" class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                        <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Ver Visor Interactivo</span>
+                    </button>
+                </div>
+                <div class="lg:w-7/12 p-10 lg:p-12">
+                    <h4 class="font-bold text-gray-800 mb-6 text-lg border-b pb-2" data-lang-id="app2FeatTitle">Impacto y Operativa</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-layer-group"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F1T">Core Engine de Valor Triple</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F1D">Obliga a reportar Estado Actual, Riesgos Claves y Próximos Pasos con segmentación jerárquica estricta (Sub-Stream/País).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fas fa-paste"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F2T">Compliance & Base de Datos Inmutable</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F2D">Registro histórico blindado con marcas de tiempo y cálculo automático de métricas de cumplimiento por entidad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aplicativo 3: Risk Management -->
+            <div id="app-risk" class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12 flex flex-col lg:flex-row group">
+                <div class="lg:w-5/12 p-10 lg:p-12 bg-tp-dark-purple text-white relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="absolute -right-10 -bottom-10 opacity-10"><i class="fa-solid fa-folder-tree text-9xl"></i></div>
+                        <div class="mb-6">
+                            <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" data-lang-id="app3Tag">Prevención Global</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Risk Management</h3>
+                        <p class="text-gray-400 font-medium mb-6">in IA Transformation</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app3Desc">
+                            Transformamos la gestión de riesgos de un proceso fragmentado a una plataforma integrada. Identifica, evalúa (magnitud vs probabilidad) y da seguimiento a planes de mitigación.
+                        </p>
+                    </div>
+                    <button onclick="openModal('risk')" class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                        <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Ver Visor Interactivo</span>
+                    </button>
+                </div>
+                <div class="lg:w-7/12 p-10 lg:p-12 bg-gray-50">
+                    <h4 class="font-bold text-gray-800 mb-6 text-lg border-b border-gray-200 pb-2" data-lang-id="app3FeatTitle">El Flujo de Gestión</h4>
+                    <!--<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="absolute top-4 right-4 text-gray-200 text-3xl font-bold">1</span>
+                            <h5 class="font-bold text-tp-dark-purple mb-1 text-sm"><i class="fa-regular fa-pen-to-square text-tp-accent mr-2"></i> <span data-lang-id="app3F1T">Registro</span></h5>
+                            <p class="text-xs text-gray-500" data-lang-id="app3F1D">Formularios estandarizados para capturar definición, responsables y estados.</p>
+                        </div>-->
+                         <!--<div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="absolute top-4 right-4 text-gray-200 text-3xl font-bold">2</span>
+                            <h5 class="font-bold text-tp-dark-purple mb-1 text-sm"><i class="fa-solid fa-calculator text-tp-accent mr-2"></i> <span data-lang-id="app3F2T">Evaluación</span></h5>
+                            <p class="text-xs text-gray-500" data-lang-id="app3F2D">Matriz que calcula exposición combinando magnitud y probabilidad.</p>
+                        </div>
+                    </div>-->
+                    <div class="space-y-6">
+                                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-layer-group"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F1T">Registro</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F1D">Formularios estandarizados para capturar definición, responsables y estados.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fas fa-paste"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F2T">Evaluación</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F2D">Matriz que calcula exposición combinando magnitud y probabilidad.</p>
+                            </div>
+                        </div>
+                                              </div>
+                </div>
+            </div>
+
+            <!-- Aplicativo 4: FINANCIAL TRACKING -->
+            <div id="app-financial" class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12 flex flex-col lg:flex-row-reverse group">
+                <div class="lg:w-5/12 p-10 lg:p-12 bg-tp-gradient text-white relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="absolute -left-10 -bottom-10 opacity-10"><i class="fa-solid fa-chart-pie text-9xl"></i></div>
+                        <div class="mb-6">
+                            <span class="bg-emerald-400/20 text-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" data-lang-id="app4Tag">Rentabilidad & Control</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Financial Tracking</h3>
+                        <p class="text-emerald-300 font-medium mb-6" data-lang-id="app4Sub">Beneficios Operativos</p>
+                        <p class="text-emerald-100 mb-8 leading-relaxed text-sm" data-lang-id="app4Desc">
+                            Centraliza, monitorea y analiza los beneficios netos generados por las operaciones en LATAM y CAN-US. Identifica rápidamente desviaciones financieras a través de los diversos streams (QA, Training, WFM).
+                        </p>
+                    </div>
+                    <button onclick="openModal('financial')" class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                        <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Ver Visor Interactivo</span>
+                    </button>
+                </div>
+
+                <div class="lg:w-7/12 p-10 lg:p-12">
+                    <h4 class="font-bold text-gray-800 mb-6 text-lg border-b pb-2" data-lang-id="app4FeatTitle">Características Analíticas</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-traffic-light"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app4F1T">Semaforización de Rentabilidad</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app4F1D">Indicadores visuales automáticos que alertan inmediatamente cuando el beneficio neto es crítico (<0) o saludable (>0).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-chart-line"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app4F2T">Módulo de Métricas McKinsey</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app4F2D">Sección especializada que consolida información general por stream, alineando reportes operativos internos con estándares de consultoría de alto nivel.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-globe"></i></div>
+                            <div>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app4F3T">Consolidado Dinámico Power BI</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app4F3D">Cruce automático de datos de clientes con metas globales, integrado en dashboards para tomar decisiones informadas sobre subregiones que requieren optimización.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL -->
+    <section id="contacto" class="py-24 px-6 lg:px-12 bg-tp-gradient text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6" data-lang-id="ctaTitle">Inicia tu Transformación Hoy</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="bg-white text-tp-dark-purple px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 hover:shadow-2xl hover:-translate-y-1 transition transform w-full sm:w-auto flex items-center justify-center">
+                    <i class="fa-regular fa-calendar-check mr-3"></i> <span data-lang-id="ctaBtn">Agendar Demostración</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL VISOR INTERACTIVO (Estilo MacOS/UI) -->
+    <div id="interactiveModal" class="fixed inset-0 bg-gray-900/80 z-[100] flex items-center justify-center backdrop-blur-md transition-all duration-300 modal-exit hidden">
+        <div class="bg-white rounded-2xl w-11/12 max-w-6xl h-[85vh] max-h-[800px] flex flex-col overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
+            <!-- Window Header -->
+            <div class="flex justify-between items-center px-4 py-3 bg-gray-50 border-b border-gray-200 shrink-0">
+                <div class="flex space-x-2">
+                    <button onclick="closeModal()" class="w-3.5 h-3.5 rounded-full bg-red-400 hover:bg-red-500 transition flex items-center justify-center group cursor-pointer">
+                        <i class="fa-solid fa-xmark text-[8px] text-red-800 opacity-0 group-hover:opacity-100"></i>
+                    </button>
+                    <div class="w-3.5 h-3.5 rounded-full bg-yellow-400"></div>
+                    <div class="w-3.5 h-3.5 rounded-full bg-green-400"></div>
+                </div>
+                <span class="text-sm text-gray-500 font-bold tracking-wide" id="modalAppName">Interactive Viewer</span>
+                <div class="w-10"></div> 
+            </div>
+
+            <!-- Modal Body -->
+            <div class="flex flex-col md:flex-row flex-1 overflow-hidden bg-white">
+                <!-- Image Carousel -->
+                <div class="md:w-2/3 bg-gray-100/50 flex items-center justify-center p-4 lg:p-8 relative">
+                    <button onclick="prevSlide()" class="absolute left-2 lg:left-6 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition z-10">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="w-full h-full border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm flex items-center justify-center p-2 relative">
+                        <img id="carouselImg" src="" class="max-w-full max-h-full object-contain transition-opacity duration-300" alt="App Interface">
+                        <div id="imgPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-gray-300 bg-gray-50 hidden">
+                            <i class="fa-solid fa-image text-6xl mb-4 opacity-50"></i>
+                            <span class="text-sm font-mono" id="imgPlaceholderText">image.jpg</span>
+                        </div>
+                    </div>
+                    <button onclick="nextSlide()" class="absolute right-2 lg:right-6 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition z-10">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+                <!-- Details Panel -->
+                <div class="md:w-1/3 p-8 lg:p-12 bg-white border-l border-gray-100 flex flex-col justify-center relative shadow-[-10px_0_20px_-15px_rgba(0,0,0,0.05)] z-10">
+                    <div class="w-12 h-12 rounded-full bg-tp-light-gray text-tp-purple flex items-center justify-center font-bold text-xl mb-8 shadow-inner" id="slideNumber">1</div>
+                    <h3 class="text-3xl font-extrabold text-tp-dark-purple mb-4 leading-tight" id="slideTitle">Title</h3>
+                    <div class="w-10 h-1 bg-tp-accent mb-6"></div>
+                    <div class="text-gray-600 text-[15px] leading-relaxed space-y-3" id="slideDesc"></div>
+                    <div class="flex space-x-2 mt-12" id="carouselDots"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-6 px-6 lg:px-12 bg-gray-900 text-center border-t border-gray-800 text-xs text-gray-500">
+        &copy; 2026 TP Global AI Transformation. <span data-lang-id="footerRights">Todos los derechos comerciales reservados.</span>
+    </footer>
+
+    <!-- LOGIC SCRIPT (Language Toggle & Modal) -->
+    <script>
+        // --- 1. DICCIONARIO COMPLETO (LANGUAGE TOGGLE) ---
+        const dictionary = {
+            es: {
+                nav1: "Impacto & Beneficios", nav2: "Estrategia", nav3: "Resultados", nav4: "Apps (AI HUB)", navCta: "Agendar Demo",
+                heroBadge: "La Transformación IA es Ahora", heroTitle1: "Inteligencia Orquestada", heroTitle2: "que impulsa resultados",
+                heroDesc: "TP.ai FAB es la plataforma de Inteligencia Artificial que integra personas, procesos y tecnología para acelerar los resultados de tu negocio de forma segura y escalable.",
+                heroBtn1: "Ver Soluciones", heroBtn2: "Hablar con un Asesor",
+                
+                impactSub: "Business", impactTitle: "Impact", impactDesc: "Nuestras soluciones y aplicativos no solo modernizan los procesos, sino que garantizan resultados y beneficios medibles a nivel corporativo, optimizando la cadena de valor completa.",
+                impactCard1Title: "Eficiencia y Productividad", impactCard1Desc: "Automatización de tareas repetitivas y optimización de flujos de trabajo operativos de fin a fin.",
+                impactCard2Title: "Mejor Toma de Decisiones", impactCard2Desc: "Datos centralizados, semaforización de riesgos y analítica predictiva para líderes estratégicos.",
+                impactCard3Title: "Escalabilidad Segura", impactCard3Desc: "Desarrollado sobre el robusto ecosistema de Microsoft Platform garantizando la trazabilidad.",
+                impactCard4Title: "Crecimiento Sostenible", impactCard4Desc: "Reducción de exposición operativa, visibilidad de rentabilidad y alineación a metas corporativas.",
+                
+                strategySub: "Nuestra Estrategia", strategyTitle1: "No es solo IA.", strategyTitle2: "Es Inteligencia Orquestada.",
+                strategyDesc: "Un ecosistema estratégico diseñado no solo para implementar tecnología, sino para transformar integralmente el servicio al cliente y la gestión interna corporativa.",
+                strategyLi1: "Empodera a las personas con IA", strategyLi2: "Optimiza procesos de fin a fin", strategyLi3: "Se adapta a estándares de la industria (ej. McKinsey)",
+                strategyLayersTitle: "Un Ecosistema. Tres Capas.", strategyL1Desc: "Soluciones listas para la industria y casos de uso", strategyL2Desc: "Personas y agentes de IA trabajando en conjunto", strategyL3Desc: "Infraestructura segura, flexible y nativa en la nube",
+                
+                resultsSub: "Cinco Pilares", resultsTitle: "Resultados por Sub-Stream", resultsDesc: "Impactos y capacidades específicas desarrolladas para cada área fundamental del ecosistema TP.ai FAB.",
+                resRecTitle: "Recruitment", resRecDesc: "Experiencia basada en datos que utiliza IA para atraer, evaluar y seleccionar candidatos de mayor calidad, mejorando velocidad y consistencia (Smart Sourcing).",
+                resTrainTitle: "Training", resTrainDesc: "Rutas de aprendizaje dinámicas y personalizadas basadas en habilidades. Integración de retroalimentación continua con micro-aprendizaje en tiempo real.",
+                resQATitle: "QA (TP Lens)", resQADesc: "Automatización del scoring impulsada por LLM, garantizando una cobertura alta/total. Acciones automatizadas de coaching, notificaciones y reportes estructurados.",
+                resSupTitle: "Supervisors", resSupDesc: "Empoderamiento a través de la gamificación de datos. Ofrece coaching personalizado, asistencia mediante bots para consultas y alertas de 'Next best action'.",
+                resWFMTitle: "WFM", resWFMDesc: "Estrategia inteligente de la fuerza laboral. Agendamiento adaptativo, emparejamiento inteligente de habilidades y planeación optimizada mediante pronóstico de demanda.",
+                
+                appsSub: "Apps - AI HUB", appsTitle: "Portafolio de Aplicativos", appsDesc: "Explora el conjunto de aplicaciones especializadas diseñadas para transformar cada pilar operativo y financiero de tu negocio.",
+                appBtnView: "Ver Visor Interactivo",
+                app1Tag: "Gestión Operativa", app1Desc: "La solución definitiva a la saturación de correos corporativos. Un repositorio único, estandarizado y de autoservicio que centraliza el flujo de informes operativos, notificando automáticamente a directivos y CEOs.",
+                app1FeatTitle: "Funcionalidades Clave", app1F1T: "Carga Controlada", app1F1D: "Jerarquía en cascada estricta y restricción de 1 documento por registro para mantener el orden.", app1F2T: "Consulta Ágil", app1F2D: "Tabla delegada de alto rendimiento y previsualización de PDFs nativa sin descargas.", app1F3T: "Alertas Inteligentes", app1F3D: "Integración con Teams (Adaptive Cards) y Outlook para notificaciones a demanda.",
+                
+                app2Tag: "Visibilidad Ejecutiva", app2Desc: "Ecosistema de Gobierno de Datos diseñado para la alta gerencia. Centraliza la información bi-semanal, calcula el compliance automáticamente y asegura la detección oportuna de riesgos a nivel global.",
+                app2FeatTitle: "Impacto y Operativa", app2F1T: "Core Engine de Valor Triple", app2F1D: "Obliga a reportar Estado Actual, Riesgos Claves y Próximos Pasos con segmentación jerárquica estricta (Sub-Stream/País).", app2F2T: "Compliance & Base de Datos Inmutable", app2F2D: "Registro histórico blindado con marcas de tiempo y cálculo automático de métricas de cumplimiento por entidad.",
+                
+                app3Tag: "Prevención Global", app3Desc: "Transformamos la gestión de riesgos de un proceso fragmentado a una plataforma integrada. Identifica, evalúa (magnitud vs probabilidad) y da seguimiento a planes de mitigación.",
+                app3FeatTitle: "El Flujo de Gestión", app3F1T: "Registro", app3F1D: "Formularios estandarizados para capturar definición, responsables y estados.", app3F2T: "Evaluación", app3F2D: "Matriz que calcula exposición combinando magnitud y probabilidad.",
+                
+                app4Tag: "Rentabilidad & Control", app4Sub: "Beneficios Operativos", app4Desc: "Centraliza, monitorea y analiza los beneficios netos generados por las operaciones en LATAM y CAN-US. Identifica rápidamente desviaciones financieras a través de los diversos streams (QA, Training, WFM).",
+                app4FeatTitle: "Características Analíticas", app4F1T: "Semaforización de Rentabilidad", app4F1D: "Indicadores visuales automáticos que alertan inmediatamente cuando el beneficio neto es crítico (<0) o saludable (>0).", app4F2T: "Módulo de Métricas McKinsey", app4F2D: "Sección especializada que consolida información general por stream, alineando reportes operativos internos con estándares de consultoría de alto nivel.", app4F3T: "Consolidado Dinámico Power BI", app4F3D: "Cruce automático de datos de clientes con metas globales, integrado en dashboards para tomar decisiones informadas sobre subregiones que requieren optimización.",
+                
+                ctaTitle: "Inicia tu Transformación Hoy", ctaBtn: "Agendar Demostración", footerRights: "Todos los derechos comerciales reservados."
+            },
+            en: {
+                nav1: "Impact & Benefits", nav2: "Strategy", nav3: "Results", nav4: "Apps (AI HUB)", navCta: "Book a Demo",
+                heroBadge: "AI Transformation is Now", heroTitle1: "Orchestrated Intelligence", heroTitle2: "that drives results",
+                heroDesc: "TP.ai FAB is the Artificial Intelligence platform that integrates people, processes, and technology to accelerate your business outcomes in a secure and scalable way.",
+                heroBtn1: "View Solutions", heroBtn2: "Talk to an Advisor",
+                
+                impactSub: "Business", impactTitle: "Impact", impactDesc: "Our solutions and applications not only modernize processes but also guarantee measurable results and benefits at a corporate level, optimizing the entire value chain.",
+                impactCard1Title: "Efficiency & Productivity", impactCard1Desc: "Automation of repetitive tasks and optimization of end-to-end operational workflows.",
+                impactCard2Title: "Better Decision Making", impactCard2Desc: "Centralized data, risk traffic-lighting, and predictive analytics for strategic leaders.",
+                impactCard3Title: "Secure Scalability", impactCard3Desc: "Developed on the robust Microsoft Platform ecosystem ensuring total traceability.",
+                impactCard4Title: "Sustainable Growth", impactCard4Desc: "Reduction of operational exposure, profitability visibility, and alignment with corporate goals.",
+                
+                strategySub: "Our Strategy", strategyTitle1: "It's not just AI.", strategyTitle2: "It's Orchestrated Intelligence.",
+                strategyDesc: "A strategic ecosystem designed not only to implement technology but to comprehensively transform customer service and internal corporate management.",
+                strategyLi1: "Empowers people with AI", strategyLi2: "Optimizes end-to-end processes", strategyLi3: "Adapts to industry standards (e.g., McKinsey)",
+                strategyLayersTitle: "One Ecosystem. Three Layers.", strategyL1Desc: "Industry-ready solutions and use cases", strategyL2Desc: "People and AI agents working together", strategyL3Desc: "Secure, flexible, cloud-native infrastructure",
+                
+                resultsSub: "Five Pillars", resultsTitle: "Results by Sub-Stream", resultsDesc: "Specific impacts and capabilities developed for each fundamental area of the TP.ai FAB ecosystem.",
+                resRecTitle: "Recruitment", resRecDesc: "Data-driven experience that uses AI to attract, assess, and select higher quality candidates, improving speed and consistency (Smart Sourcing).",
+                resTrainTitle: "Training", resTrainDesc: "Dynamic and personalized learning paths based on skills. Integration of continuous feedback with near real-time micro-learning.",
+                resQATitle: "QA (TP Lens)", resQADesc: "LLM-driven scoring automation, ensuring high/full coverage. Automated coaching actions, notifications, and structured reports.",
+                resSupTitle: "Supervisors", resSupDesc: "Empowerment through data gamification. Offers personalized coaching, bot assistance for queries, and 'Next best action' nudges.",
+                resWFMTitle: "WFM", resWFMDesc: "Smart workforce strategy. Adaptive scheduling, intelligent skill matching, and optimized planning through demand forecasting.",
+                
+                appsSub: "Apps - AI HUB", appsTitle: "Applications Portfolio", appsDesc: "Explore the suite of specialized applications designed to transform every operational and financial pillar of your business.",
+                appBtnView: "Open Interactive Viewer",
+                app1Tag: "Operational Management", app1Desc: "The ultimate solution to corporate email overload. A single, standardized, self-service repository that centralizes the flow of operational reports, automatically notifying executives and CEOs.",
+                app1FeatTitle: "Key Features", app1F1T: "Controlled Upload", app1F1D: "Strict cascading hierarchy and restriction of 1 document per record to maintain order.", app1F2T: "Agile Search", app1F2D: "High-performance delegated table and native PDF preview without downloads.", app1F3T: "Smart Alerts", app1F3D: "Integration with Teams (Adaptive Cards) and Outlook for on-demand notifications.",
+                
+                app2Tag: "Executive Visibility", app2Desc: "Data Governance ecosystem designed for top management. Centralizes bi-weekly information, automatically calculates compliance, and ensures timely detection of risks at a global level.",
+                app2FeatTitle: "Impact and Operations", app2F1T: "Triple Value Core Engine", app2F1D: "Forces reporting of Current Status, Key Risks, and Next Steps with strict hierarchical segmentation (Sub-Stream/Country).", app2F2T: "Compliance & Immutable DB", app2F2D: "Historical record shielded with timestamps and automatic calculation of compliance metrics by entity.",
+                
+                app3Tag: "Global Prevention", app3Desc: "We transform risk management from a fragmented process to an integrated platform. Identify, evaluate (magnitude vs probability), and track mitigation plans.",
+                app3FeatTitle: "Management Flow", app3F1T: "Registration", app3F1D: "Standardized forms to capture definition, responsible parties, and statuses.", app3F2T: "Evaluation", app3F2D: "Matrix that calculates exposure by combining magnitude and probability.",
+                
+                app4Tag: "Profitability & Control", app4Sub: "Operational Benefits", app4Desc: "Centralizes, monitors, and analyzes net benefits generated by operations in LATAM and CAN-US. Quickly identifies financial deviations across various streams (QA, Training, WFM).",
+                app4FeatTitle: "Analytical Features", app4F1T: "Profitability Traffic Lights", app4F1D: "Automatic visual indicators that immediately alert when net benefit is critical (<0) or healthy (>0).", app4F2T: "McKinsey Metrics Module", app4F2D: "Specialized section that consolidates general stream info, aligning internal reports with high-level consulting standards.", app4F3T: "Dynamic Power BI Dashboard", app4F3D: "Automatic crossing of client data with global goals, integrated into dashboards to make informed decisions on subregions needing optimization.",
+                
+                ctaTitle: "Start Your Transformation Today", ctaBtn: "Schedule a Demo", footerRights: "All commercial rights reserved."
+            }
+        };
+
+        // Estado global del idioma actual para usarlo en el Modal
+        let currentLang = 'es';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+            
+            if (lang === 'es') {
+                btnEs.className = "px-3 py-1 rounded-full bg-white text-tp-dark-purple text-xs font-bold shadow-sm transition";
+                btnEn.className = "px-3 py-1 rounded-full text-gray-400 hover:text-tp-dark-purple text-xs font-bold transition";
+            } else {
+                btnEn.className = "px-3 py-1 rounded-full bg-white text-tp-dark-purple text-xs font-bold shadow-sm transition";
+                btnEs.className = "px-3 py-1 rounded-full text-gray-400 hover:text-tp-dark-purple text-xs font-bold transition";
+            }
+
+            // Cambiar todos los textos del DOM
+            const elements = document.querySelectorAll('[data-lang-id]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang-id');
+                if (dictionary[lang] && dictionary[lang][key]) {
+                    el.style.opacity = 0;
+                    setTimeout(() => {
+                        el.innerHTML = dictionary[lang][key];
+                        el.style.opacity = 1;
+                    }, 200);
+                }
+            });
+
+            // Si el modal está abierto, actualizar sus textos también
+            if (!document.getElementById('interactiveModal').classList.contains('hidden') && currentApp) {
+                document.getElementById('modalAppName').textContent = currentApp.name[currentLang];
+                updateSlideUI();
+            }
+        }
+
+        // --- 2. LÓGICA DEL VISOR INTERACTIVO BILINGÜE (MODAL CAROUSEL) ---
+        const appData = {
+            insights: {
+                name: { es: "Visor de Insights HUB ___ Press Esc to Close", en: "Insights HUB Viewer" },
+                slides: [
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/IH_Home_IAtransformation.JPG?raw=true", 
+                        title: { es: "Modulo de Inicio y Soporte:", en: "Start and Support Module" }, 
+                        desc: { 
+                            es: "<p>Permitir el cambio instantáneo de toda la interfaz entre Español e Inglés.</p><p>Minimizar la curva de aprendizaje de los nuevos usuarios a través de un manual visual interactivo.</p>",
+                            en: "<p>Allows the user to instantly switch the entire interface between Spanish and English.</p><p>Minimizes the learning curve for new users through an interactive visual manual.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/IH_Upload_IAtransformation.JPG?raw=true", 
+                        title: { es: "Cargue Documental:", en: "Upload Documents" }, 
+                        desc: { 
+                            es: "<p>Garantizar la integridad de los datos forzando el registro bajo una jerarquía en cascada (Región > Sub-Región > País > Cliente, etc.).</p><p>Permitir la selección inteligente de destinatarios conectándose con el directorio activo de Microsoft 365.</p><p>Mantener el orden restringiendo la carga a un (1) único documento adjunto por registro.</p>",
+                            en: "<p>Guarantees data integrity by forcing the user to classify the document using a cascading hierarchy (Region > Sub-Region > Country > Client, etc.).</p><p>Enables smart recipient selection by connecting with the Microsoft 365 active directory.</p><p>Maintains order by restricting uploads to one (1) single attached document per record.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/IH_Search_IAtransformation.JPG?raw=true", 
+                        title: { es: "Vista de Tabla y Filtros:", en: "Table View and Filters:" }, 
+                        desc: { 
+                            es: "<p>1. Alterna entre la vista de 'Documentos' y 'Tabla' en la esquina superior.</p><p>2. Usa los filtros en cascada (Región, País, Cliente) para refinar la búsqueda.</p><p>3. Selecciona un registro para habilitar opciones avanzadas.</p>",
+                            en: "<p>Provides ultra-fast searches using a high-performance table that displays the most relevant records without freezing the application.</p><p>Facilitates decision-making by allowing native previewing of PDF documents without the need to download them.</p><p>Refines searches using advanced filters (keyword, ID, creation date, region).</p>"
+                        }
+                    }
+                ]
+            },
+            status: {
+                name: { es: "Visor de STATUS CEO ___ Press Esc to Close", en: "STATUS CEO Viewer" },
+                slides: [
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/SCEO_Home_IATransformation.JPG?raw=true", 
+                        title: { es: "Módulo de Gestión Bi-Semanal (Core Engine)", en: "Core Engine (Bi-Weekly Management Module)" }, 
+                        desc: { 
+                            es: "<p>Capturar el 'Valor Triple' obligando al usuario a documentar el Estado Actual, los Riesgos Claves y los Próximos Pasos.</p><p>Segmentar la información jerárquicamente para que cada líder gestione únicamente su área de influencia.</p>",
+                            en: "<p>Captures critical dimensions by forcing users to document Current Status, Key Risks, and Next Steps.</p><p>Segments information hierarchically so each leader only manages what falls under their area of influence.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/SCEO_Form_IATransformation.JPG?raw=true", 
+                        title: { es: "Módulo de Base de datos y Compliance", en: "Database and Compliance Module" }, 
+                        desc: { 
+                            es: "<p>Blindar la evidencia creando un historial con marcas de tiempo y autoría para auditorías.</p><p>Calcular de forma automática el nivel de cumplimiento (Compliance) de cada entidad.</p><p>Validar datos en tiempo real para asegurar que ningún reporte quede sin los metadatos correspondientes</p>",
+                            en: "<p>Shields evidence by creating a robust historical database with timestamps and authorship for audits.</p><p>Automatically calculates the compliance level of each entity based on the filled information.</p><p>Validates data in real time to ensure no reports are left without metadata.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/SCEO_Database_IATransformation.JPG?raw=true", 
+                        title: { es: "Sistema de Alertas Tempranas (Proactive Monitoring)", en: "Early Warning System (Proactive Monitoring)" }, 
+                        desc: { 
+                            es: "<p>Monitorear las fechas límite e identificar proactivamente los reportes pendientes.</p><p>Enviar alertas anticipadas (4 días antes) a través de Teams con botones de acción directa para completar el reporte</p>",
+                            en: "<p>Monitors deadlines and proactively identifies pending reports.</p><p>Sends early alerts (4 days prior) via Teams with direct action buttons to complete the report.</p>"
+                        }
+                    }
+                ]
+            },
+            risk: {
+                name: { es: "Visor de Risk Management ___ Press Esc to Close", en: "Risk Management Viewer" },
+                slides: [
+                    
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/RMM_Home_IATransformation.JPG?raw=true", 
+                        title: { es: "Navegacion Simplificada:", en: "Simplified Navigation: " }, 
+                        desc: { 
+                            es: "<p>Acceso rápido a registros, reportes y dashboards desde una barra lateral minimalista.</p>",
+                            en: "<p>Quick access to logs, reports, and dashboards from a minimalist sidebar.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/RMM_Form_IATransformation.JPG?raw=true", 
+                        title: { es: "Módulo de Base de datos y Compliance", en: "Structured Data Management:" }, 
+                        desc: { 
+                            es: "<p>Formulario avanzado para el registro detallado de riesgos, que permite categorizar por sub-stream, región, impacto financiero y probabilidad, asegurando una trazabilidad completa del ciclo de vida del riesgo.</p>",
+                            en: "<p>Advanced form for detailed risk registration, allowing categorization by sub-stream, region, financial impact and probability, ensuring complete traceability of the risk lifecycle.</p>"
+                        }
+                    },
+                    {
+                        img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/RMM_Database_IATransformation.JPG?raw=true", 
+                        title: { es: "Sistema de Alertas Tempranas (Proactive Monitoring):", en: "Structured Data Management:" }, 
+                        desc: { 
+                            es: "<p>Formulario avanzado para el registro detallado de riesgos y un panel de control interactivo (Risk Data) que permite filtrar, modificar y exportar información en tiempo real. Esta visibilidad 360° facilita el seguimiento por región, categoría y tipo de impacto, asegurando una trazabilidad completa del ciclo de vida del riesgo.</p>",
+                            en: "<p>An advanced form for detailed risk registration and an interactive dashboard (Risk Data) that allows filtering, modifying, and exporting information in real time. This 360° visibility facilitates tracking by region, category, and impact type, ensuring complete traceability of the risk lifecycle.</p>"
+                        }
+                    }
+                ]
+            },
+            financial: {
+                name: { es: "Visor de Financial Tracking", en: "Financial Tracking Viewer" },
+                slides: [
+                    {
+                        img: "placeholder_financial1.jpg", 
+                        title: { es: "Semaforización Financiera", en: "Financial Traffic Lights" }, 
+                        desc: { 
+                            es: "<p>1. Panel central que detecta automáticamente beneficios negativos (rojo) y saludables (verde).</p><p>2. Permite a los líderes regionales actuar de inmediato sobre desviaciones de rentabilidad.</p>",
+                            en: "<p>1. Central panel that automatically detects negative (red) and healthy (green) benefits.</p><p>2. Allows regional leaders to act immediately on profitability deviations.</p>"
+                        }
+                    },
+                    {
+                        img: "placeholder_financial1.jpg", 
+                        title: { es: "Semaforización Financiera", en: "Financial Traffic Lights" }, 
+                        desc: { 
+                            es: "<p>1. Panel central que detecta automáticamente beneficios negativos (rojo) y saludables (verde).</p><p>2. Permite a los líderes regionales actuar de inmediato sobre desviaciones de rentabilidad.</p>",
+                            en: "<p>1. Central panel that automatically detects negative (red) and healthy (green) benefits.</p><p>2. Allows regional leaders to act immediately on profitability deviations.</p>"
+                        }
+                    },
+                    {
+                        img: "placeholder_financial1.jpg", 
+                        title: { es: "Semaforización Financiera", en: "Financial Traffic Lights" }, 
+                        desc: { 
+                            es: "<p>1. Panel central que detecta automáticamente beneficios negativos (rojo) y saludables (verde).</p><p>2. Permite a los líderes regionales actuar de inmediato sobre desviaciones de rentabilidad.</p>",
+                            en: "<p>1. Central panel that automatically detects negative (red) and healthy (green) benefits.</p><p>2. Allows regional leaders to act immediately on profitability deviations.</p>"
+                        }
+                    },
+                    {
+                        img: "placeholder_financial1.jpg", 
+                        title: { es: "Semaforización Financiera", en: "Financial Traffic Lights" }, 
+                        desc: { 
+                            es: "<p>1. Panel central que detecta automáticamente beneficios negativos (rojo) y saludables (verde).</p><p>2. Permite a los líderes regionales actuar de inmediato sobre desviaciones de rentabilidad.</p>",
+                            en: "<p>1. Central panel that automatically detects negative (red) and healthy (green) benefits.</p><p>2. Allows regional leaders to act immediately on profitability deviations.</p>"
+                        }
+                    },
+                    
+                    {
+                        img: "placeholder_financial2.jpg", 
+                        title: { es: "Módulo McKinsey", en: "McKinsey Module" }, 
+                        desc: { 
+                            es: "<p>1. Consolidación de datos alineados a estándares de consultoría externa.</p><p>2. Integración nativa con Dashboards en Power BI para cruce de tendencias globales.</p>",
+                            en: "<p>1. Data consolidation aligned with external consulting standards.</p><p>2. Native integration with Power BI Dashboards to cross global trends.</p>"
+                        }
+                    }
+                ]
+            }
+        };
+
+        let currentApp = null;
+        let currentIndex = 0;
+
+        const modal = document.getElementById('interactiveModal');
+        const slideTitle = document.getElementById('slideTitle');
+        const slideDesc = document.getElementById('slideDesc');
+        const slideNumber = document.getElementById('slideNumber');
+        const carouselImg = document.getElementById('carouselImg');
+        const modalAppName = document.getElementById('modalAppName');
+        const carouselDots = document.getElementById('carouselDots');
+        const imgPlaceholder = document.getElementById('imgPlaceholder');
+        const imgPlaceholderText = document.getElementById('imgPlaceholderText');
+
+        function openModal(appId) {
+            currentApp = appData[appId];
+            currentIndex = 0;
+            modalAppName.textContent = currentApp.name[currentLang];
+            
+            updateSlideUI();
+
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; 
+            modal.classList.remove('modal-exit');
+            modal.classList.add('modal-enter');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            modal.classList.remove('modal-enter');
+            modal.classList.add('modal-exit');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300); 
+        }
+
+        function nextSlide() {
+            if (!currentApp) return;
+            currentIndex = (currentIndex + 1) % currentApp.slides.length;
+            updateSlideUI();
+        }
+
+        function prevSlide() {
+            if (!currentApp) return;
+            currentIndex = (currentIndex - 1 + currentApp.slides.length) % currentApp.slides.length;
+            updateSlideUI();
+        }
+
+        function updateSlideUI() {
+            const slide = currentApp.slides[currentIndex];
+            
+            carouselImg.style.opacity = 0;
+            slideTitle.style.opacity = 0;
+            slideDesc.style.opacity = 0;
+
+            setTimeout(() => {
+                slideNumber.textContent = currentIndex + 1;
+                // Asigna el texto usando el idioma actual
+                slideTitle.textContent = slide.title[currentLang];
+                slideDesc.innerHTML = slide.desc[currentLang];
+                
+                carouselImg.src = slide.img;
+                carouselImg.onerror = function() {
+                    this.style.display = 'none';
+                    imgPlaceholder.style.display = 'flex';
+                    imgPlaceholderText.textContent = slide.img;
+                };
+                carouselImg.onload = function() {
+                    this.style.display = 'block';
+                    imgPlaceholder.style.display = 'none';
+                };
+
+                carouselDots.innerHTML = '';
+                currentApp.slides.forEach((_, idx) => {
+                    const dot = document.createElement('div');
+                    if(idx === currentIndex) {
+                        dot.className = "w-8 h-2 rounded-full bg-tp-purple transition-all duration-300";
+                    } else {
+                        dot.className = "w-2 h-2 rounded-full bg-gray-200 transition-all duration-300 cursor-pointer hover:bg-gray-300";
+                        dot.onclick = () => { currentIndex = idx; updateSlideUI(); };
+                    }
+                    carouselDots.appendChild(dot);
+                });
+
+                carouselImg.style.opacity = 1;
+                slideTitle.style.opacity = 1;
+                slideDesc.style.opacity = 1;
+            }, 200);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
