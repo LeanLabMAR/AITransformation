@@ -373,17 +373,18 @@
                         <div class="flex items-start">
                             <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fa-layer-group"></i></div>
                             <div>
-                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F1T">Core Engine de Valor Triple</h5>
-                                <p class="text-sm text-gray-500" data-lang-id="app2F1D">Obliga a reportar Estado Actual, Riesgos Claves y Próximos Pasos con segmentación jerárquica estricta (Sub-Stream/País).</p>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F1T">Plataforma de trabajo simultáneo en la nube</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F1D">Es una solución estratégica diseñada para centralizar, estandarizar y automatizar los reportes operativos dirigidos a la alta dirección. Su propósito principal es eliminar la dispersión de información en múltiples archivos manuales, ofreciendo un único espacio digital donde los líderes pueden consolidar los datos críticos de sus regiones.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4"><i class="fa-solid fas fa-paste"></i></div>
                             <div>
-                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F2T">Compliance & Base de Datos Inmutable</h5>
-                                <p class="text-sm text-gray-500" data-lang-id="app2F2D">Registro histórico blindado con marcas de tiempo y cálculo automático de métricas de cumplimiento por entidad.</p>
+                                <h5 class="font-bold text-tp-dark-purple" data-lang-id="app2F2T">Compliance & Base de Datos</h5>
+                                <p class="text-sm text-gray-500" data-lang-id="app2F2D">Al unificar la captura de la situación actual, los riesgos detectados y los planes de acción (próximos pasos), el sistema facilita el seguimiento y la toma de decisiones. En conclusión, esta herramienta reduce significativamente la carga administrativa de consolidar reportes, asegura la entrega oportuna de la información y eleva la visibilidad estratégica del CEO, garantizando que cada área esté monitoreada de forma estructurada y segura.</p>
                             </div>
                         </div>
+                    
                     </div>
                 </div>
             </div>
@@ -517,7 +518,12 @@
                     <div class="w-3.5 h-3.5 rounded-full bg-green-400"></div>
                 </div>
                 <span class="text-sm text-gray-500 font-bold tracking-wide" id="modalAppName">Interactive Viewer</span>
-                <div class="w-10"></div> 
+                <!--<div class="w-10"></div>-->
+                <div class="w-16 flex justify-end">
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-tp-dark-purple transition transform hover:scale-110" title="Cerrar modal">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div> 
             </div>
 
             <!-- Modal Body -->
@@ -589,13 +595,13 @@
                 app1FeatTitle: "Funcionalidades Clave", app1F1T: "Carga Controlada", app1F1D: "Jerarquía en cascada estricta y restricción de 1 documento por registro para mantener el orden.", app1F2T: "Consulta Ágil", app1F2D: "Tabla delegada de alto rendimiento y previsualización de PDFs nativa sin descargas.", app1F3T: "Alertas Inteligentes", app1F3D: "Integración con Teams (Adaptive Cards) y Outlook para notificaciones a demanda.",
                 
                 app2Tag: "Visibilidad Ejecutiva", app2Desc: "Ecosistema de Gobierno de Datos diseñado para la alta gerencia. Centraliza la información bi-semanal, calcula el compliance automáticamente y asegura la detección oportuna de riesgos a nivel global.",
-                app2FeatTitle: "Impacto y Operativa", app2F1T: "Core Engine de Valor Triple", app2F1D: "Obliga a reportar Estado Actual, Riesgos Claves y Próximos Pasos con segmentación jerárquica estricta (Sub-Stream/País).", app2F2T: "Compliance & Base de Datos Inmutable", app2F2D: "Registro histórico blindado con marcas de tiempo y cálculo automático de métricas de cumplimiento por entidad.",
-                
+                app2FeatTitle: "Impacto y Operativa", app2F1T: "Plataforma de trabajo simultáneo en la nube", app2F1D: "Es una solución estratégica diseñada para centralizar, estandarizar y automatizar los reportes operativos dirigidos a la alta dirección. Su propósito principal es eliminar la dispersión de información en múltiples archivos manuales, ofreciendo un único espacio digital donde los líderes pueden consolidar los datos críticos de sus regiones.", app2F2T: "Compliance & Base de Datos", app2F2D: "By unifying the capture of the Current Status, Key Risks, and Next Steps, the system facilitates tracking and decision-making. Ultimately, this tool significantly reduces the administrative burden of report consolidation and elevates the CEO's strategic visibility, ensuring that every area and potential risk is monitored in a structured and secure manner.",
+
                 app3Tag: "Prevención Global", app3Desc: "Transformamos la gestión de riesgos de un proceso fragmentado a una plataforma integrada. Identifica, evalúa (magnitud vs probabilidad) y da seguimiento a planes de mitigación.",
                 app3FeatTitle: "El Flujo de Gestión", app3F1T: "Registro", app3F1D: "Formularios estandarizados para capturar definición, responsables y estados.", app3F2T: "Evaluación", app3F2D: "Matriz que calcula exposición combinando magnitud y probabilidad.",
                 
                 app4Tag: "Rentabilidad & Control", app4Sub: "Beneficios Operativos", app4Desc: "Centraliza, monitorea y analiza los beneficios netos generados por las operaciones en LATAM y CAN-US. Identifica rápidamente desviaciones financieras a través de los diversos streams (QA, Training, WFM).",
-                app4FeatTitle: "Características Analíticas", app4F1T: "Semaforización de Rentabilidad", app4F1D: "Indicadores visuales automáticos que alertan inmediatamente cuando el beneficio neto es crítico (<0) o saludable (>0).", app4F2T: "Módulo de Métricas McKinsey", app4F2D: "Sección especializada que consolida información general por stream, alineando reportes operativos internos con estándares de consultoría de alto nivel.", app4F3T: "Consolidado Dinámico Power BI", app4F3D: "Cruce automático de datos de clientes con metas globales, integrado en dashboards para tomar decisiones informadas sobre subregiones que requieren optimización.",
+                pp4FeatTitle: "Características Analíticas", app4F1T: "Semaforización de Rentabilidad", app4F1D: "Indicadores visuales automáticos que alertan inmediatamente cuando el beneficio neto es crítico (<0) o saludable (>0).", app4F2T: "Módulo de Métricas McKinsey", app4F2D: "Sección especializada que consolida información general por stream, alineando reportes operativos internos con estándares de consultoría de alto nivel.", app4F3T: "Consolidado Dinámico Power BI", app4F3D: "Cruce automático de datos de clientes con metas globales, integrado en dashboards para tomar decisiones informadas sobre subregiones que requieren optimización.",
                 
                 ctaTitle: "Conoce nuestros productos", ctaBtn: "Productos IA Transformation", footerRights: "Todos los derechos comerciales reservados."
             },
@@ -629,7 +635,7 @@
                 app1FeatTitle: "Key Features", app1F1T: "Controlled Upload", app1F1D: "Strict cascading hierarchy and restriction of 1 document per record to maintain order.", app1F2T: "Agile Search", app1F2D: "High-performance delegated table and native PDF preview without downloads.", app1F3T: "Smart Alerts", app1F3D: "Integration with Teams (Adaptive Cards) and Outlook for on-demand notifications.",
                 
                 app2Tag: "Executive Visibility", app2Desc: "Data Governance ecosystem designed for top management. Centralizes bi-weekly information, automatically calculates compliance, and ensures timely detection of risks at a global level.",
-                app2FeatTitle: "Impact and Operations", app2F1T: "Triple Value Core Engine", app2F1D: "Forces reporting of Current Status, Key Risks, and Next Steps with strict hierarchical segmentation (Sub-Stream/Country).", app2F2T: "Compliance & Immutable DB", app2F2D: "Historical record shielded with timestamps and automatic calculation of compliance metrics by entity.",
+                app2FeatTitle: "Impact and Operations", app2F1T: "Cloud-based simultaneous work platform", app2F1D: "The STATUS CEO application is a strategic solution designed to centralize, standardize, and automate operational reporting for executive management. Its primary purpose is to eliminate the dispersion of information across multiple manual files by providing a single digital repository where leaders can consolidate critical data from their regions.", app2F2T: "Compliance & DB", app2F2D: "By unifying the capture of the Current Status, Key Risks, and Next Steps, the system facilitates tracking and decision-making. Ultimately, this tool significantly reduces the administrative burden of report consolidation and elevates the CEO's strategic visibility, ensuring that every area and potential risk is monitored in a structured and secure manner.",
                 
                 app3Tag: "Global Prevention", app3Desc: "We transform risk management from a fragmented process to an integrated platform. Identify, evaluate (magnitude vs probability), and track mitigation plans.",
                 app3FeatTitle: "Management Flow", app3F1T: "Registration", app3F1D: "Standardized forms to capture definition, responsible parties, and statuses.", app3F2T: "Evaluation", app3F2D: "Matrix that calculates exposure by combining magnitude and probability.",
@@ -702,7 +708,7 @@
                         img: "https://github.com/LeanLabMAR/AITransformation/blob/main/Images/OnePager/Img/IH_Search_IAtransformation.JPG?raw=true", 
                         title: { es: "Vista de Tabla y Filtros:", en: "Table View and Filters:" }, 
                         desc: { 
-                            es: "<p>1. Alterna entre la vista de 'Documentos' y 'Tabla' en la esquina superior.</p><p>2. Usa los filtros en cascada (Región, País, Cliente) para refinar la búsqueda.</p><p>3. Selecciona un registro para habilitar opciones avanzadas.</p>",
+                            es: "<p>Alterna entre la vista de 'Documentos' y 'Tabla' en la esquina superior.</p><p>Usa los filtros en cascada (Región, País, Cliente) para refinar la búsqueda.</p><p>Selecciona un registro para habilitar opciones avanzadas.</p>",
                             en: "<p>Provides ultra-fast searches using a high-performance table that displays the most relevant records without freezing the application.</p><p>Facilitates decision-making by allowing native previewing of PDF documents without the need to download them.</p><p>Refines searches using advanced filters (keyword, ID, creation date, region).</p>"
                         }
                     }
@@ -912,4 +918,5 @@
     </script>
 </body>
 </html>
+
 
