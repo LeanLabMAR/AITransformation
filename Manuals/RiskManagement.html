@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Risk Management AI</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para la iconografía -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Estilos personalizados mínimos para transiciones */
+        .app-section { display: none; }
+        .app-section.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar-text { transition: opacity 0.3s; }
+        .hide-text { opacity: 0; width: 0; overflow: hidden; display: none; }
+        
+        /* Botones de paginación deshabilitados */
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body class="flex h-screen bg-[#f8fafc] font-sans text-slate-800 overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="bg-white border-r border-slate-200 transition-all duration-300 w-64 flex flex-col z-20 shrink-0">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-4 border-b border-slate-100 shrink-0 overflow-hidden">
+            <div class="flex items-center gap-2 text-[#5e4b8a] font-bold text-lg w-full justify-center lg:justify-start">
+                <i data-lucide="shield-alert" class="w-6 h-6 shrink-0"></i>
+                <span class="sidebar-text whitespace-nowrap">Manual Risk AI</span>
+            </div>
+        </div>
+
+        <!-- Menú -->
+        <div class="flex-1 py-6 px-3 overflow-y-auto space-y-1">
+            <button id="btn-inicio" onclick="switchSection('inicio', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors bg-[#5e4b8a] text-white font-medium shadow-md">
+                <i data-lucide="home" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_intro">Introducción</span>
+            </button>
+            <button id="btn-ingreso" onclick="switchSection('ingreso', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="file-plus" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_income">Ingreso de Riesgos</span>
+            </button>
+            <button id="btn-datos" onclick="switchSection('datos', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="table-properties" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_data">Datos y Modificación</span>
+            </button>
+            <button id="btn-notif" onclick="switchSection('notificaciones', this)" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]">
+                <i data-lucide="bell-ring" class="w-5 h-5 shrink-0"></i>
+                <span class="sidebar-text text-sm truncate" data-i18n="nav_notif">Notificaciones</span>
+            </button>
+        </div>
+
+        <!-- Footer Sidebar -->
+        <div class="p-4 border-t border-slate-100 text-center shrink-0">
+            <div id="sidebar-footer" class="text-[10px] text-slate-400 font-medium">
+                TP.ai FAB Operate™<br/><span data-i18n="header_office">Oficina de Procesos</span> MR
+            </div>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- HEADER -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0">
+            <button onclick="toggleSidebar()" class="p-2 text-slate-400 hover:text-[#5e4b8a] hover:bg-slate-50 rounded-lg transition">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="flex items-center gap-4">
+                <span class="text-sm font-medium text-slate-600 hidden sm:block" data-i18n="header_doc">Documentación Risk Matrix</span>
+                
+                <!-- Selector de Idioma -->
+                <div class="flex items-center bg-slate-100 rounded-lg p-1 border border-slate-200">
+                    <i data-lucide="globe" class="w-4 h-4 text-slate-400 mx-2"></i>
+                    <button onclick="changeLang('es')" id="lang-es" class="px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm">ES</button>
+                    <button onclick="changeLang('en')" id="lang-en" class="px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800">EN</button>
+                </div>
+
+                <div class="w-8 h-8 bg-blue-100 text-[#0078d4] rounded-full flex items-center justify-center font-bold border-2 border-white shadow-sm ml-2">AG</div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO SCROLL -->
+        <div class="flex-1 overflow-y-auto p-8 lg:p-12">
+            <div class="max-w-5xl mx-auto relative">
+
+                <!-- SECCIÓN: INICIO -->
+                <div id="sec-inicio" class="app-section active">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-[#3b3e56] mb-2" data-i18n="inicio_title">Bienvenido a Risk Management Matrix</h1>
+                        <p class="text-slate-500 text-lg" data-i18n="inicio_subtitle">AI Transformation - Oficina de Procesos TP MR</p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-[#5e4b8a] to-[#3b3e56] rounded-2xl p-8 text-white shadow-lg mb-8 relative overflow-hidden">
+                        <div class="relative z-10 max-w-2xl">
+                            <h2 class="text-2xl font-bold mb-4" data-i18n="inicio_cardTitle">Control integral de riesgos operativos</h2>
+                            <p class="text-white/80 leading-relaxed mb-6" data-i18n="inicio_cardDesc">Esta plataforma centraliza la identificación, evaluación y mitigación de riesgos asociados a las iniciativas de transformación. Registra nuevos riesgos, asigna responsables y gestiona planes de tratamiento de forma eficiente.</p>
+                            <button onclick="document.getElementById('btn-ingreso').click()" class="px-5 py-2.5 bg-white text-[#5e4b8a] font-semibold rounded-lg hover:bg-slate-50 transition flex items-center gap-2 w-max">
+                                <span data-i18n="inicio_btn">Empezar a registrar</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <i data-lucide="shield-check" class="absolute -right-10 -bottom-10 w-64 h-64 text-white opacity-10"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-800 mb-4" data-i18n="inicio_screenTitle">Pantalla de Inicio (Home)</h3>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-8 flex items-center justify-center">
+                        <div class="max-w-3xl w-full">
+                            <!-- Carrusel Principal -->
+                            <div id="carousel-principal" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                                <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                                    <div class="flex gap-1 ml-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                                </div>
+                                <div class="flex flex-col md:flex-row min-h-[400px]">
+                                    <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                        <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                            <img id="img-principal" src="" alt="Paso" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                            <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                                <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i>
+                                                <span>[Image of Home Screen]</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="prevStep('principal')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                        <button onclick="nextStep('principal')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                                    </div>
+                                    <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                        <div id="count-principal" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                        <h3 id="title-principal" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                        <p id="desc-principal" class="text-slate-600 leading-relaxed text-sm">Descripción.</p>
+                                        <div id="dots-principal" class="flex gap-2 mt-8"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: INGRESO DE RIESGOS -->
+                <div id="sec-ingreso" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="file-plus" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="ingreso_title">Ingreso de Riesgos (Risk Form)</h1>
+                            <p class="text-slate-500" data-i18n="ingreso_subtitle">Completa el formulario matricial para documentar nuevas incidencias.</p>
+                        </div>
+                    </div>
+
+                    <!-- Carrusel Ingreso -->
+                    <div id="carousel-ingreso" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-ingreso" src="" alt="Paso" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i>
+                                        <span>[Image of Risk Form]</span>
+                                    </div>
+                                </div>
+                                <button onclick="prevStep('ingreso')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                <button onclick="nextStep('ingreso')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-ingreso" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-ingreso" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-ingreso" class="text-slate-600 leading-relaxed text-sm">Descripción.</p>
+                                <div id="dots-ingreso" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 border-l-4 border-[#0078d4] p-5 rounded-r-lg">
+                        <div class="flex gap-3">
+                            <i data-lucide="info" class="text-[#0078d4] w-6 h-6 shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1" data-i18n="ingreso_tipTitle">Importante sobre los campos obligatorios</h4>
+                                <p class="text-sm text-slate-600" data-i18n="ingreso_tipDesc">Asegúrate de diligenciar correctamente la Magnitud, Probabilidad e Impacto. El sistema calculará automáticamente el "Inherent Risk" (Riesgo Inherente) basándose en estos parámetros para estandarizar el nivel de criticidad.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN APARTE: DICCIONARIO DE DATOS PAGINADO -->
+                    <div class="mt-12 pt-8 border-t-2 border-dashed border-slate-200">
+                        <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="p-3 bg-purple-100 text-[#5e4b8a] rounded-xl shadow-sm w-max">
+                                    <i data-lucide="database" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-[#3b3e56]" data-i18n="ingreso_dictSectionTitle">Estructura del Formulario y Restricciones</h2>
+                                    <p class="text-slate-500" data-i18n="ingreso_dictSectionDesc">Guía detallada de todos los campos solicitados en el alta de riesgos.</p>
+                                </div>
+                            </div>
+                            <!-- Controles de Paginación Superiores -->
+                            <div class="flex items-center gap-3">
+                                <span id="page-info" class="text-sm font-medium text-slate-500">Página 1 de X</span>
+                                <div class="flex gap-1">
+                                    <button id="btn-prev-table" onclick="prevTablePage()" class="p-2 border border-slate-200 rounded hover:bg-slate-50 text-slate-600 transition-colors disabled:opacity-30"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                                    <button id="btn-next-table" onclick="nextTablePage()" class="p-2 border border-slate-200 rounded hover:bg-slate-50 text-slate-600 transition-colors disabled:opacity-30"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                            <div class="overflow-x-auto min-h-[300px]">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-100 text-slate-600 text-sm border-b border-slate-200">
+                                            <th class="p-4 font-semibold w-1/4" data-i18n="th_campo">Campo del Formulario</th>
+                                            <th class="p-4 font-semibold w-1/4" data-i18n="th_tipo">Tipo de Dato</th>
+                                            <th class="p-4 font-semibold w-2/4" data-i18n="th_desc">Descripción y Restricciones</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Cuerpo inyectado por JS -->
+                                    <tbody id="table-body" class="text-sm text-slate-700 divide-y divide-slate-100">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SECCIÓN: DATOS Y MODIFICACIÓN -->
+                <div id="sec-datos" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="table-properties" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="datos_title">Datos y Modificación</h1>
+                            <p class="text-slate-500" data-i18n="datos_subtitle">Visualiza la tabla maestra, aplica filtros y actualiza tratamientos.</p>
+                        </div>
+                    </div>
+                    <!-- Carrusel Datos -->
+                    <div id="carousel-datos" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                        <div class="p-1 bg-slate-100 flex justify-between items-center border-b border-slate-200">
+                            <div class="flex gap-1 ml-2"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+                            <span class="text-xs font-medium text-slate-500 mr-4" data-i18n="carousel_viewer">Visualizador Interactivo</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row min-h-[400px]">
+                            <div class="md:w-3/5 bg-slate-50 p-6 flex items-center justify-center relative border-r border-slate-100">
+                                <div class="w-full h-full min-h-[250px] bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                                    <img id="img-datos" src="" alt="Paso Datos" class="max-w-full max-h-[350px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="hidden flex-col items-center text-slate-400 p-4 text-center">
+                                        <i data-lucide="image" class="w-12 h-12 mb-2 text-[#5e4b8a] opacity-50"></i><span></span>
+                                    </div>
+                                </div>
+                                <button onclick="prevStep('datos')" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                                <button onclick="nextStep('datos')" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-md flex items-center justify-center text-[#5e4b8a] hover:bg-[#5e4b8a] hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                            </div>
+                            <div class="md:w-2/5 p-8 flex flex-col justify-center bg-white">
+                                <div id="count-datos" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#5e4b8a]/10 text-[#5e4b8a] font-bold mb-4">1</div>
+                                <h3 id="title-datos" class="text-xl font-bold text-slate-800 mb-3">Título</h3>
+                                <p id="desc-datos" class="text-slate-600 leading-relaxed text-sm">Descripción</p>
+                                <div id="dots-datos" class="flex gap-2 mt-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: NOTIFICACIONES -->
+                <div id="sec-notificaciones" class="app-section">
+                    <div class="mb-8 flex items-center gap-3">
+                        <div class="p-3 bg-[#5e4b8a]/10 text-[#5e4b8a] rounded-lg"><i data-lucide="bell-ring" class="w-6 h-6"></i></div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-[#3b3e56]" data-i18n="notif_title">Notificaciones y Alertas</h1>
+                            <p class="text-slate-500" data-i18n="notif_subtitle">Gestión de comunicaciones automáticas tras registrar un riesgo.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Tarjeta Teams -->
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 w-24 h-24 bg-[#5e4b8a]/5 rounded-full z-0"></div>
+                            <div class="w-12 h-12 bg-[#5e4b8a]/10 rounded-full flex items-center justify-center text-[#5e4b8a] mb-4 relative z-10"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2 relative z-10" data-i18n="notif_teamsTitle">Mensajes Vía Teams (Flujos de trabajo)</h3>
+                            <p class="text-slate-600 text-sm mb-4 relative z-10" data-i18n="notif_teamsDesc">Al guardar exitosamente un nuevo registro, el bot de Power Automate dispara una notificación automática a través del chat de Teams al usuario correspondiente. El formato del mensaje indica:</p>
+                            
+                            <!-- Mockup de Teams Message -->
+                            <div class="bg-slate-100 p-4 rounded-lg border border-slate-200 text-sm font-mono text-slate-700 mb-4 shadow-inner relative z-10">
+                                <strong>Flujos de trabajo</strong> 3:32 p. m.<br/><br/>
+                                Buen dia,<br/><br/>
+                                Se a generado un nuevo riesgo a su Iniciativa:<br/>
+                                N° Riesgo: 102<br/>
+                                # Iniciativa: 487<br/>
+                                Country: Americas<br/>
+                                Region: TP Americas<br/><br/>
+                                Saludos
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Flujo de Trabajo -->
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 flex flex-col justify-center">
+                            <div class="w-12 h-12 bg-[#0078d4]/10 rounded-full flex items-center justify-center text-[#0078d4] mb-4"><i data-lucide="workflow" class="w-6 h-6"></i></div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2" data-i18n="notif_workflowTitle">Integración Transparente</h3>
+                            <p class="text-slate-600 text-sm mb-4" data-i18n="notif_workflowDesc">El sistema asegura que todos los *Risk Managers* y directores de cuenta estén sincronizados de manera inmediata. Permite una comunicación directa desde la creación del riesgo hasta la definición y modificación de su tratamiento, mejorando la trazabilidad operativa en toda la matriz.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        // 1. Inicializar Iconos Lucide
+        lucide.createIcons();
+
+        // 2. Control del Sidebar
+        let sidebarOpen = true;
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const texts = document.querySelectorAll('.sidebar-text');
+            sidebarOpen = !sidebarOpen;
+
+            if (sidebarOpen) {
+                sidebar.classList.replace('w-20', 'w-64');
+                texts.forEach(t => t.classList.remove('hide-text'));
+                document.getElementById('sidebar-footer').innerHTML = `TP.ai FAB Operate™<br/>${translations[currentLang].header_office} MR`;
+            } else {
+                sidebar.classList.replace('w-64', 'w-20');
+                texts.forEach(t => t.classList.add('hide-text'));
+                document.getElementById('sidebar-footer').innerHTML = 'TP';
+            }
+        }
+
+        // 3. Control de Pestañas (Secciones)
+        function switchSection(sectionId, btnElement) {
+            document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById('sec-' + sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-slate-600 hover:bg-slate-100 hover:text-[#5e4b8a]";
+            });
+
+            if (btnElement) {
+                btnElement.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors bg-[#5e4b8a] text-white font-medium shadow-md";
+            }
+        }
+
+        // 4. Diccionario de Traducciones
+        const translations = {
+            es: {
+                nav_intro: "Introducción", nav_income: "Ingreso de Riesgos", nav_data: "Datos y Modificación", nav_notif: "Notificaciones",
+                header_doc: "Documentación Risk Matrix", header_office: "Oficina de Procesos", carousel_viewer: "Visualizador Interactivo",
+                inicio_title: "Bienvenido a Risk Management Matrix", inicio_subtitle: "AI Transformation - Oficina de Procesos TP MR",
+                inicio_cardTitle: "Control integral de riesgos operativos", 
+                inicio_cardDesc: "Esta plataforma centraliza la identificación, evaluación y mitigación de riesgos asociados a las iniciativas de transformación. Registra nuevos riesgos, asigna responsables y gestiona planes de tratamiento de forma eficiente.",
+                inicio_btn: "Empezar a registrar", inicio_screenTitle: "Pantalla de Inicio (Home)",
+                
+                ingreso_title: "Ingreso de Riesgos (Risk Form)", ingreso_subtitle: "Completa el formulario matricial para documentar nuevas incidencias.",
+                ingreso_tipTitle: "Importante sobre los campos de validación", 
+                ingreso_tipDesc: "Asegúrate de diligenciar correctamente la Magnitud, Probabilidad e Impacto. El sistema calculará automáticamente el 'Inherent Risk' (Riesgo Inherente) basándose en estos parámetros para estandarizar el nivel de criticidad.",
+                
+                ingreso_dictSectionTitle: "Estructura del Formulario y Restricciones",
+                ingreso_dictSectionDesc: "Guía detallada de todos los campos solicitados en el alta de riesgos.",
+                th_campo: "Campo del Formulario", th_tipo: "Tipo de Dato", th_desc: "Descripción y Restricciones",
+
+                datos_title: "Datos y Modificación", datos_subtitle: "Visualiza la tabla maestra, aplica filtros y actualiza tratamientos.",
+                
+                notif_title: "Notificaciones y Alertas", notif_subtitle: "Gestión de comunicaciones automáticas tras registrar un riesgo.",
+                notif_teamsTitle: "Mensajes Vía Teams (Flujos de trabajo)", 
+                notif_teamsDesc: "Al guardar exitosamente un nuevo registro, el bot de Power Automate dispara una notificación automática a través del chat de Teams al usuario correspondiente. El formato del mensaje indica:",
+                notif_workflowTitle: "Integración Transparente", 
+                notif_workflowDesc: "El sistema asegura que todos los *Risk Managers* estén sincronizados de manera inmediata. Permite una comunicación directa desde la creación del riesgo hasta la modificación de su tratamiento, mejorando la trazabilidad."
+            },
+            en: {
+                nav_intro: "Introduction", nav_income: "Risk Income", nav_data: "Risk Data & Modify", nav_notif: "Notifications",
+                header_doc: "Risk Matrix Documentation", header_office: "Process Office", carousel_viewer: "Interactive Viewer",
+                inicio_title: "Welcome to Risk Management Matrix", inicio_subtitle: "AI Transformation - TP MR Process Office",
+                inicio_cardTitle: "Comprehensive operational risk control", 
+                inicio_cardDesc: "This platform centralizes the identification, evaluation, and mitigation of risks associated with transformation initiatives. Register new risks, assign managers, and manage treatment plans efficiently.",
+                inicio_btn: "Start registering", inicio_screenTitle: "Home Screen",
+                
+                ingreso_title: "Risk Income (Risk Form)", ingreso_subtitle: "Fill out the matrix form to document new issues.",
+                ingreso_tipTitle: "Important regarding validation fields", 
+                ingreso_tipDesc: "Make sure to correctly fill in the Magnitude, Probability, and Impact. The system will automatically calculate the 'Inherent Risk' based on these parameters to standardize the criticality level.",
+                
+                ingreso_dictSectionTitle: "Form Structure & Restrictions",
+                ingreso_dictSectionDesc: "Detailed guide of all fields requested during risk creation.",
+                th_campo: "Form Field", th_tipo: "Data Type", th_desc: "Description & Restrictions",
+
+                datos_title: "Risk Data & Modify", datos_subtitle: "View the master table, apply filters, and update treatments.",
+                
+                notif_title: "Notifications & Alerts", notif_subtitle: "Management of automatic communications after registering a risk.",
+                notif_teamsTitle: "Messages Via Teams (Workflows)", 
+                notif_teamsDesc: "Upon successfully saving a new record, the Power Automate bot triggers an automatic notification via Teams chat to the corresponding user. The message format indicates:",
+                notif_workflowTitle: "Seamless Integration", 
+                notif_workflowDesc: "The system ensures all Risk Managers are synchronized immediately. It allows direct communication from risk creation to treatment modification, improving traceability."
+            }
+        };
+
+        // Base de Datos Dinámica para la Tabla
+        const tableData = {
+            es: [
+                { f: "Sub-Stream", t: "Lista Desplegable", d: "Campo obligatorio. Primer nivel de la estructura en cascada para categorizar el riesgo." },
+                { f: "Initiative N°", t: "Lista Desplegable", d: "Número de la iniciativa asociada. Depende estrictamente del Sub-Stream seleccionado." },
+                { f: "Country", t: "Lista Desplegable", d: "País específico en el que se localiza el impacto del riesgo." },
+                { f: "Region", t: "Lista Desplegable", d: "Región afectada, auto-filtrada o dependiente según el país seleccionado." },
+                { f: "Identification Date", t: "Selector de Fecha", d: "Fecha exacta en la que se identificó o reportó oficialmente la incidencia." },
+                { f: "Affected Area", t: "Lista / Texto", d: "Área de negocio u operativa específica que sufre el impacto directo." },
+                { f: "Risk Description", t: "Área de Texto", d: "Descripción detallada, clara y concisa del riesgo identificado." },
+                { f: "Risk Manager", t: "Búsqueda (Autocompletar)", d: "Se conecta al directorio corporativo. Permite buscar por nombre o correo. Obligatorio." },
+                { f: "Risk Type", t: "Lista Desplegable", d: "Clasificación principal de la naturaleza del riesgo (Operativo, Estratégico, etc.)." },
+                { f: "Impact Type", t: "Lista Desplegable", d: "Categorización del tipo de impacto esperado si el riesgo se materializa." },
+                { f: "Internal / External Factor", t: "Lista Desplegable", d: "Determina si la fuente de origen del riesgo pertenece a un factor Interno o Externo." },
+                { f: "Magnitude", t: "Lista de Selección", d: "Mide el nivel de daño potencial. Trabaja junto a 'Probability'." },
+                { f: "Probability", t: "Lista de Selección", d: "Mide qué tan probable es que ocurra el evento de riesgo." },
+                { f: "Inherent Risk", t: "Calculado / Bloqueado", d: "Nivel de riesgo automatizado por el sistema cruzando la Magnitud y Probabilidad." },
+                { f: "Financial Impact & Value", t: "Condicional / Numérico", d: "Si es 'Yes', habilita un campo para ingresar monto numérico en M EUR." },
+                { f: "Treatment Definition", t: "Tabla Dinámica", d: "Múltiples planes de acción para un riesgo. Requiere Definición, Responsable, Cierre y Estado (To do / Closed)." }
+            ],
+            en: [
+                { f: "Sub-Stream", t: "Dropdown List", d: "Mandatory field. First level of the cascading structure to categorize the risk." },
+                { f: "Initiative N°", t: "Dropdown List", d: "Associated initiative number. Strictly dependent on the selected Sub-Stream." },
+                { f: "Country", t: "Dropdown List", d: "Specific country where the risk impact is located." },
+                { f: "Region", t: "Dropdown List", d: "Affected region, auto-filtered or dependent based on the selected country." },
+                { f: "Identification Date", t: "Date Picker", d: "Exact date the incident was officially identified or reported." },
+                { f: "Affected Area", t: "List / Text", d: "Specific business or operational area suffering the direct impact." },
+                { f: "Risk Description", t: "Text Area", d: "Detailed, clear, and concise description of the identified risk." },
+                { f: "Risk Manager", t: "Search (Autocomplete)", d: "Connects to corporate directory. Search by name or email. Mandatory." },
+                { f: "Risk Type", t: "Dropdown List", d: "Main classification of the risk nature (Operational, Strategic, etc.)." },
+                { f: "Impact Type", t: "Dropdown List", d: "Categorization of the expected impact type if the risk materializes." },
+                { f: "Internal / External Factor", t: "Dropdown List", d: "Determines if the risk origin source belongs to an Internal or External factor." },
+                { f: "Magnitude", t: "Selection List", d: "Measures potential damage level. Works alongside 'Probability'." },
+                { f: "Probability", t: "Selection List", d: "Measures how likely the risk event is to occur." },
+                { f: "Inherent Risk", t: "Calculated / Locked", d: "Automated risk level determined by the system crossing Magnitude and Probability." },
+                { f: "Financial Impact & Value", t: "Conditional / Numeric", d: "If 'Yes', enables a field to enter a numeric amount in M EUR." },
+                { f: "Treatment Definition", t: "Dynamic Table", d: "Multiple action plans for one risk. Requires Definition, Manager, Closing Date, and Status." }
+            ]
+        };
+
+        let currentTablePage = 0;
+        const itemsPerPage = 5;
+
+        // Renderizar la Tabla con Paginación
+        function renderTable() {
+            const data = tableData[currentLang];
+            const start = currentTablePage * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageData = data.slice(start, end);
+
+            let html = '';
+            pageData.forEach(row => {
+                const isTreatment = row.f.includes('Treatment');
+                const trClass = isTreatment ? 'bg-purple-50/50 hover:bg-purple-50 transition-colors border-l-4 border-[#5e4b8a]' : 'hover:bg-slate-50 transition-colors';
+                const fClass = isTreatment ? 'p-4 font-bold text-[#5e4b8a]' : 'p-4 font-medium text-slate-800';
+                const tClass = isTreatment ? 'p-4 text-[#5e4b8a] font-medium' : 'p-4 text-slate-500';
+                const extraBadge = isTreatment ? `<span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#5e4b8a] text-white">Multi-registro</span>` : '';
+
+                html += `<tr class="${trClass}">
+                    <td class="${fClass}">${row.f} ${extraBadge}</td>
+                    <td class="${tClass}">${row.t}</td>
+                    <td class="p-4 text-slate-800">${row.d}</td>
+                </tr>`;
+            });
+            
+            document.getElementById('table-body').innerHTML = html;
+            
+            // Textos de paginación
+            const totalPages = Math.ceil(data.length / itemsPerPage);
+            const pageText = currentLang === 'es' ? `Página ${currentTablePage + 1} de ${totalPages}` : `Page ${currentTablePage + 1} of ${totalPages}`;
+            document.getElementById('page-info').innerText = pageText;
+
+            // Deshabilitar/Habilitar botones
+            document.getElementById('btn-prev-table').disabled = currentTablePage === 0;
+            document.getElementById('btn-next-table').disabled = end >= data.length;
+            
+            // Recargar iconos en contenido inyectado
+            lucide.createIcons();
+        }
+
+        function prevTablePage() {
+            if (currentTablePage > 0) {
+                currentTablePage--;
+                renderTable();
+            }
+        }
+
+        function nextTablePage() {
+            const data = tableData[currentLang];
+            if ((currentTablePage + 1) * itemsPerPage < data.length) {
+                currentTablePage++;
+                renderTable();
+            }
+        }
+
+        // 5. Textos e Imágenes de los Carruseles
+        // REEMPLAZAR LOS ENLACES 'URL_IMG_X' POR LOS ENLACES RAW DE GITHUB ALOJADOS POR EL USUARIO.
+        const carouselData = {
+            principal: {
+                  es: [
+                      { t: "1. Pantalla de Bienvenida",
+                        d: "Al ingresar a la aplicación, encontrarás la pantalla principal de 'Risk Management Matrix'. Pulsa el botón 'Start' para iniciar el aplicativo. Puedes alternar el idioma de la interfaz usando el control en la barra superior derecha.",
+                        img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_HomePage.JPG"                 
+                      },
+                      { t: "2. Menú de Navegación Lateral",
+                        d: "El menú oscuro desplegable a la izquierda te permite navegar de forma rápida entre las tres vistas principales: 'Home' (Inicio), 'Risk Income' (Formulario de Ingreso) y 'Data Risk' (Base de Datos y modificaciones).",
+                        img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_LateralNavigationMenu.JPG"
+                      }
+                  ],
+                  en: [
+                      { t: "1. Welcome Screen",
+                        d: "Upon entering the app, you will see the main 'Risk Management Matrix' screen. Click 'Start' to begin. You can toggle the interface language using the control in the top right.",
+                        img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_HomePage.JPG"
+                      },
+                      { t: "2. Side Navigation Menu",
+                        d: "The dark collapsible menu on the left allows you to quickly navigate between the three main views: 'Home', 'Risk Income', and 'Data Risk'.",
+                        img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_LateralNavigationMenu.JPG"
+                      }
+                  ]
+            },
+
+            ingreso: {
+                es: [
+                    { t: "1. Información Descriptiva (Columna Izquierda)", d: "En la pantalla 'Risk Form', llena los campos en cascada: Sub-Stream, N° de Iniciativa, País y Región. Define la fecha en el calendario, el 'Área Afectada' y escribe una descripción clara del riesgo.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_DescriptiveInformation.JPG" },
+                    { t: "2. Asignación del Risk Manager (Columna Derecha)", d: "El formulario contiene un buscador inteligente. Al hacer clic, puedes teclear el nombre o correo del 'Risk Manager' (ej. Miguel Parra, Leon Zapata). Selecciónalo y presiona el ícono de usuario (+) para agregarlo.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_RiskManagerAssignment.JPG" },
+                    { t: "3. Evaluación de Consecuencia e Impacto", d: "Clasifica el 'Risk Type', 'Impact Type' y el factor interno. Luego, selecciona la 'Magnitud' y 'Probabilidad' usando las listas desplegables. El sistema cruzará ambas variables para calcular automáticamente el 'Inherent Risk'.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_Consequence%26ImpactEvaluation.JPG" },
+                    { t: "4. Treatment Definition (Multi-Registro) y Guardado", d: "Para el Tratamiento, ahora puedes usar el botón 'Add Definition' para incluir múltiples registros a un mismo riesgo (Definición, Responsable, Cierre y Estado). Finalmente, presiona 'Save' (Guardar).", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.TreatmentDefinition(MultiRecord)andSave.JPG" }
+                ],
+                en: [
+                    { t: "1. Descriptive Information (Left Column)", d: "On the 'Risk Form' screen, fill out the cascading fields: Sub-Stream, Initiative N°, Country, and Region. Pick a date, the 'Affected Area', and write a clear risk description.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_DescriptiveInformation.JPG" },
+                    { t: "2. Risk Manager Assignment (Right Column)", d: "The form has a smart search bar. Type the name or email of the Risk Manager (e.g. Miguel Parra), select them, and click the user (+) icon to add them.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_RiskManagerAssignment.JPG" },
+                    { t: "3. Consequence & Impact Evaluation", d: "Classify the 'Risk Type', 'Impact Type', and internal factor. Select 'Magnitude' and 'Probability' from the dropdowns. The system automatically crosses these to calculate 'Inherent Risk'.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img_Consequence%26ImpactEvaluation.JPG" },
+                    { t: "4. Treatment Definition (Multi-Record) and Save", d: "For Treatments, you can now use the 'Add Definition' button to include multiple records for a single risk (Definition, Manager, Closing, and Status). Finally, press 'Save'.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.TreatmentDefinition(MultiRecord)andSave.JPG" }
+                ]
+            },
+            
+            datos: {
+                es: [
+                    { t: "1. Filtros Rápidos y Vista de Tabla", d: "En la sección 'Data Risk', verás todos los riesgos cargados en un formato de lista. Utiliza la sección superior para filtrar fácilmente por 'Sub-Stream', 'País', 'Región', 'Tipo de Riesgo' o ID.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.QuickFiltersandTableView.JPG" },
+                    { t: "2. Seleccionar para Modificar (Modify Risk)", d: "Al encontrar tu registro, activa el checkbox al inicio de la fila. Esto habilitará los botones de modificación. Pulsa 'Modify Risk' si necesitas alterar los parámetros descriptivos base del riesgo.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.SelecttoModify(ModifyRisk).JPG" },
+                    { t: "3. Actualizar Tratamiento (Modify Treatment)", d: "Si presionas 'Modify Treatment', se abrirá una ventana flotante (Update the Treatment Definition). Aquí podrás ver el historial o agregar un nuevo tratamiento, revisar el Status (To do / Closed) y modificar la fecha de cierre sin alterar el riesgo original.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/im.UpdateTreatmentDefinition.JPG" }
+                ],
+                en: [
+                    { t: "1. Quick Filters and Table View", d: "In 'Data Risk', you will see all loaded risks in a list format. Use the top section to easily filter by 'Sub-Stream', 'Country', 'Region', 'Risk Type', or ID.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.QuickFiltersandTableView.JPG" },
+                    { t: "2. Select to Modify (Modify Risk)", d: "Once you find your record, check the box at the start of the row. This enables the action buttons. Click 'Modify Risk' to alter the base descriptive parameters.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/img.SelecttoModify(ModifyRisk).JPG" },
+                    { t: "3. Update Treatment Definition", d: "If you click 'Modify Treatment', a popup window opens. Here you can view the history, add new treatments, check the Status (To do / Closed), and modify closing dates without changing the original risk.", img: "https://raw.githubusercontent.com/Gbandres97/IA-Risk-Transformation-Manual/3555bef5735eab3af01f74d5d01063a17c146d60/im.UpdateTreatmentDefinition.JPG" }
+                ]
+            }
+        };
+
+        let currentLang = 'es';
+        let carouselState = { principal: 0, ingreso: 0, datos: 0 };
+
+        // 6. Cambiar Idioma
+        function changeLang(lang) {
+            currentLang = lang;
+            
+            // Estilos de los botones
+            document.getElementById('lang-es').className = lang === 'es' ? 'px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm' : 'px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800';
+            document.getElementById('lang-en').className = lang === 'en' ? 'px-3 py-1 text-xs font-bold rounded-md transition-all bg-[#5e4b8a] text-white shadow-sm' : 'px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-800';
+
+            // Reemplazar textos estáticos
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Actualizar carruseles
+            updateCarousel('principal');
+            updateCarousel('ingreso');
+            updateCarousel('datos');
+            
+            // Reiniciar y renderizar la tabla al cambiar el idioma
+            currentTablePage = 0;
+            renderTable();
+            
+            if(sidebarOpen) document.getElementById('sidebar-footer').innerHTML = `TP.ai FAB Operate™<br/>${translations[lang].header_office} MR`;
+        }
+
+        // 7. Lógica del Carrusel
+        function updateCarousel(id) {
+            const data = carouselData[id][currentLang];
+            const index = carouselState[id];
+            
+            document.getElementById(`title-${id}`).innerText = data[index].t;
+            document.getElementById(`desc-${id}`).innerText = data[index].d;
+            document.getElementById(`count-${id}`).innerText = index + 1;
+            
+            // Setear Imagen
+            document.getElementById(`img-${id}`).src = data[index].img;
+            document.getElementById(`img-${id}`).style.display = 'block';
+
+            // Pintar los "puntitos" (dots)
+            let dotsHtml = '';
+            for(let i=0; i<data.length; i++) {
+                let dotClass = i === index ? 'w-8 bg-[#5e4b8a]' : 'w-2 bg-slate-200 hover:bg-slate-300 cursor-pointer';
+                dotsHtml += `<div onclick="goToStep('${id}', ${i})" class="h-2 rounded-full transition-all duration-300 ${dotClass}"></div>`;
+            }
+            document.getElementById(`dots-${id}`).innerHTML = dotsHtml;
+        }
+
+        function nextStep(id) {
+            carouselState[id] = (carouselState[id] + 1) % carouselData[id][currentLang].length;
+            updateCarousel(id);
+        }
+
+        function prevStep(id) {
+            const len = carouselData[id][currentLang].length;
+            carouselState[id] = (carouselState[id] - 1 + len) % len;
+            updateCarousel(id);
+        }
+
+        function goToStep(id, index) {
+            carouselState[id] = index;
+            updateCarousel(id);
+        }
+
+        // Inicializar
+        changeLang('es');
+
+    </script>
+</body>
+</html>
