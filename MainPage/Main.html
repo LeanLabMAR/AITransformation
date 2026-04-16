@@ -25,6 +25,19 @@
         }
     </script>
     <style>
+        /* Ocultar todas las descripciones de apps por defecto */
+        #App1,
+        #App2,
+        #App3,
+        #App4 {
+            display: none;
+        }
+
+        #AppDefault {
+            display: block;
+            /* Este es el único que se ve al inicio */
+        }
+
         :root {
             --tp-purple: #5b5b7d;
             --tp-dark-purple: #3f3f5a;
@@ -188,12 +201,80 @@
 
 
 
-            <!-- Aplicativo 4: FINANCIAL TRACKING -->
+            <!-- APPS -->
             <div id="app-financial"
                 class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12 flex flex-col lg:flex-row-reverse group">
                 <div
                     class="lg:w-5/12 p-10 lg:p-12 bg-tp-gradient text-white relative overflow-hidden flex flex-col justify-between">
-                    <div>
+
+                    <div id="AppDefault" class="block">
+                        <div class="mb-6">
+                            <span
+                                class="bg-white/10 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                Overview
+                            </span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Internal AI Transformation</h3>
+                        <p class="text-blue-200 font-medium mb-6">Select a solution to see details</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm">
+                            Explore our ecosystem of applications designed to optimize global operations,
+                            manage risks, and provide executive visibility across 130 countries.
+                        </p>
+                    </div>
+                    <div id="App2" class="hidden">
+                        <div class="absolute -left-10 -bottom-10 opacity-10"><i
+                                class="fa-solid fa-chart-pie text-9xl"></i></div>
+                        <div class="mb-6">
+                            <span
+                                class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                                data-lang-id="app2Tag">Executive Visibility</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">STATUS CEO</h3>
+                        <p class="text-blue-200 font-medium mb-6">Bi-Weekly App</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app1Desc">
+                            It acts as the central hub for the progress status of transformation processes, providing
+                            executive visibility into progress, milestones, and deviations.
+                        </p>
+                    </div>
+
+
+
+
+                    <div id="App1" class="hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10">
+                            <i class="fa-solid fa-folder-tree text-9xl"></i>
+                        </div>
+                        <div class="mb-6 flex items-center justify-between">
+                            <span
+                                class="bg-tp-accent/20 text-blue-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                                data-lang-id="app1Tag">Operational Management</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Insights HUB</h3>
+                        <p class="text-tp-accent font-medium mb-6">Document Control System AI</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app2Desc">
+                            The ultimate solution to corporate email overload. A single, standardized, self-service
+                            repository that centralizes the flow of operational reports, automatically notifying
+                            executives and CEOs.
+                        </p>
+                    </div>
+
+                    <div id="App3" class="hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10"><i
+                                class="fa-solid fa-folder-tree text-9xl"></i></div>
+                        <div class="mb-6">
+                            <span
+                                class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                                data-lang-id="app3Tag">Global Prevention</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Risk Management</h3>
+                        <p class="text-gray-400 font-medium mb-6">in IA Transformation</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app3Desc">
+                            It allows for the identification, monitoring and structured control of risks associated with
+                            initiatives, strengthening preventive management and early mitigation. </p>
+                    </div>
+
+
+                    <div id="App4" class="hidden">
                         <div class="absolute -left-10 -bottom-10 opacity-10"><i
                                 class="fa-solid fa-chart-pie text-9xl"></i></div>
                         <div class="mb-6">
@@ -211,8 +292,7 @@
                     </div>
                     <button onclick="openModal('financial')"
                         class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
-                        <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Open Interactive
-                            Viewer</span>
+                        <i class="fa-solid fa-expand mr-3"></i> <span>Open Interactive Viewer</span>
                     </button>
                 </div>
 
@@ -224,7 +304,8 @@
 
                         <!--Apps-->
                         <div class="flex items-start gap-28 border-b pb-4">
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -250,7 +331,6 @@
                                             class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://teleperformance.sharepoint.com/:x:/r/sites/TP-InternalAITransformation/Shared%20Documents/Central/Account%20tracking/Regional%20Trackers/AMERICAS/AMERICAS_Tracker_vLive.xlsx?d=w3680627079d144d189a27354eebda9dc&csf=1&web=1&e=tcvp3X"
                                                 target="_blank" rel="noopener noreferrer">Open File</a> <svg
-                                                class="ml-1 group-hover:ml-2 transition-all"
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
@@ -262,7 +342,8 @@
                                 </div>
                             </div>
 
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -283,10 +364,10 @@
                                         For: CEO
                                     </p>
                                     <div class="mt-3 flex items-center gap-4 text-sm font-bold">
-                                        <div class="flex items-center cursor-pointer group" style="color: #B5BBCD;">
+                                        <div
+                                            class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://teleperformance.sharepoint.com/:x:/s/TP-InternalAITransformation/IQD5cRdPEpvUTaX0BB7wrzviATZWGmL24TQXGinlpA_4iro?e=7TGdX3"
                                                 target="_blank" rel="noopener noreferrer">Open File</a> <svg
-                                                class="ml-1 group-hover:ml-2 transition-all"
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
@@ -311,14 +392,15 @@
 
                         <!--Apps-->
                         <div class="flex items-start gap-24 border-b pb-4">
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
 
                                     <i class="fa-solid fa-box-archive"></i>
                                 </div>
                                 <!-- Feature 3 -->
-                                <div>
+                                <div Id="App1F">
 
                                     <h3 class="font-bold text-tp-dark-purple">
                                         Insights HUB APP
@@ -330,12 +412,12 @@
                                         For: CEO
                                     </p>
                                     <div class="mt-3 flex items-center gap-4 text-sm font-bold">
-                                        <div class="flex items-center cursor-pointer group" style="color: #B5BBCD;">
+                                        <div
+                                            class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/44bb752e-feee-4156-8b49-e2c470b478ca?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=ca8036fa-8502-4ce5-b6a7-6eded0fe1e44&sourcetime=1773927103513&hidenavbar=true"
                                                 target="_blank" rel="noopener noreferrer">
                                                 Open App
-                                            </a><svg class="ml-1 group-hover:ml-2 transition-all"
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            </a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6" />
@@ -356,7 +438,8 @@
                                 </div>
                             </div>
 
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -366,7 +449,7 @@
                                     </svg>
                                 </div>
                                 <!-- Feature 4 -->
-                                <div>
+                                <div Id="App2F">
                                     <h3 class="font-bold text-tp-dark-purple">CEO Status App
                                     </h3>
                                     <h3
@@ -375,13 +458,13 @@
                                     <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
                                         For: CO</p>
                                     <div class="mt-3 flex items-center gap-4 text-sm font-bold">
-                                        <div class="flex items-center cursor-pointer group" style="color: #A9A0C1;">
+                                        <div
+                                            class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/e3403c2a-925e-40d3-9308-01d411ece869?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=5d126b8d-e9a2-4fde-9bb2-73e0d1a6e4fe&sourcetime=1773677490672&hidenavbar=true"
                                                 target="_blank" rel="noopener noreferrer">
                                                 Open App
                                             </a>
-                                            <svg class="ml-1 group-hover:ml-2 transition-all"
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6" />
@@ -404,13 +487,14 @@
                         </div>
                         <!--Apps-->
                         <div class="flex items-start gap-24 border-b pb-4">
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                     <i class="fa-solid fa-table-cells"></i>
                                 </div>
                                 <!-- Feature 5 -->
-                                <div>
+                                <div Id="App3F">
 
                                     <h3 class="font-bold text-tp-dark-purple">Risks Matrix App
                                     </h3>
@@ -422,12 +506,12 @@
                                     </p>
 
                                     <div class="mt-3 flex items-center gap-4 text-sm font-bold">
-                                        <div class="flex items-center cursor-pointer group" style="color: #B5BBCD;">
+                                        <div
+                                            class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/df2a638a-6a31-4828-952d-07aa9285a555?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=86cfaa1e-5f8b-4080-a47e-d336e3bfdade&sourcetime=1773876588704&hidenavbar=true"
                                                 target="_blank" rel="noopener noreferrer">
                                                 Open App
-                                            </a> <svg class="ml-1 group-hover:ml-2 transition-all"
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            </a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6" />
@@ -435,7 +519,8 @@
                                         </div>
                                         <div
                                             class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
-                                            <a href="#">Manual</a>
+                                            <a href="https://leanlabmar.github.io/AITransformation/Manuals/RiskManagement.html"
+                                                target="_blank" rel="noopener noreferrer">Manual</a>
                                             <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
@@ -447,7 +532,8 @@
                                 </div>
                             </div>
 
-                            <div class="flex gap-2">
+                            <div
+                                class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                     <i class="fa-solid fa-chart-line"></i>
@@ -457,7 +543,7 @@
 
                                 </div>
                                 <!-- Feature 6 -->
-                                <div>
+                                <div Id="App4F">
                                     <h3 class="font-bold text-tp-dark-purple">
                                         Financial
                                         Tracking
@@ -470,13 +556,13 @@
                                     </p>
 
                                     <div class="mt-3 flex items-center gap-4 text-sm font-bold">
-                                        <div class="flex items-center cursor-pointer group" style="color: #B5BBCD;">
+                                        <div
+                                            class="flex items-center cursor-pointer group hover:opacity-70 transition-all text-slate-500">
                                             <a href="https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/758a7d2d-b515-4d91-be14-36fb17ae3e8b?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=b128d179-7335-416e-b758-0a98b658ee61&sourcetime=1773251877033&source=portal&hidenavbar=true"
                                                 target="_blank" rel="noopener noreferrer">
                                                 Open App
                                             </a>
-                                            <svg class="ml-1 group-hover:ml-2 transition-all"
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6" />
@@ -506,7 +592,8 @@
 
 
 
-                        <div class="flex items-start">
+                        <div
+                            class="flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 border-none outline-none">
                             <div
                                 class="w-12 h-12 rounded-xl bg-tp-light-gray text-tp-purple flex items-center justify-center text-xl shrink-0 shadow-sm border border-gray-100 mr-4">
                                 <i class="fa-solid fa-globe"></i>
@@ -514,6 +601,9 @@
                             <div>
                                 <h5 class="font-bold text-tp-dark-purple" data-lang-id="app4F3T">Dynamic Power BI
                                     Dashboard</h5>
+                                <p class="text-red-500 font-bold text-x">
+                                    SOON
+                                </p>
                                 <p class="text-sm text-gray-500" data-lang-id="app4F3D">Automatic crossing of client
                                     data with global goals, integrated into dashboards to make informed decisions on
                                     subregions needing optimization.</p>
@@ -618,6 +708,56 @@
 
     <!-- LOGIC SCRIPT (Language Toggle & Modal) -->
     <script>
+
+
+        // Script para ocultar elementos descriptivos de cada producto
+        document.addEventListener("DOMContentLoaded", () => {
+            // Referencias a los elementos
+            const defaultContent = document.getElementById('AppDefault');
+            const containerRight = document.getElementById('ContainerApps');
+
+            const apps = [
+                { trigger: 'App1F', content: 'App1' },
+                { trigger: 'App2F', content: 'App2' },
+                { trigger: 'App3F', content: 'App3' },
+                { trigger: 'App4F', content: 'App4' }
+            ];
+
+            // Obtenemos todos los elementos de contenido específico
+            const allSpecificContents = apps.map(a => document.getElementById(a.content));
+
+            // Función para ocultar todo y mostrar solo uno (o el default)
+            const showOnly = (targetId) => {
+                // Ocultar el default y todos los específicos
+                defaultContent.style.display = 'none';
+                allSpecificContents.forEach(el => { if (el) el.style.display = 'none'; });
+
+                // Si targetId es null, mostramos el default, si no, el específico
+                if (targetId) {
+                    document.getElementById(targetId).style.display = 'block';
+                } else {
+                    defaultContent.style.display = 'block';
+                }
+            };
+
+            // 1. Eventos para cada opción (Entrada)
+            apps.forEach(app => {
+                const triggerEl = document.getElementById(app.trigger);
+                if (triggerEl) {
+                    triggerEl.addEventListener("mouseenter", () => showOnly(app.content));
+                }
+            });
+
+            // 2. Evento para el contenedor padre (Salida)
+            if (containerRight) {
+                containerRight.addEventListener("mouseleave", () => {
+                    showOnly(null); // Al pasar null, la función muestra el AppDefault
+                });
+            }
+        });
+
+
+
         // --- 1. DICCIONARIO COMPLETO (LANGUAGE TOGGLE) ---
 
         // Estado global del idioma actual para usarlo en el Modal
