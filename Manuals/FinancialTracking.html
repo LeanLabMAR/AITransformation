@@ -1,1 +1,114 @@
 
+<!DOCTYPE html>
+
+<body>
+
+
+
+
+
+
+
+    <div id="Colombia" class="flex flex-col justify-center items-center w-full mb-21">
+
+        <div class="relative flex items-center w-[80%] mb-4">
+            <button id="btnPlayCol"
+                class="absolute left-0 flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white rounded-full p-2 transition-all shadow-lg shadow-blue-500/20 active:scale-95 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </button>
+
+            <div class="w-full text-center">
+                <span class="section-tag">Power App Demo</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-9 tracking-tighter">Billing Process in
+                    Colombia</h2>
+            </div>
+        </div>
+        <canvas id="colombiaAnimacion" width="1050" height="500"
+            class="block border-2 border-blue-500/30 rounded-2xl shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] max-w-[95%] h-auto bg-black/40">
+
+
+        </canvas>
+
+        <script>
+            (function () {
+                const canvasCol = document.getElementById('colombiaAnimacion');
+                const ctxCol = canvasCol.getContext('2d');
+                const btnPlayCol = document.getElementById('btnPlayCol');
+
+                const baseURL = "https://raw.githubusercontent.com/LeanLabMAR/AITransformation/main/Images/FinancialTracking/";
+
+                const imagesCol = [];
+                let imagesLoadedCol = 0;
+                let currentIndexCol = 0;
+                let animationTimeout; // Para controlar el flujo del tiempo
+
+                const existingIndices = [];
+                for (let i = 1; i <= 90; i++) {
+                    if (i >= 20 && i <= 30) continue;
+                    existingIndices.push(i);
+                }
+
+                const totalImagesCount = existingIndices.length;
+
+                existingIndices.forEach((imgNum, index) => {
+                    const img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.src = `${baseURL}/${imgNum}.png`;
+
+                    img.onload = () => {
+                        imagesCol[index] = img;
+                        imagesLoadedCol++;
+
+                        if (index === 0) {
+                            ctxCol.drawImage(img, 0, 0, canvasCol.width, canvasCol.height);
+                        }
+
+                        if (imagesLoadedCol === totalImagesCount) {
+                            animateCol();
+                        }
+                    };
+
+                    img.onerror = () => {
+                        console.error("No se encontró en GitHub: " + img.src);
+                        imagesLoadedCol++;
+                        if (imagesLoadedCol === totalImagesCount) animateCol();
+                    };
+                });
+
+                function animateCol() {
+                    if (imagesCol.length === 0) return;
+
+                    ctxCol.clearRect(0, 0, canvasCol.width, canvasCol.height);
+                    const img = imagesCol[currentIndexCol];
+
+                    if (img) {
+                        ctxCol.drawImage(img, 0, 0, canvasCol.width, canvasCol.height);
+                    }
+
+                    currentIndexCol = (currentIndexCol + 1) % totalImagesCount;
+
+                    // Guardamos el timeout en una variable para poder resetearlo
+                    animationTimeout = setTimeout(() => {
+                        requestAnimationFrame(animateCol);
+                    }, 2000);
+                }
+
+                // FUNCIÓN DEL BOTÓN PLAY
+                btnPlayCol.addEventListener('click', () => {
+                    // 1. Limpiamos cualquier espera de animación actual
+                    clearTimeout(animationTimeout);
+
+                    // 2. Reiniciamos el índice a 0
+                    currentIndexCol = 0;
+
+                    // 3. Volvemos a llamar a la animación
+                    animateCol();
+
+                    console.log("Animación reiniciada desde el cuadro 1");
+                });
+            })();
+        </script>
+    </div>
+</body>
