@@ -1,11 +1,983 @@
-
 <!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #2b3252;
+            --dark-mid: #3d4a70;
+            --slate: #4f5b80;
+            --muted: #6b7a99;
+            --lavender: #8b90b8;
+            --soft-blue: #a8b4d4;
+            --pale: #d4daf0;
+            --bg-light: #f4f5f9;
+            --bg-white: #ffffff;
+            --accent: #5a6fb5;
+            --accent2: #7b83c0;
+            --pill-bg: #e8eaf6;
+            --pill-text: #3d4a70;
+            --text-dark: #22283f;
+            --text-mid: #4a5268;
+            --text-light: #7a8299;
+            --border: #e2e5f0;
+            --tag-bg: #3d4a70;
+            --check: #5a6fb5;
+            --arrow-bg: #c8cde8;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 62px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--lavender);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent2);
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--lavender);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent2);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: var(--dark);
+            padding: 70px 5% 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 420px;
+            align-items: end;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            padding-bottom: 60px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--lavender);
+            margin-bottom: 18px;
+        }
+
+        .hero-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+
+        .hero-left h1 em {
+            font-style: italic;
+            color: var(--soft-blue);
+        }
+
+        .hero-left p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.75;
+            max-width: 400px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--dark);
+            padding: 11px 26px;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 0.82rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-white:hover {
+            background: var(--pale);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 11px 26px;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+        }
+
+        /* Hero right: layered cards stacked */
+        .hero-right {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 0;
+            padding-left: 40px;
+        }
+
+        .hero-stat-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px 12px 0 0;
+            padding: 22px 24px 18px;
+            flex: 1;
+            border-bottom: none;
+        }
+
+        .hero-stat .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .hero-stat .lbl {
+            font-size: 0.72rem;
+            color: var(--lavender);
+            margin-top: 5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── SECTION STYLES ─── */
+        section {
+            padding: 72px 5%;
+        }
+
+        .sec-label {
+            display: inline-block;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .sec-label.light {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        h2.sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.3px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        h2.sec-title.light {
+            color: #fff;
+        }
+
+        h2.sec-title strong {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .sec-desc {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+            max-width: 540px;
+            font-weight: 300;
+        }
+
+        .sec-desc.light {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        /* ─── WHY SECTION (light bg) ─── */
+        .why-section {
+            background: var(--bg-light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+            align-items: start;
+        }
+
+        .why-left .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .why-left .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        .why-left .bullet-list li::before {
+            content: '●';
+            color: var(--muted);
+            font-size: 0.5rem;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .tag-box {
+            display: inline-block;
+            background: var(--dark);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Layers stack — right side */
+        .layers-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .layer-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .layer-pill {
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            color: #fff;
+            min-width: 210px;
+            position: relative;
+        }
+
+        .layer-pill.l1 {
+            background: var(--dark);
+        }
+
+        .layer-pill.l2 {
+            background: var(--slate);
+        }
+
+        .layer-pill.l3 {
+            background: var(--soft-blue);
+            color: var(--dark);
+        }
+
+        .layer-desc {
+            font-size: 0.78rem;
+            color: var(--text-mid);
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        /* ─── PILLARS SECTION (dark) ─── */
+        .pillars-section {
+            background: var(--dark);
+            padding-bottom: 0;
+        }
+
+        .pillars-head {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .pillars-head h2 {
+            margin-bottom: 0;
+        }
+
+        .pillars-tag-inline {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .pills-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding-bottom: 56px;
+        }
+
+        .pill-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 100px;
+            cursor: default;
+            transition: all 0.2s;
+        }
+
+        .pill-item:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* ─── MODULES / BUSINESS IMPACT (white + grid) ─── */
+        .impact-section {
+            background: var(--bg-white);
+        }
+
+        .impact-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            margin-top: 48px;
+            align-items: start;
+        }
+
+        .impact-left h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--text-dark);
+        }
+
+        .impact-left .bullet-list {
+            list-style: none;
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .impact-left .bullet-list li {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.55;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .impact-left .bullet-list li::before {
+            content: '●';
+            color: var(--accent);
+            font-size: 0.45rem;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 10px;
+        }
+
+        .mod-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 18px;
+            transition: all 0.25s;
+        }
+
+        .mod-card:hover {
+            border-color: var(--soft-blue);
+            background: #eef0f8;
+            transform: translateY(-2px);
+        }
+
+        .mod-card.wide {
+            grid-column: span 2;
+        }
+
+        .mod-card h4 {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .mod-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .mod-card ul li {
+            font-size: 0.75rem;
+            color: var(--text-mid);
+            line-height: 1.55;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .mod-card ul li::before {
+            content: '·';
+            position: absolute;
+            left: 3px;
+            color: var(--accent);
+            font-size: 1rem;
+            line-height: 1;
+            top: 1px;
+        }
+
+        .mod-axis-label {
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            writing-mode: vertical-rl;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        /* ─── STRATEGY SECTION ─── */
+        .strategy-section {
+            background: var(--bg-light);
+        }
+
+        .strategy-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        .strategy-right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .highlight-box {
+            background: var(--dark);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .strategy-text p {
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.8;
+            margin-bottom: 14px;
+            font-weight: 300;
+        }
+
+        .strategy-text p strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .strategy-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .strategy-card:hover {
+            border-color: var(--soft-blue);
+        }
+
+        .strategy-card h4 {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .strategy-card p {
+            font-size: 0.78rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        /* ─── HOW IT WORKS ─── */
+        .hiw-section {
+            background: var(--bg-white);
+        }
+
+        .hiw-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        .hiw-step {
+            padding: 24px 20px;
+            border: 1px solid var(--border);
+            border-right: none;
+            background: var(--bg-white);
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        .hiw-step:last-child {
+            border-right: 1px solid var(--border);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .hiw-step:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+
+        .hiw-step:hover {
+            background: var(--bg-light);
+        }
+
+        .hiw-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .hiw-check span {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .hiw-step p {
+            font-size: 0.77rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .hiw-arrow {
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: var(--arrow-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--dark);
+            z-index: 2;
+            font-weight: 800;
+        }
+
+        .hiw-step:last-child .hiw-arrow {
+            display: none;
+        }
+
+        /* ─── ALERTS SECTION (dark) ─── */
+        .alerts-section {
+            background: var(--dark-mid);
+        }
+
+        .alerts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .alert-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px 20px;
+            transition: all 0.25s;
+        }
+
+        .alert-card:hover {
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .alert-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--soft-blue);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .alert-card h4 {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .alert-card p {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.65;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            background: var(--bg-light);
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .cta-section h2 em {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .cta-section p {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            max-width: 480px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .btn-accent {
+            background: var(--dark);
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 10px;
+        }
+
+        .btn-accent:hover {
+            background: var(--slate);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            padding: 22px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .brand {
+            font-weight: 900;
+            font-size: 0.82rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        footer .brand span {
+            color: var(--lavender);
+        }
+
+        footer .copy {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media(max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right,
+            .hero-stat-row {
+                display: none;
+            }
+
+            .why-grid,
+            .strategy-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-grid .mod-card.wide {
+                grid-column: span 1;
+            }
+
+            .hiw-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .alerts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
 
 <body>
 
 
 
+    <!-- NAV -->
 
+
+    <nav id="topBar"
+        class="fixed top-0 w-full z-50 flex items-center justify-between px-[5%] h-[62px] border-b border-gray-200/20"
+        style="background-color: rgba(255, 255, 255, 0.7) !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+
+        <div class="nav-logo" style="color: #1a1a1a !important;">AI <span style="color: #7c3aed;">FINANCIAL</span>
+            TRACKING</div>
+
+        <div class="nav-links">
+            <a href="#" style="color: #4b5563 !important;">¿Por qué?</a>
+            <a href="#" style="color: #4b5563 !important;">Módulos</a>
+            <a href="#" style="color: #4b5563 !important;">Estrategia</a>
+            <a href="#" style="color: #4b5563 !important;">Alertas</a>
+            <a href="#" style="color: #4b5563 !important;">Impacto</a>
+        </div>
+        <!--Change Language Toggle-->
+        <div class="flex items-center bg-gray-100/80 p-1 rounded-full border border-gray-200 shadow-inner">
+            <button onclick="setLanguage('es')" id="btn-es"
+                class="px-3 py-1 text-[11px] font-bold rounded-full transition-all duration-300 bg-white shadow-sm text-tp-purple">
+                ES
+            </button>
+            <button onclick="setLanguage('en')" id="btn-en"
+                class="px-3 py-1 text-[11px] font-bold rounded-full transition-all duration-300 text-gray-500 hover:text-tp-purple">
+                EN
+            </button>
+        </div>
+        <button class="nav-btn"
+            onclick="window.open('https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/758a7d2d-b515-4d91-be14-36fb17ae3e8b?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=b128d179-7335-416e-b758-0a98b658ee61&sourcetime=1773251877033&source=portal&hidenavbar=true#', '_blank')">
+            Open App →
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-left">
+            <div class="hero-eyebrow">Microsoft PowerApp</div>
+            <h1>Financial tracking<br> <em>AI Transformationn</em></h1>
+            <p>
+                Financial Tracking: A centralized platform for TP clients to monitor net benefits versus operational
+                costs
+            </p>
+            <div class="hero-btns">
+                <button class="btn-white">Explorar solución</button>
+                <button class="btn-outline">Ver módulos →</button>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-stat-row">
+                <div class="hero-stat">
+                    <div class="num">3</div>
+                    <div class="lbl">Dimensiones por reporte</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">−4</div>
+                    <div class="lbl">Días de alerta preventiva</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">100%</div>
+                    <div class="lbl">Trazabilidad en tiempo real</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -111,4 +1083,268 @@
             })();
         </script>
     </div>
+
+
+    <!-- WHY + LAYERS -->
+    <section class="why-section">
+        <div class="why-grid">
+            <div class="why-left">
+                <div class="tag-box">No solo reportes. Gobierno de datos.</div>
+                <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px;font-weight:300;">
+                    STATUS CEO BI-WEEKLY resuelve la dispersión histórica de reportes bi-semanales al proporcionar un
+                    entorno estructurado donde la información no solo se almacena, sino que se gestiona proactivamente.
+                </p>
+                <ul class="bullet-list">
+                    <li>Elimina archivos manuales y reportes aislados</li>
+                    <li>Unifica Estado Actual, Riesgos Claves y Próximos Pasos</li>
+                    <li>Garantiza trazabilidad total y auditoría para el CEO</li>
+                    <li>Permite seguimiento de cumplimiento en tiempo real</li>
+                </ul>
+            </div>
+            <div class="why-right">
+                <div class="sec-label">Una plataforma. Cuatro herramientas.</div>
+                <div class="layers-stack" style="margin-top:16px;">
+                    <div class="layer-row">
+                        <div class="layer-pill l1">⚡ Power Apps</div>
+                        <div class="layer-desc">Interfaz front-end intuitiva y bilingüe, optimizada para carga de datos
+                            ágil.</div>
+                    </div>
+                    <div class="layer-row">
+                        <div class="layer-pill l2">🗄️ SharePoint</div>
+                        <div class="layer-desc">Motor de base de datos relacional que garantiza integridad y
+                            persistencia.</div>
+                    </div>
+                    <div class="layer-row">
+                        <div class="layer-pill l2" style="background:var(--muted);">🔄 Power Automate</div>
+                        <div class="layer-desc">Flujos de trabajo, cálculos de cumplimiento y sistema de alertas
+                            automáticas.</div>
+                    </div>
+                    <div class="layer-row">
+                        <div class="layer-pill l3">💬 Microsoft Teams</div>
+                        <div class="layer-desc">Canal principal de notificaciones push con botones de acción directa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars-section">
+        <div class="pillars-head">
+            <div>
+                <div class="sec-label light">Arquitectura Funcional</div>
+                <h2 class="sec-title light">4 Pilares <strong>Operativos</strong></h2>
+            </div>
+            <span class="pillars-tag-inline">Módulos Estratégicos</span>
+        </div>
+        <div class="pills-row">
+            <span class="pill-item">Gestión Bi-Semanal</span>
+            <span class="pill-item">Base de Datos</span>
+            <span class="pill-item">Compliance</span>
+            <span class="pill-item">Alertas Tempranas</span>
+            <span class="pill-item">Visualización Ejecutiva</span>
+        </div>
+    </section>
+
+    <!-- BUSINESS IMPACT / MODULES -->
+    <section class="impact-section">
+        <div class="impact-layout">
+            <div class="impact-left">
+                <h2>Business<br>Impact</h2>
+                <ul class="bullet-list">
+                    <li>Mayor eficiencia y productividad operativa</li>
+                    <li>Mejor toma de decisiones del CEO</li>
+                    <li>Escalabilidad segura en Microsoft 365</li>
+                    <li>Crecimiento sostenible y auditable</li>
+                </ul>
+            </div>
+            <div>
+                <div style="display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;">
+                    <div></div>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;">
+                        <div
+                            style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px;">
+                            Core Engine</div>
+                        <div
+                            style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px;">
+                            Compliance & DB</div>
+                        <div
+                            style="font-size:0.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px;">
+                            Visualización</div>
+                    </div>
+                    <div
+                        style="display:flex;flex-direction:column;justify-content:space-around;gap:10px;padding-top:4px;">
+                        <div class="mod-axis-label"
+                            style="writing-mode:vertical-rl;font-size:0.6rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">
+                            Sub-Stream</div>
+                        <div class="mod-axis-label"
+                            style="writing-mode:vertical-rl;font-size:0.6rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;">
+                            País</div>
+                    </div>
+                    <div class="modules-grid">
+                        <div class="mod-card">
+                            <h4>Gestión Bi-Semanal</h4>
+                            <ul>
+                                <li>Actualización triple: Estado, Riesgos, Próximos Pasos</li>
+                                <li>Segmentación por Sub-Stream, Subregión y País</li>
+                                <li>Captura obligatoria de las 3 dimensiones</li>
+                            </ul>
+                        </div>
+                        <div class="mod-card">
+                            <h4>Compliance Automático</h4>
+                            <ul>
+                                <li>Cálculo automático del nivel de cumplimiento</li>
+                                <li>Timestamps y autoría en cada registro</li>
+                                <li>Base histórica para auditorías del CEO</li>
+                            </ul>
+                        </div>
+                        <div class="mod-card">
+                            <h4>Visualización Ejecutiva</h4>
+                            <ul>
+                                <li>Tablero global actualizado en tiempo real</li>
+                                <li>Filtros por país, riesgo o Sub-Stream</li>
+                            </ul>
+                        </div>
+                        <div class="mod-card wide">
+                            <h4>Sistema de Alertas Tempranas (Proactive Monitoring)</h4>
+                            <ul>
+                                <li>Alerta preventiva 4 días antes del cierre con tarjeta adaptable en Teams</li>
+                                <li>Botones de acción directa al punto exacto del app para completar el reporte</li>
+                                <li>Confirmación automática de envío exitoso y actualización del dashboard global</li>
+                            </ul>
+                        </div>
+                        <div class="mod-card">
+                            <h4>Validación en Tiempo Real</h4>
+                            <ul>
+                                <li>Filtros inteligentes anti-errores en subregiones</li>
+                                <li>Ningún reporte queda huérfano de metadatos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGY -->
+    <section class="strategy-section">
+        <div class="strategy-layout">
+            <div class="strategy-text">
+                <div class="sec-label">Estrategia Central</div>
+                <h2 class="sec-title">Our <strong>Strategy</strong></h2>
+                <div class="highlight-box">Transformación del proceso manual al ecosistema digital</div>
+                <p>La estrategia es <strong>transformar el reporte bi-semanal de un proceso manual y fragmentado en una
+                        experiencia integrada y orientada a datos.</strong></p>
+                <p>STATUS CEO BI-WEEKLY permite <strong>centralizar, estandarizar y automatizar</strong> la captura de
+                    estados, mejorando la velocidad, consistencia y visibilidad para la alta gerencia mientras entrega
+                    una experiencia de usuario simplificada para los líderes de Sub-Stream.</p>
+            </div>
+            <div class="strategy-right">
+                <div class="strategy-card">
+                    <h4>🎯 Centralización Total</h4>
+                    <p>Un único repositorio digital elimina la dispersión de datos en múltiples archivos manuales,
+                        garantizando que cada reporte esté en el lugar correcto.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>🔒 Seguridad Empresarial</h4>
+                    <p>Construido sobre Microsoft 365, garantizando seguridad de grado empresarial con acceso controlado
+                        por área de influencia de cada líder.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>📈 Accountability por País</h4>
+                    <p>Segmentación jerárquica Sub-Stream → Subregión → País asegura que cada riesgo sea detectado y
+                        cada entidad esté bajo control en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="hiw-section">
+        <div class="sec-label">Flujo Operativo</div>
+        <h2 class="sec-title">How it <strong>works</strong></h2>
+        <p class="sec-desc">Un camino eficiente, efectivo e integrado hacia el gobierno de datos ejecutivo.</p>
+        <div class="hiw-steps">
+            <div class="hiw-step">
+                <div class="hiw-check">
+                    <div class="check-icon">✓</div>
+                    <span>Captura Estructurada</span>
+                </div>
+                <p>Líder de Sub-Stream ingresa Estado Actual, Riesgos Claves y Próximos Pasos desde Power Apps, bilingüe
+                    y optimizado para mobile.</p>
+                <div class="hiw-arrow">→</div>
+            </div>
+            <div class="hiw-step">
+                <div class="hiw-check">
+                    <div class="check-icon">✓</div>
+                    <span>Almacenamiento Seguro</span>
+                </div>
+                <p>SharePoint persiste el registro con timestamp y autoría automática. Validación en tiempo real evita
+                    errores de metadatos.</p>
+                <div class="hiw-arrow">→</div>
+            </div>
+            <div class="hiw-step">
+                <div class="hiw-check">
+                    <div class="check-icon">✓</div>
+                    <span>Automatización y Alertas</span>
+                </div>
+                <p>Power Automate calcula Compliance y activa alertas preventivas en Teams 4 días antes del cierre del
+                    período bi-semanal.</p>
+                <div class="hiw-arrow">→</div>
+            </div>
+            <div class="hiw-step">
+                <div class="hiw-check">
+                    <div class="check-icon">✓</div>
+                    <span>Visibilidad Ejecutiva</span>
+                </div>
+                <p>El CEO accede al tablero global con filtros instantáneos por país, riesgo o Sub-Stream para tomar
+                    decisiones en segundos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section class="alerts-section">
+        <div class="sec-label light">Push Proactivo</div>
+        <h2 class="sec-title light">Sistema de <strong>Alertas</strong> Automatizadas</h2>
+        <p class="sec-desc light" style="margin-bottom:0;">El mayor diferenciador: garantiza que nada quede sin
+            reportar.</p>
+        <div class="alerts-grid">
+            <div class="alert-card">
+                <div class="alert-num">−4</div>
+                <h4>Alerta Preventiva</h4>
+                <p>Power Automate identifica los reportes pendientes 4 días antes del cierre y envía una tarjeta
+                    adaptable en Microsoft Teams a los responsables.</p>
+            </div>
+            <div class="alert-card">
+                <div class="alert-num">⚡</div>
+                <h4>Botones de Acción Directa</h4>
+                <p>Las notificaciones no son simples recordatorios: incluyen acciones directas que llevan al usuario al
+                    punto exacto del app donde completar su reporte.</p>
+            </div>
+            <div class="alert-card">
+                <div class="alert-num">✓</div>
+                <h4>Confirmación Automática</h4>
+                <p>Una vez completado el reporte, el sistema confirma la carga exitosa y actualiza el tablero de
+                    cumplimiento global en tiempo real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>¿Listo para centralizar la<br><em>inteligencia operativa</em>?</h2>
+        <p>Únete al ecosistema de Gobierno de Datos ejecutivo. Cada riesgo detectado. Cada país bajo control.</p>
+        <button class="btn-accent">Acceder al App →</button>
+        <button class="btn-outline" style="color:var(--text-mid);border-color:var(--border);">Conocer más</button>
+    </section>
+
+    <footer>
+        <div class="brand">STATUS <span>CEO</span> BI-WEEKLY</div>
+        <div class="copy">Powered by Microsoft Power Platform · Microsoft 365</div>
+    </footer>
+
 </body>
+
+</html>
