@@ -29,14 +29,12 @@
         #App1,
         #App2,
         #App3,
-        #App4 {
-            display: none;
+        #App4,
+        #AppDefault {
+            transition: opacity 0.3s ease-in-out;
         }
 
-        #AppDefault {
-            display: block;
-            /* Este es el único que se ve al inicio */
-        }
+
 
         :root {
             --tp-purple: #5b5b7d;
@@ -214,11 +212,12 @@
                                 Overview
                             </span>
                         </div>
-                        <h3 class="text-3xl font-bold mb-2">Internal AI Transformation</h3>
+                        <h3 class="text-3xl font-bold mb-2">AI Transformation Tools</h3>
                         <p class="text-blue-200 font-medium mb-6">Select a solution to see details</p>
                         <p class="text-gray-300 mb-8 leading-relaxed text-sm">
-                            Explore our ecosystem of applications designed to optimize global operations,
-                            manage risks, and provide executive visibility across 130 countries.
+                            Explore our ecosystem of tools/applications designed to optimize global operations,
+                            manage risks, financial statements that provides executive visibility for AI Transformation
+                            project
                         </p>
                     </div>
                     <div id="App2" class="hidden">
@@ -235,6 +234,11 @@
                             It acts as the central hub for the progress status of transformation processes, providing
                             executive visibility into progress, milestones, and deviations.
                         </p>
+                        <button onclick="openModal('status')"
+                            class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                            <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Open Interactive
+                                Viewer</span>
+                        </button>
                     </div>
 
 
@@ -256,6 +260,11 @@
                             repository that centralizes the flow of operational reports, automatically notifying
                             executives and CEOs.
                         </p>
+                        <button onclick="openModal('insights')"
+                            class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                            <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Open Interactive
+                                Viewer</span>
+                        </button>
                     </div>
 
                     <div id="App3" class="hidden">
@@ -271,6 +280,11 @@
                         <p class="text-gray-300 mb-8 leading-relaxed text-sm" data-lang-id="app3Desc">
                             It allows for the identification, monitoring and structured control of risks associated with
                             initiatives, strengthening preventive management and early mitigation. </p>
+                        <button onclick="openModal('risk')"
+                            class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                            <i class="fa-solid fa-expand mr-3"></i> <span data-lang-id="appBtnView">Open Interactive
+                                Viewer</span>
+                        </button>
                     </div>
 
 
@@ -289,11 +303,12 @@
                             CAN-US. Quickly identifies financial deviations across various streams (QA, Training,
                             Recruitment, Supervisors, WFM).
                         </p>
+                        <button onclick="openModal('financial')"
+                            class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
+                            <i class="fa-solid fa-expand mr-3"></i> <span>Open Interactive Viewer</span>
+                        </button>
                     </div>
-                    <button onclick="openModal('financial')"
-                        class="mt-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl py-3 px-6 font-bold flex items-center justify-center transition backdrop-blur-sm shadow-lg w-fit">
-                        <i class="fa-solid fa-expand mr-3"></i> <span>Open Interactive Viewer</span>
-                    </button>
+
                 </div>
 
                 <div class="lg:w-7/12 p-10 lg:p-12">
@@ -607,6 +622,7 @@
                                 <p class="text-sm text-gray-500" data-lang-id="app4F3D">Automatic crossing of client
                                     data with global goals, integrated into dashboards to make informed decisions on
                                     subregions needing optimization.</p>
+
                             </div>
                         </div>
                     </div>
@@ -663,38 +679,45 @@
 
             <!-- Modal Body -->
             <div class="flex flex-col md:flex-row flex-1 overflow-hidden bg-white">
-                <!-- Image Carousel -->
-                <div class="md:w-2/3 bg-gray-100/50 flex items-center justify-center p-4 lg:p-8 relative">
+                <div class="md:w-9/12 bg-gray-100/50 flex items-center justify-center relative overflow-hidden group">
+
                     <button onclick="prevSlide()"
-                        class="absolute left-2 lg:left-6 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition z-10">
+                        class="absolute left-4 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition-all z-20 opacity-0 group-hover:opacity-100">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
-                    <div
-                        class="w-full h-full border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm flex items-center justify-center p-2 relative">
-                        <img id="carouselImg" src=""
-                            class="max-w-full max-h-full object-contain transition-opacity duration-300"
+
+                    <div class="w-full h-full relative flex items-center justify-center">
+                        <img id="carouselImg" src="" class="w-full h-full object-cover transition-opacity duration-300"
                             alt="App Interface">
+
                         <div id="imgPlaceholder"
                             class="absolute inset-0 flex flex-col items-center justify-center text-gray-300 bg-gray-50 hidden">
                             <i class="fa-solid fa-image text-6xl mb-4 opacity-50"></i>
                             <span class="text-sm font-mono" id="imgPlaceholderText">image.jpg</span>
                         </div>
                     </div>
+
                     <button onclick="nextSlide()"
-                        class="absolute right-2 lg:right-6 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition z-10">
+                        class="absolute right-4 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-tp-purple hover:bg-tp-purple hover:text-white transition-all z-20 opacity-0 group-hover:opacity-100">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
-                <!-- Details Panel -->
+
                 <div
-                    class="md:w-1/3 p-8 lg:p-12 bg-white border-l border-gray-100 flex flex-col justify-center relative shadow-[-10px_0_20px_-15px_rgba(0,0,0,0.05)] z-10">
-                    <div class="w-12 h-12 rounded-full bg-tp-light-gray text-tp-purple flex items-center justify-center font-bold text-xl mb-8 shadow-inner"
+                    class="md:w-3/12 p-6 lg:p-10 bg-white border-l border-gray-100 flex flex-col justify-center relative shadow-[-10px_0_20px_-15px_rgba(0,0,0,0.05)] z-10">
+                    <div class="w-12 h-12 rounded-full bg-tp-light-gray text-tp-purple flex items-center justify-center font-bold text-xl mb-6 shadow-inner"
                         id="slideNumber">1</div>
-                    <h3 class="text-3xl font-extrabold text-tp-dark-purple mb-4 leading-tight" id="slideTitle">Title
+
+                    <h3 class="text-2xl font-extrabold text-tp-dark-purple mb-4 leading-tight" id="slideTitle">
+                        Title
                     </h3>
+
                     <div class="w-10 h-1 bg-tp-accent mb-6"></div>
-                    <div class="text-gray-600 text-[15px] leading-relaxed space-y-3" id="slideDesc"></div>
-                    <div class="flex space-x-2 mt-12" id="carouselDots"></div>
+
+                    <div class="text-gray-600 text-[14px] leading-relaxed space-y-3" id="slideDesc">
+                    </div>
+
+                    <div class="flex space-x-2 mt-10" id="carouselDots"></div>
                 </div>
             </div>
         </div>
@@ -712,49 +735,56 @@
 
         // Script para ocultar elementos descriptivos de cada producto
         document.addEventListener("DOMContentLoaded", () => {
-            // Referencias a los elementos
-            const defaultContent = document.getElementById('AppDefault');
-            const containerRight = document.getElementById('ContainerApps');
+            const mainContainer = document.getElementById('app-financial');
+            const defaultApp = document.getElementById('AppDefault');
+            const appIds = ['App1', 'App2', 'App3', 'App4'];
 
-            const apps = [
-                { trigger: 'App1F', content: 'App1' },
-                { trigger: 'App2F', content: 'App2' },
-                { trigger: 'App3F', content: 'App3' },
-                { trigger: 'App4F', content: 'App4' }
-            ];
-
-            // Obtenemos todos los elementos de contenido específico
-            const allSpecificContents = apps.map(a => document.getElementById(a.content));
-
-            // Función para ocultar todo y mostrar solo uno (o el default)
-            const showOnly = (targetId) => {
-                // Ocultar el default y todos los específicos
-                defaultContent.style.display = 'none';
-                allSpecificContents.forEach(el => { if (el) el.style.display = 'none'; });
-
-                // Si targetId es null, mostramos el default, si no, el específico
-                if (targetId) {
-                    document.getElementById(targetId).style.display = 'block';
-                } else {
-                    defaultContent.style.display = 'block';
+            // Función para ocultar todas las descripciones y mostrar la por defecto
+            function resetToDefault() {
+                appIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.classList.add('hidden');
+                        el.classList.remove('block');
+                    }
+                });
+                if (defaultApp) {
+                    defaultApp.classList.remove('hidden');
+                    defaultApp.classList.add('block');
                 }
-            };
+            }
 
-            // 1. Eventos para cada opción (Entrada)
-            apps.forEach(app => {
-                const triggerEl = document.getElementById(app.trigger);
-                if (triggerEl) {
-                    triggerEl.addEventListener("mouseenter", () => showOnly(app.content));
+            // Configurar los disparadores (Hovers)
+            appIds.forEach(id => {
+                const trigger = document.getElementById(id + 'F');
+                const content = document.getElementById(id);
+
+                if (trigger && content) {
+                    trigger.addEventListener('mouseenter', () => {
+                        // Ocultar el default y los demás
+                        appIds.forEach(otherId => {
+                            document.getElementById(otherId).classList.replace('block', 'hidden');
+                        });
+                        if (defaultApp) defaultApp.classList.replace('block', 'hidden');
+
+                        // Mostrar el actual
+                        content.classList.replace('hidden', 'block');
+                    });
                 }
             });
 
-            // 2. Evento para el contenedor padre (Salida)
-            if (containerRight) {
-                containerRight.addEventListener("mouseleave", () => {
-                    showOnly(null); // Al pasar null, la función muestra el AppDefault
+            // --- ESTA ES LA PARTE QUE SOLICITASTE ---
+            // Detectar cuando el mouse sale del contenedor principal
+            if (mainContainer) {
+                mainContainer.addEventListener('mouseleave', () => {
+                    resetToDefault();
                 });
             }
         });
+
+
+
+
 
 
 
