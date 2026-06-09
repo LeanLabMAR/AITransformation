@@ -1,466 +1,1138 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Fab.Operate Americas Ranking</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Fab.Operate Americas CEO Ranking - June 9, 2026</title>
 <style>
-:root {
-  --bg:#f5f7fb; --card:#ffffff; --ink:#18212f; --muted:#5c677d; --line:#d9e1ee;
-  --blue:#204b9b; --blue2:#5f87d6; --green:#1d8f6a; --amber:#b97807; --red:#b63a3a;
-}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
-.container{max-width:1280px;margin:0 auto;padding:28px}
-.hero{background:linear-gradient(135deg,#163a7a,#2f63bf);color:#fff;border-radius:20px;padding:28px 32px;box-shadow:0 10px 24px rgba(23,44,87,.15)}
-.hero h1{margin:0 0 8px;font-size:30px} .hero p{margin:6px 0 0;max-width:980px;line-height:1.45}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px} .chip{background:rgba(255,255,255,.14);padding:8px 12px;border-radius:999px;font-size:13px}
-.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
-.panel h2{margin:0 0 12px;font-size:22px} .panel p{color:var(--muted);line-height:1.45}
-table{width:100%;border-collapse:collapse} th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:14px} th{color:var(--muted);font-weight:600}
-.rank{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#eaf0fb;color:var(--blue);font-weight:700;margin-right:8px}
-.bubble-wrap{height:420px;position:relative}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:13px}
-.legend span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue2);margin-right:8px}
-.section-title{margin:24px 0 12px;font-size:24px}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
-.card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.eyebrow{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
-.card h3{margin:4px 0 10px;font-size:21px}
-.tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.pill{padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
-.at-risk{background:#fdecec;color:var(--red)} .action-needed{background:#fff3dd;color:var(--amber)}
-.on-track{background:#e9f8f1;color:var(--green)} .scaled{background:#e8f0ff;color:var(--blue)}
-.urgency{background:#eef2f8;color:#3d4d68}
-.summary{margin:0 0 12px;line-height:1.45}
-.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.metrics div{background:#f8faff;border:1px solid #e4ebf5;border-radius:14px;padding:12px}
-.metrics span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px} .metrics strong{font-size:22px}
-.method{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-.method .box{background:#f8faff;border:1px solid #e4ebf5;border-radius:16px;padding:16px}
-.method .box strong{display:block;font-size:22px;margin-bottom:6px}
-.detail{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 16px;margin-bottom:12px}
-.detail summary{cursor:pointer;padding:16px 0;font-weight:700}
-.detail summary span{font-weight:400;color:var(--muted);margin-left:8px}
-.detail-table th,.detail-table td{font-size:13px;padding:10px 8px}
-.footer-link{background:#102f66;color:#fff;text-decoration:none;padding:12px 16px;border-radius:12px;display:inline-block;margin-top:8px}
-@media (max-width:1000px){.grid,.cards{grid-template-columns:1fr} .metrics{grid-template-columns:repeat(2,1fr)} .method{grid-template-columns:repeat(1,1fr)}}
+:root { --bg:#f5f7fb; --ink:#172033; --muted:#5f6b84; --line:#d8dfeb; --card:#ffffff; --accent:#123b7a; --accent2:#2d74da; --good:#0f9d58; --warn:#b26a00; --bad:#b3261e; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--ink); }
+.container { max-width:1280px; margin:0 auto; padding:28px; }
+.hero { background:linear-gradient(135deg,#15315f,#245bb2); color:#fff; border-radius:18px; padding:28px 30px; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.hero h1 { margin:0 0 10px; font-size:30px; }
+.hero p { margin:8px 0; line-height:1.5; max-width:1050px; }
+.section { margin-top:22px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:0 2px 8px rgba(17,24,39,.04); }
+.section h2 { margin:0 0 10px; font-size:22px; }
+.grid { display:grid; gap:16px; }
+.grid.three { grid-template-columns:repeat(3,1fr); }
+.grid.two { grid-template-columns:repeat(2,1fr); }
+.card, .mini { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; }
+.card h3, .mini h4 { margin:0 0 8px; }
+.card p, .mini p, li { line-height:1.5; color:var(--ink); }
+.small { color:var(--muted); font-size:13px; }
+.kpi { display:flex; flex-direction:column; gap:6px; min-height:122px; }
+.kpi .v { font-size:34px; font-weight:700; color:var(--accent); }
+.kpi .l { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.table-wrap { overflow:auto; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:#f0f4fb; color:#23344f; position:sticky; top:0; }
+.note { margin-top:12px; padding:12px 14px; border-radius:12px; background:#f6f9ff; border:1px solid #d9e6ff; color:#213250; line-height:1.45; }
+.warning { background:#fff5e8; border-color:#ffd7a3; }
+.region-card { border:1px solid var(--line); border-radius:16px; padding:18px; margin-top:16px; background:#fcfdff; }
+.region-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px; }
+.region-head h3 { margin:0; font-size:20px; }
+.meta { color:var(--muted); font-size:13px; margin-top:4px; }
+.pill { background:#eef4ff; color:#20417a; border:1px solid #d5e3ff; border-radius:999px; padding:7px 11px; font-size:12px; white-space:nowrap; }
+ul.tight { margin:8px 0 0 18px; padding:0; }
+.footer { color:var(--muted); font-size:12px; margin:18px 0 8px; }
+a { color:#1c5fd4; text-decoration:none; }
+@media (max-width: 900px) { .grid.three, .grid.two { grid-template-columns:1fr; } .region-head { flex-direction:column; } }
 
+.initiative-grid { display:grid; grid-template-columns:1fr; gap:18px; }
+.initiative-card { border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; }
+.initiative-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.initiative-head h3 { margin:0 0 4px; font-size:18px; }
+.initiative-head p { margin:0; color:var(--muted); font-size:13px; }
+.table-wrap { overflow:auto; }
 
-.comments-intro{color:var(--muted);margin:0 0 14px 0}
-.comment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
-.comment-card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;box-shadow:0 6px 18px rgba(20,34,66,.06)}
-.comment-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}
-.comment-title{font-size:16px;font-weight:700;color:var(--ink);margin:0}
-.comment-meta{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
-.badge.ok{background:#e7f5ef;color:#1d8f6a}
-.badge.warn{background:#fff4db;color:#b97807}
-.badge.risk{background:#fdeaea;color:#b63a3a}
-.badge.neutral{background:#eef2f8;color:#5c677d}
-.comment-block{margin-top:12px}
-.comment-label{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px}
-.comment-text{font-size:13px;line-height:1.5;color:var(--ink)}
-.comment-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:0 0 16px 0}
-.summary-box{background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:12px}
-.summary-k{font-size:12px;color:var(--muted);margin-bottom:4px}
-.summary-v{font-size:20px;font-weight:700;color:var(--ink)}
 </style>
 </head>
 <body>
 <div class="container">
-<section class="hero">
-<h1>Fab.Operate Americas Ranking</h1>
-<p>This report provides a concise executive view of progress across the region. The overall ranking combines <strong>Coverage</strong> and <strong>Conversion</strong>, while initiative-level results reflect differentiated implementation priority within Fab.Operate.</p>
-<div class="meta">
-<div class="chip">Source: VALORES sheet • MAY26 AMS Ranking</div>
-<div class="chip">Method: 40% Coverage • 60% Conversion</div>
-<div class="chip">Headline: MAR leads the Americas ranking, followed by BRA. The current view rewards conversion more heavily than coverage while reflecting differentiated initiative priority.</div>
-</div>
+  <div class="hero">
+    <h1>Fab.Operate Americas CEO Ranking</h1>
+    <p><strong>Reporting cut:</strong> June 9, 2026 · <strong>Ranking source:</strong> Jun09 - AMS - Fab.Operate Ranking.xlsx · <strong>Leadership comment source:</strong> May25 - AMS - Fab.Operate Leaders comments.xlsx</p>
+    <p>This CEO ranking provides an executive view of Fab.Operate execution across the Americas. The current cut shows a clear split between regions building breadth and regions converting that breadth into implementation outcomes. As of June 9, BRA ranks first, followed by MAR and CSC, while South Cone and US-Canada continue to show larger conversion gaps despite important pipeline activity.</p>
+    <p><strong>Methodology.</strong> Overall ranking combines 40% Coverage and 60% Conversion. Coverage is calculated as accounts in deployment, technical go-live, and go-live divided by total in-scope accounts. Conversion is calculated as technical go-live and go-live divided by total in-scope accounts. Initiative contributions are then weighted by implementation priority to build the regional score.</p>
+  </div>
+
+  <section class="section">
+    <h2>Executive summary</h2>
+    <div class="grid three">
+      <div class="card kpi"><div class="l">#1 region</div><div class="v">BRA</div><div>Highest overall score in the current cut, supported mainly by Product Training, Hallo, and Workforce contribution.</div></div>
+      <div class="card kpi"><div class="l">Main portfolio risk</div><div class="v">Training</div><div>Product Training is still the largest weighted gap in the portfolio because conversion remains low relative to its priority and scope.</div></div>
+      <div class="card kpi"><div class="l">Main decision theme</div><div class="v">Convert</div><div>The next CEO lever is less about opening more opportunities and more about removing legal, approval, integration, and governance blockers.</div></div>
+    </div>
+    <div class="note"><strong>Important reporting gap.</strong> Unfortunately, for the week of May 25 we do not have a progress update for <strong>Supervisors in BRA</strong> or <strong>Training in Chile</strong>. These gaps are explicitly flagged in the regional comment layer below.</div>
+  </section>
+
+  <section class="section">
+    <h2>Overall Americas ranking</h2>
+    <div class="grid two">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rank</th><th>Sub-region</th><th>Coverage</th><th>Conversion</th><th>Overall score</th></tr></thead>
+          <tbody><tr><td><strong>1</strong></td><td>BRA</td><td>28.4</td><td>20.0</td><td>23.4</td></tr><tr><td><strong>2</strong></td><td>MAR</td><td>29.8</td><td>17.3</td><td>22.3</td></tr><tr><td><strong>3</strong></td><td>CSC</td><td>27.2</td><td>16.7</td><td>20.9</td></tr><tr><td><strong>4</strong></td><td>NCA</td><td>22.0</td><td>16.7</td><td>18.8</td></tr><tr><td><strong>5</strong></td><td>South Cone</td><td>34.0</td><td>5.8</td><td>17.1</td></tr><tr><td><strong>6</strong></td><td>US-Canada</td><td>20.5</td><td>9.5</td><td>13.9</td></tr></tbody>
+        </table>
+      </div>
+      <div>
+        <div class="small" style="margin-bottom:8px;">Bubble view: X = Coverage score · Y = Conversion score · Bubble size = overall score</div>
+        <svg viewBox="0 0 760 380" width="100%" height="auto"><rect x="0" y="0" width="760" height="380" fill="#ffffff"/><line x1="70" y1="325" x2="730" y2="325" stroke="#666"/><line x1="70" y1="20" x2="70" y2="325" stroke="#666"/><line x1="70.0" y1="20" x2="70.0" y2="325" stroke="#eee"/><line x1="70" y1="325.0" x2="730" y2="325.0" stroke="#eee"/><text x="70.0" y="345" font-size="11" text-anchor="middle" fill="#666">0</text><text x="60" y="329.0" font-size="11" text-anchor="end" fill="#666">0</text><line x1="202.0" y1="20" x2="202.0" y2="325" stroke="#eee"/><line x1="70" y1="264.0" x2="730" y2="264.0" stroke="#eee"/><text x="202.0" y="345" font-size="11" text-anchor="middle" fill="#666">7</text><text x="60" y="268.0" font-size="11" text-anchor="end" fill="#666">4</text><line x1="334.0" y1="20" x2="334.0" y2="325" stroke="#eee"/><line x1="70" y1="203.0" x2="730" y2="203.0" stroke="#eee"/><text x="334.0" y="345" font-size="11" text-anchor="middle" fill="#666">14</text><text x="60" y="207.0" font-size="11" text-anchor="end" fill="#666">8</text><line x1="466.0" y1="20" x2="466.0" y2="325" stroke="#eee"/><line x1="70" y1="142.0" x2="730" y2="142.0" stroke="#eee"/><text x="466.0" y="345" font-size="11" text-anchor="middle" fill="#666">20</text><text x="60" y="146.0" font-size="11" text-anchor="end" fill="#666">12</text><line x1="598.0" y1="20" x2="598.0" y2="325" stroke="#eee"/><line x1="70" y1="81.0" x2="730" y2="81.0" stroke="#eee"/><text x="598.0" y="345" font-size="11" text-anchor="middle" fill="#666">27</text><text x="60" y="85.0" font-size="11" text-anchor="end" fill="#666">16</text><line x1="730.0" y1="20" x2="730.0" y2="325" stroke="#eee"/><line x1="70" y1="20.0" x2="730" y2="20.0" stroke="#eee"/><text x="730.0" y="345" font-size="11" text-anchor="middle" fill="#666">34</text><text x="60" y="24.0" font-size="11" text-anchor="end" fill="#666">20</text><text x="400.0" y="368" font-size="12" text-anchor="middle" fill="#333">Coverage score</text><text transform="translate(18 172.5) rotate(-90)" font-size="12" text-anchor="middle" fill="#333">Conversion score</text><circle cx="622.1" cy="20.0" r="34.0" fill="#1f77b4" fill-opacity="0.35" stroke="#1f77b4" stroke-width="2"/><text x="622.1" y="24.0" font-size="11" text-anchor="middle" font-weight="700" fill="#222">BRA</text><circle cx="648.7" cy="61.2" r="33.0" fill="#ff7f0e" fill-opacity="0.35" stroke="#ff7f0e" stroke-width="2"/><text x="648.7" y="65.2" font-size="11" text-anchor="middle" font-weight="700" fill="#222">MAR</text><circle cx="597.7" cy="70.2" r="31.7" fill="#2ca02c" fill-opacity="0.35" stroke="#2ca02c" stroke-width="2"/><text x="597.7" y="74.2" font-size="11" text-anchor="middle" font-weight="700" fill="#222">CSC</text><circle cx="496.0" cy="69.9" r="29.7" fill="#d62728" fill-opacity="0.35" stroke="#d62728" stroke-width="2"/><text x="496.0" y="73.9" font-size="11" text-anchor="middle" font-weight="700" fill="#222">NCA</text><circle cx="730.0" cy="236.8" r="28.1" fill="#9467bd" fill-opacity="0.35" stroke="#9467bd" stroke-width="2"/><text x="730.0" y="240.8" font-size="11" text-anchor="middle" font-weight="700" fill="#222">South Cone</text><circle cx="468.3" cy="180.8" r="25.1" fill="#8c564b" fill-opacity="0.35" stroke="#8c564b" stroke-width="2"/><text x="468.3" y="184.8" font-size="11" text-anchor="middle" font-weight="700" fill="#222">US-Canada</text></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Portfolio signals requiring CEO attention</h2>
+    <ul class="tight"><li>Product Training remains the largest weighted execution gap: it carries the highest priority weight in the model, but still shows low conversion and high not-started exposure in every sub-region.</li><li>EMA QA is still a constrained quality workstream: coverage remains low, conversion is near zero in most regions, and leader comments continue to point to legal/client-approval dependencies.</li><li>Workforce is the clearest source of differentiated regional performance: CSC, US-Canada, NCA, and MAR all show meaningful contribution from Datanativ or RTM Bot, while BRA and South Cone still require sharper value validation.</li><li>Hallo remains the cleanest scale proof point in the portfolio, already live at high maturity in BRA, MAR, CSC, and NCA.</li></ul>
+  </section>
+
+  <section class="section">
+    <h2>Initiative scan</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Initiative</th><th>Top region</th><th>Top score</th><th>Lowest region</th><th>Lowest score</th><th>Executive read</th></tr></thead>
+        <tbody><tr><td>Product Training</td><td>BRA</td><td>17.2</td><td>US-Canada</td><td>1.1</td><td>Highest priority weight; large backlog still limits value capture.</td></tr><tr><td>Centrical</td><td>SouthCone</td><td>17.9</td><td>US-Canada</td><td>3.0</td><td>Good deployment breadth, but conversion remains uneven by region.</td></tr><tr><td>Ema QA</td><td>MAR</td><td>3.3</td><td>SouthCone</td><td>0.0</td><td>Low conversion and legal/client-approval drag remain structural.</td></tr><tr><td>Datanativ</td><td>CSC</td><td>6.6</td><td>BRA</td><td>0.5</td><td>One of the main differentiators across regions; manual effort still high.</td></tr><tr><td>RTM Bot</td><td>US-Canada</td><td>12.6</td><td>SouthCone</td><td>0.0</td><td>Strong where in scope; limited breadth in some regions.</td></tr><tr><td>Hallo</td><td>BRA</td><td>11.4</td><td>US-Canada</td><td>6.5</td><td>Most mature scale initiative in the current cut.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    
+<section class="section">
+  <h2>Initiative results by region</h2>
+  <p>This section shows the detailed results of each initiative by region, so leadership can see where progress is concentrated and where implementation remains limited. Coverage reflects accounts in deployment plus technical go-live and go-live over total in-scope; conversion reflects technical go-live plus go-live over total in-scope.</p>
+  <div class="initiative-grid">
+    
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Centrical</h3>
+          <p>Supervisors · Priority weight 0.199</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>10</td>
+          <td>0</td>
+          <td>9</td>
+          <td>0</td>
+          <td>0</td>
+          <td>90.0%</td>
+          <td>0.0%</td>
+          <td>17.91</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>67</td>
+          <td>0</td>
+          <td>13</td>
+          <td>4</td>
+          <td>9</td>
+          <td>38.8%</td>
+          <td>19.4%</td>
+          <td>11.58</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>25</td>
+          <td>0</td>
+          <td>8</td>
+          <td>1</td>
+          <td>0</td>
+          <td>36.0%</td>
+          <td>4.0%</td>
+          <td>7.96</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>77</td>
+          <td>3</td>
+          <td>25</td>
+          <td>1</td>
+          <td>0</td>
+          <td>33.8%</td>
+          <td>1.3%</td>
+          <td>6.98</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>31</td>
+          <td>0</td>
+          <td>9</td>
+          <td>0</td>
+          <td>0</td>
+          <td>29.0%</td>
+          <td>0.0%</td>
+          <td>5.78</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>20</td>
+          <td>1</td>
+          <td>3</td>
+          <td>0</td>
+          <td>0</td>
+          <td>15.0%</td>
+          <td>0.0%</td>
+          <td>2.99</td>
+          <td>6</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Fab Assist</h3>
+          <p>Supervisors · Priority weight 0.000</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>12</td>
+          <td>0</td>
+          <td>2</td>
+          <td>2</td>
+          <td>1</td>
+          <td>41.7%</td>
+          <td>25.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>45</td>
+          <td>18</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>76</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>37</td>
+          <td>31</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>77</td>
+          <td>75</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>28</td>
+          <td>28</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Onboarding</h3>
+          <p>Training · Priority weight 0.000</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>107</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>107</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>32</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>32</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>74</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>74</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>38</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>38</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>128</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>128</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>94</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>94</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Pre-process</h3>
+          <p>Training · Priority weight 0.000</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>20</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>20</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>32</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>32</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>36</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>36</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Product Training</h3>
+          <p>Training · Priority weight 0.416</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>75</td>
+          <td>58</td>
+          <td>3</td>
+          <td>0</td>
+          <td>14</td>
+          <td>22.7%</td>
+          <td>18.7%</td>
+          <td>17.19</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>102</td>
+          <td>56</td>
+          <td>9</td>
+          <td>0</td>
+          <td>16</td>
+          <td>24.5%</td>
+          <td>15.7%</td>
+          <td>16.72</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>22</td>
+          <td>8</td>
+          <td>2</td>
+          <td>0</td>
+          <td>1</td>
+          <td>13.6%</td>
+          <td>4.5%</td>
+          <td>7.56</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>31</td>
+          <td>22</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>6.5%</td>
+          <td>6.5%</td>
+          <td>5.37</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>88</td>
+          <td>25</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>3.4%</td>
+          <td>3.4%</td>
+          <td>2.84</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>73</td>
+          <td>58</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1.4%</td>
+          <td>1.4%</td>
+          <td>1.14</td>
+          <td>6</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Ema QA</h3>
+          <p>Quality · Priority weight 0.200</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>30</td>
+          <td>7</td>
+          <td>3</td>
+          <td>1</td>
+          <td>0</td>
+          <td>13.3%</td>
+          <td>3.3%</td>
+          <td>3.33</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>27</td>
+          <td>12</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>7.4%</td>
+          <td>0.0%</td>
+          <td>1.48</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>50</td>
+          <td>12</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>4.0%</td>
+          <td>2.0%</td>
+          <td>1.20</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>20</td>
+          <td>16</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5.0%</td>
+          <td>0.0%</td>
+          <td>1</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>9</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>6</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Datanativ</h3>
+          <p>Workforce · Priority weight 0.063</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>46</td>
+          <td>0</td>
+          <td>30</td>
+          <td>9</td>
+          <td>0</td>
+          <td>84.8%</td>
+          <td>19.6%</td>
+          <td>6.57</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>103</td>
+          <td>0</td>
+          <td>28</td>
+          <td>12</td>
+          <td>17</td>
+          <td>55.3%</td>
+          <td>28.2%</td>
+          <td>5.26</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>125</td>
+          <td>0</td>
+          <td>19</td>
+          <td>21</td>
+          <td>0</td>
+          <td>32.0%</td>
+          <td>16.8%</td>
+          <td>3.07</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>4</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>75.0%</td>
+          <td>25.0%</td>
+          <td>6.30</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>149</td>
+          <td>0</td>
+          <td>4</td>
+          <td>16</td>
+          <td>0</td>
+          <td>13.4%</td>
+          <td>10.7%</td>
+          <td>1.52</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>79</td>
+          <td>0</td>
+          <td>0</td>
+          <td>3</td>
+          <td>0</td>
+          <td>3.8%</td>
+          <td>3.8%</td>
+          <td>0.48</td>
+          <td>6</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>RTM Bot</h3>
+          <p>Workforce · Priority weight 0.063</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>4</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>3</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>12.60</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>12.60</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>12.60</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>22</td>
+          <td>5</td>
+          <td>0</td>
+          <td>8</td>
+          <td>7</td>
+          <td>68.2%</td>
+          <td>68.2%</td>
+          <td>8.59</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>29</td>
+          <td>0</td>
+          <td>1</td>
+          <td>16</td>
+          <td>0</td>
+          <td>58.6%</td>
+          <td>55.2%</td>
+          <td>7.17</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>0.0%</td>
+          <td>0</td>
+          <td>6</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="initiative-card">
+      <div class="initiative-head">
+        <div>
+          <h3>Hallo</h3>
+          <p>Recruitment · Priority weight 0.057</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>In Scope</th>
+              <th>Not Started</th>
+              <th>In Deployment</th>
+              <th>Technical Go-Live</th>
+              <th>Go-Live</th>
+              <th>Coverage</th>
+              <th>Conversion</th>
+              <th>Total Score</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td><strong>BRA</strong></td>
+          <td>106</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>106</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>11.40</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>MAR</strong></td>
+          <td>170</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>170</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>11.40</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>CSC</strong></td>
+          <td>47</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>47</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>11.40</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>NCA</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>100.0%</td>
+          <td>100.0%</td>
+          <td>11.40</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><strong>SouthCone</strong></td>
+          <td>59</td>
+          <td>0</td>
+          <td>35</td>
+          <td>0</td>
+          <td>24</td>
+          <td>100.0%</td>
+          <td>40.7%</td>
+          <td>8.02</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>US-Canada</strong></td>
+          <td>28</td>
+          <td>0</td>
+          <td>24</td>
+          <td>0</td>
+          <td>4</td>
+          <td>100.0%</td>
+          <td>14.3%</td>
+          <td>6.51</td>
+          <td>6</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </section>
-<div class="grid">
-<section class="panel">
-<h2>Overall Americas ranking</h2>
-<p>The regional score gives more weight to conversion than coverage, to highlight where pipeline is being translated into real implementation progress.</p>
-<table>
-<thead><tr><th>Sub-region</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody>
-<tr>
-<td><span class="rank">1</span> MAR</td>
-<td>139.96</td>
-<td>115.44</td>
-<td><strong>125.25</strong></td>
-</tr>
-<tr>
-<td><span class="rank">2</span> BRA</td>
-<td>109.30</td>
-<td>87.60</td>
-<td><strong>96.28</strong></td>
-</tr>
-<tr>
-<td><span class="rank">3</span> NCA</td>
-<td>147.74</td>
-<td>57.19</td>
-<td><strong>93.41</strong></td>
-</tr>
-<tr>
-<td><span class="rank">4</span> CSC</td>
-<td>129.37</td>
-<td>35.57</td>
-<td><strong>73.09</strong></td>
-</tr>
-<tr>
-<td><span class="rank">5</span> US-Canada</td>
-<td>86.77</td>
-<td>52.21</td>
-<td><strong>66.03</strong></td>
-</tr>
-<tr>
-<td><span class="rank">6</span> SouthCone</td>
-<td>149.51</td>
-<td>21.85</td>
-<td><strong>72.92</strong></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section class="panel">
-<h2>Coverage vs. conversion bubble view</h2>
-<p>The chart compares regional coverage and conversion. Bubble size reflects weighted not-started drag across initiatives.</p>
-<div class="bubble-wrap"><canvas id="bubbleChart"></canvas></div>
-<div class="legend"><span></span> Larger bubbles indicate more weighted implementation drag.</div>
-</section>
+
+<h2>Leadership comments linked to results</h2>
+    <div class="note">This section summarizes leader comments by region and connects them to the current ranking results so the report can support strategic decisions, not only status reporting.</div>
+    
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>BRA</h3>
+          <div class="meta">Rank #1 · Coverage 28.4 · Conversion 20.0 · Overall 23.4</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Recruitment, Training, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: Product Training (Training), RTM Bot (Workforce). Main pressure points in current results: Product Training (Training), Centrical (Supervisors).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>Overall leadership is being sustained by strong Recruiting performance, an early but measurable Product Training pipeline, and Workforce rollout now under active implementation.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>Leader comments point to three blockers: Datanativ still lacks key integrations for Brazil operations, global training programs limit reduction opportunities, and QA progress depends on client response. No Supervisors update was reported for the week of May 25.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>BRA is performing well overall, but part of that strength sits on initiatives already scaled. Leadership attention should focus on unlocking the next wave of value in Workforce, QA, and the missing Supervisors workstream.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Prioritize a decision on Datanativ licensing/integration, protect QA scope discipline, and request an updated BRA Supervisors plan before the next CEO cut.</div>
+      <div class="note warning"><strong>Missing update:</strong> Supervisors update missing for BRA (week of May 25).</div>
+    </section>
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>MAR</h3>
+          <div class="meta">Rank #2 · Coverage 29.8 · Conversion 17.3 · Overall 22.3</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Recruitment, Training, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: Product Training (Training), Hallo (Recruitment). Main pressure points in current results: Product Training (Training), Centrical (Supervisors).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>MAR remains one of the most balanced regions, with strong Hiring performance, active Workforce progress, and a large Training pipeline already commercialized.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>The main blocker is not top-of-funnel activity but conversion: Training still has an approval bottleneck, QA is slowed by legal/addendum cycles, and several accounts depend on faster global governance decisions.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>MAR has enough pipeline to sustain leadership, but without tighter approval management the region risks carrying breadth without converting it into enough live deployments.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Use weekly executive tracking to close approvals, escalate global dependencies quickly, and convert the strongest Training and QA opportunities into technical go-live decisions.</div>
+      
+    </section>
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>CSC</h3>
+          <div class="meta">Rank #3 · Coverage 27.2 · Conversion 16.7 · Overall 20.9</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Recruitment, Supervisors, Training, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: RTM Bot (Workforce), Hallo (Recruitment). Main pressure points in current results: Centrical (Supervisors), Product Training (Training).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>CSC moved into the top three mainly on the back of Workforce, where Datanativ is the region’s clearest scaled execution signal; Training also continues to add new programs.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>The comments show uneven maturity across workstreams: Training remains pitch-heavy, Workforce still requires significant manual effort, and QA/Supervisors progress is still earlier-stage than the ranking leaders.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>CSC has a credible execution story, but the next strategic question is whether the region can broaden success beyond Workforce and avoid concentration risk in a single workstream.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Keep exploiting Workforce as the anchor proof point, while forcing a sharper conversion plan in Training and tightening the deployment path for QA and Supervisors.</div>
+      
+    </section>
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>NCA</h3>
+          <div class="meta">Rank #4 · Coverage 22.0 · Conversion 16.7 · Overall 18.8</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Recruitment, Supervisors, Training, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: Centrical (Supervisors), Hallo (Recruitment). Main pressure points in current results: Ema QA (Quality), Product Training (Training).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>NCA shows the strongest operating momentum in Supervisors through Centrical, alongside full Hiring rollout and relevant progress in Workforce.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>Comments indicate that global deployment strategy is still unclear for several multinational clients, AlphaRun contracts continue to delay Recruiting value, and Training remains highly dependent on client approval and credential readiness.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>NCA is execution-capable, but more of its pipeline now needs structural unblockers from Global rather than additional commercial activity.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Clarify the global playbook for multinational clients, protect Recruiting economics until AlphaRun sunsets, and force targeted approval closures in Training to improve conversion.</div>
+      
+    </section>
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>South Cone</h3>
+          <div class="meta">Rank #5 · Coverage 34.0 · Conversion 5.8 · Overall 17.1</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Recruitment, Supervisors, Training, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: Centrical (Supervisors), Hallo (Recruitment). Main pressure points in current results: Centrical (Supervisors), RTM Bot (Workforce).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>South Cone has the highest coverage in the ranking and strong early movement in Supervisors, plus initial Workforce and Recruiting traction.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>That breadth is not yet translating into conversion. Centrical coverage is high but conversion is still zero, local teams question the cost logic of global WFM tools, and Training progress is concentrated in Argentina. No Training update was reported for Chile in the week of May 25.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>South Cone is the clearest example of breadth without enough conversion. The key decision is whether blockers are executional and solvable now, or whether the current pipeline needs scope reprioritization.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Move Supervisors accounts from deployment to technical go-live, validate the South Cone business case for WFM tools, and request a Chile-specific Training update to complete the regional view.</div>
+      <div class="note warning"><strong>Missing update:</strong> Training update missing for Chile in South Cone (week of May 25).</div>
+    </section>
+    <section class="region-card">
+      <div class="region-head">
+        <div>
+          <h3>US-Canada</h3>
+          <div class="meta">Rank #6 · Coverage 20.5 · Conversion 9.5 · Overall 13.9</div>
+        </div>
+        <div class="pill">Comment coverage: Quality, Supervisors, Workforce</div>
+      </div>
+      <div class="grid two">
+        <div class="mini"><h4>Result signal</h4><p>Top weighted contributors: RTM Bot (Workforce), Hallo (Recruitment). Main pressure points in current results: Product Training (Training).</p></div>
+        <div class="mini"><h4>Leadership view</h4><p>US-Canada continues to show strong signals in Workforce and some Hiring progress, but the region remains constrained in the overall ranking by low conversion in higher-priority tools.</p></div>
+        <div class="mini"><h4>Main blocker</h4><p>The leadership comments point to a structural blocker: legal validation is still gating Supervisors deployment at scale, while QA also depends on client approvals and support from EMA for deployment speed.</p></div>
+        <div class="mini"><h4>Decision implication</h4><p>US-Canada does not need more pipeline generation first; it needs blocker removal. Until legal and client-approval issues are resolved, conversion will remain disproportionately low versus the region’s addressable base.</p></div>
+      </div>
+      <div class="note"><strong>Recommended next move:</strong> Resolve legal classification rules quickly, accelerate license provisioning and data integration, and keep a focused list of QA accounts that can move fastest once approvals clear.</div>
+      
+    </section>
+  </section>
+
+  <section class="section">
+    <h2>Detailed implementation pipeline</h2>
+    <p>For a detailed view of the implementation pipeline, including account-level deployment status, timelines, regional progress, and workstream tracking, please access the <strong>Fab.Operate Pipeline Ranking</strong> dashboard.</p>
+    <p><a href="https://tpcompass.teleperformance.co/container/report/open/6109">Fab.Operate Pipeline Ranking</a></p>
+    <p class="small">This dashboard provides the latest deployment pipeline visibility across regions, accounts, and Internal AI workstreams.</p>
+  </section>
+
+  <div class="footer">Prepared for CEO review. Coverage and conversion definitions are aligned with the formulas shown in the ranking workbook.</div>
 </div>
-<section class="panel" style="margin-top:18px">
-<h2>Methodology</h2>
-<p>The methodology has been kept intentionally simple for executive readability.</p>
-<div class="method">
-<div class="box"><strong>40%</strong>Coverage</div>
-<div class="box"><strong>60%</strong>Conversion</div>
-<div class="box"><strong>Priority by initiative</strong>Each initiative carries differentiated weight to reflect implementation focus within Fab.Operate.</div>
-</div>
-</section>
-<h2 class="section-title">Initiative scan</h2>
-<div class="cards">
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Quality • Weight 1.00</div>
-<h3>Ema QA</h3>
-</div>
-<div class="tags">
-<span class="pill at-risk">At Risk</span>
-<span class="pill urgency">High</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Ema QA shows 3.8% coverage and 0.0% conversion across the tracked scope. Leader: US-Canada. Lowest current score: CSC.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>160</strong></div>
-<div><span>Not started</span><strong>73</strong></div>
-<div><span>Deployment</span><strong>6</strong></div>
-<div><span>Technical go-live</span><strong>0</strong></div>
-<div><span>Go-live</span><strong>0</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Recruitment • Weight 1.00</div>
-<h3>Hallo</h3>
-</div>
-<div class="tags">
-<span class="pill scaled">Scaled</span>
-<span class="pill urgency">Medium</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Hallo shows 84.2% coverage and 42.3% conversion across the tracked scope. Leader: BRA. Lowest current score: US-Canada.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>660</strong></div>
-<div><span>Not started</span><strong>0</strong></div>
-<div><span>Deployment</span><strong>277</strong></div>
-<div><span>Technical go-live</span><strong>0</strong></div>
-<div><span>Go-live</span><strong>279</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Supervisors • Weight 1.00</div>
-<h3>Centrical</h3>
-</div>
-<div class="tags">
-<span class="pill action-needed">Action Needed</span>
-<span class="pill urgency">Medium-High</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Centrical shows 34.3% coverage and 6.1% conversion across the tracked scope. Leader: SouthCone. Lowest current score: US-Canada.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>230</strong></div>
-<div><span>Not started</span><strong>4</strong></div>
-<div><span>Deployment</span><strong>65</strong></div>
-<div><span>Technical go-live</span><strong>9</strong></div>
-<div><span>Go-live</span><strong>5</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Training • Weight 0.80</div>
-<h3>Product Training</h3>
-</div>
-<div class="tags">
-<span class="pill action-needed">Action Needed</span>
-<span class="pill urgency">Medium-High</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Product Training shows 14.9% coverage and 12.3% conversion across the tracked scope. Leader: BRA. Lowest current score: US-Canada.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>390</strong></div>
-<div><span>Not started</span><strong>232</strong></div>
-<div><span>Deployment</span><strong>10</strong></div>
-<div><span>Technical go-live</span><strong>0</strong></div>
-<div><span>Go-live</span><strong>48</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Workforce • Weight 0.60</div>
-<h3>RTM Bot</h3>
-</div>
-<div class="tags">
-<span class="pill on-track">On Track</span>
-<span class="pill urgency">Medium</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> RTM Bot shows 62.5% coverage and 46.4% conversion across the tracked scope. Leader: US-Canada. Lowest current score: SouthCone.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>56</strong></div>
-<div><span>Not started</span><strong>6</strong></div>
-<div><span>Deployment</span><strong>9</strong></div>
-<div><span>Technical go-live</span><strong>18</strong></div>
-<div><span>Go-live</span><strong>8</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Workforce • Weight 0.50</div>
-<h3>Datanativ</h3>
-</div>
-<div class="tags">
-<span class="pill action-needed">Action Needed</span>
-<span class="pill urgency">Medium-High</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Datanativ shows 22.1% coverage and 12.1% conversion across the tracked scope. Leader: CSC. Lowest current score: BRA.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>506</strong></div>
-<div><span>Not started</span><strong>0</strong></div>
-<div><span>Deployment</span><strong>51</strong></div>
-<div><span>Technical go-live</span><strong>61</strong></div>
-<div><span>Go-live</span><strong>0</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Training • Weight 0.30</div>
-<h3>Onboarding</h3>
-</div>
-<div class="tags">
-<span class="pill scaled">Scaled</span>
-<span class="pill urgency">Medium</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Onboarding shows 100.0% coverage and 100.0% conversion across the tracked scope. Leader: NCA. Lowest current score: NCA.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>473</strong></div>
-<div><span>Not started</span><strong>0</strong></div>
-<div><span>Deployment</span><strong>0</strong></div>
-<div><span>Technical go-live</span><strong>0</strong></div>
-<div><span>Go-live</span><strong>473</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Training • Weight 0.10</div>
-<h3>Pre-process</h3>
-</div>
-<div class="tags">
-<span class="pill scaled">Scaled</span>
-<span class="pill urgency">Medium</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Pre-process shows 100.0% coverage and 100.0% conversion across the tracked scope. Leader: MAR. Lowest current score: MAR.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>88</strong></div>
-<div><span>Not started</span><strong>0</strong></div>
-<div><span>Deployment</span><strong>0</strong></div>
-<div><span>Technical go-live</span><strong>0</strong></div>
-<div><span>Go-live</span><strong>88</strong></div>
-</div>
-</div>
-<div class="card">
-<div class="card-head">
-<div>
-<div class="eyebrow">Supervisors • Weight 0.05</div>
-<h3>Fab Assist</h3>
-</div>
-<div class="tags">
-<span class="pill at-risk">At Risk</span>
-<span class="pill urgency">High</span>
-</div>
-</div>
-<p class="summary"><strong>Executive read:</strong> Fab Assist shows 1.5% coverage and 0.9% conversion across the tracked scope. Leader: SouthCone. Lowest current score: US-Canada.</p>
-<div class="metrics">
-<div><span>In scope</span><strong>334</strong></div>
-<div><span>Not started</span><strong>285</strong></div>
-<div><span>Deployment</span><strong>2</strong></div>
-<div><span>Technical go-live</span><strong>2</strong></div>
-<div><span>Go-live</span><strong>1</strong></div>
-</div>
-</div>
-</div>
-<section class="panel" style="margin-top:18px">
-<h2>Regional detail by initiative</h2>
-<p>Each section below shows the latest regional mix of not started, deployment, technical go-live, and go-live by initiative.</p>
-<details class="detail">
-<summary>Ema QA <span>Quality • Weight 1.00</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>US-Canada</td><td>12</td><td>2</td><td>0</td><td>0</td><td>27</td><td>7.4%</td><td>0.0%</td><td>4.44</td></tr><tr><td>NCA</td><td>21</td><td>2</td><td>0</td><td>0</td><td>51</td><td>3.9%</td><td>0.0%</td><td>2.35</td></tr><tr><td>BRA</td><td>28</td><td>1</td><td>0</td><td>0</td><td>32</td><td>3.1%</td><td>0.0%</td><td>1.88</td></tr><tr><td>MAR</td><td>9</td><td>1</td><td>0</td><td>0</td><td>33</td><td>3.0%</td><td>0.0%</td><td>1.82</td></tr><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>0</td><td>10</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>SouthCone</td><td>3</td><td>0</td><td>0</td><td>0</td><td>7</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Hallo <span>Recruitment • Weight 1.00</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>106</td><td>106</td><td>100.0%</td><td>100.0%</td><td>120.00</td></tr><tr><td>MAR</td><td>0</td><td>0</td><td>0</td><td>170</td><td>170</td><td>100.0%</td><td>100.0%</td><td>120.00</td></tr><tr><td>SouthCone</td><td>0</td><td>58</td><td>0</td><td>1</td><td>59</td><td>100.0%</td><td>1.7%</td><td>61.02</td></tr><tr><td>CSC</td><td>0</td><td>47</td><td>0</td><td>0</td><td>47</td><td>100.0%</td><td>0.0%</td><td>60.00</td></tr><tr><td>NCA</td><td>0</td><td>146</td><td>0</td><td>0</td><td>146</td><td>100.0%</td><td>0.0%</td><td>60.00</td></tr><tr><td>US-Canada</td><td>0</td><td>26</td><td>0</td><td>2</td><td>132</td><td>21.2%</td><td>1.5%</td><td>13.64</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Centrical <span>Supervisors • Weight 1.00</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>SouthCone</td><td>0</td><td>9</td><td>0</td><td>0</td><td>10</td><td>90.0%</td><td>0.0%</td><td>54.00</td></tr><tr><td>NCA</td><td>0</td><td>12</td><td>7</td><td>5</td><td>68</td><td>35.3%</td><td>17.6%</td><td>31.76</td></tr><tr><td>CSC</td><td>0</td><td>7</td><td>1</td><td>0</td><td>24</td><td>33.3%</td><td>4.2%</td><td>22.50</td></tr><tr><td>MAR</td><td>3</td><td>25</td><td>1</td><td>0</td><td>77</td><td>33.8%</td><td>1.3%</td><td>21.04</td></tr><tr><td>BRA</td><td>0</td><td>9</td><td>0</td><td>0</td><td>31</td><td>29.0%</td><td>0.0%</td><td>17.42</td></tr><tr><td>US-Canada</td><td>1</td><td>3</td><td>0</td><td>0</td><td>20</td><td>15.0%</td><td>0.0%</td><td>9.00</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Product Training <span>Training • Weight 0.80</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>BRA</td><td>58</td><td>2</td><td>0</td><td>15</td><td>75</td><td>22.7%</td><td>20.0%</td><td>20.48</td></tr><tr><td>MAR</td><td>57</td><td>6</td><td>0</td><td>17</td><td>102</td><td>22.5%</td><td>16.7%</td><td>18.82</td></tr><tr><td>NCA</td><td>24</td><td>0</td><td>0</td><td>12</td><td>87</td><td>13.8%</td><td>13.8%</td><td>13.24</td></tr><tr><td>SouthCone</td><td>8</td><td>2</td><td>0</td><td>1</td><td>23</td><td>13.0%</td><td>4.3%</td><td>8.35</td></tr><tr><td>CSC</td><td>27</td><td>0</td><td>0</td><td>2</td><td>30</td><td>6.7%</td><td>6.7%</td><td>6.40</td></tr><tr><td>US-Canada</td><td>58</td><td>0</td><td>0</td><td>1</td><td>73</td><td>1.4%</td><td>1.4%</td><td>1.32</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>RTM Bot <span>Workforce • Weight 0.60</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>US-Canada</td><td>0</td><td>1</td><td>2</td><td>1</td><td>4</td><td>100.0%</td><td>75.0%</td><td>63.00</td></tr><tr><td>MAR</td><td>0</td><td>0</td><td>16</td><td>0</td><td>29</td><td>55.2%</td><td>55.2%</td><td>39.72</td></tr><tr><td>NCA</td><td>5</td><td>8</td><td>0</td><td>7</td><td>22</td><td>68.2%</td><td>31.8%</td><td>36.00</td></tr><tr><td>SouthCone</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Datanativ <span>Workforce • Weight 0.50</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>CSC</td><td>0</td><td>25</td><td>9</td><td>0</td><td>46</td><td>73.9%</td><td>19.6%</td><td>28.04</td></tr><tr><td>NCA</td><td>0</td><td>19</td><td>19</td><td>0</td><td>126</td><td>30.2%</td><td>15.1%</td><td>13.57</td></tr><tr><td>US-Canada</td><td>0</td><td>1</td><td>19</td><td>0</td><td>101</td><td>19.8%</td><td>18.8%</td><td>11.58</td></tr><tr><td>SouthCone</td><td>0</td><td>1</td><td>0</td><td>0</td><td>3</td><td>33.3%</td><td>0.0%</td><td>10.00</td></tr><tr><td>MAR</td><td>0</td><td>2</td><td>14</td><td>0</td><td>150</td><td>10.7%</td><td>9.3%</td><td>6.00</td></tr><tr><td>BRA</td><td>0</td><td>3</td><td>0</td><td>0</td><td>80</td><td>3.8%</td><td>0.0%</td><td>1.12</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Onboarding <span>Training • Weight 0.30</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>74</td><td>74</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>38</td><td>38</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr><tr><td>MAR</td><td>0</td><td>0</td><td>0</td><td>128</td><td>128</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr><tr><td>NCA</td><td>0</td><td>0</td><td>0</td><td>107</td><td>107</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr><tr><td>SouthCone</td><td>0</td><td>0</td><td>0</td><td>32</td><td>32</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr><tr><td>US-Canada</td><td>0</td><td>0</td><td>0</td><td>94</td><td>94</td><td>100.0%</td><td>100.0%</td><td>36.00</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Pre-process <span>Training • Weight 0.10</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>36</td><td>36</td><td>100.0%</td><td>100.0%</td><td>12.00</td></tr><tr><td>MAR</td><td>0</td><td>0</td><td>0</td><td>20</td><td>20</td><td>100.0%</td><td>100.0%</td><td>12.00</td></tr><tr><td>NCA</td><td>0</td><td>0</td><td>0</td><td>32</td><td>32</td><td>100.0%</td><td>100.0%</td><td>12.00</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>SouthCone</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>US-Canada</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr></tbody>
-</table>
-</details>
-<details class="detail">
-<summary>Fab Assist <span>Supervisors • Weight 0.05</span></summary>
-<table class="detail-table">
-<thead><tr><th>Region</th><th>Not Started</th><th>Deployment</th><th>Tech GL</th><th>Go-Live</th><th>In Scope</th><th>Coverage</th><th>Conversion</th><th>Total</th></tr></thead>
-<tbody><tr><td>SouthCone</td><td>0</td><td>2</td><td>2</td><td>1</td><td>12</td><td>41.7%</td><td>25.0%</td><td>2.00</td></tr><tr><td>BRA</td><td>31</td><td>0</td><td>0</td><td>0</td><td>31</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>CSC</td><td>32</td><td>0</td><td>0</td><td>0</td><td>38</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>MAR</td><td>105</td><td>0</td><td>0</td><td>0</td><td>116</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>NCA</td><td>71</td><td>0</td><td>0</td><td>0</td><td>85</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr><tr><td>US-Canada</td><td>46</td><td>0</td><td>0</td><td>0</td><td>52</td><td>0.0%</td><td>0.0%</td><td>0.00</td></tr></tbody>
-</table>
-</details>
-</section>
-<section class="panel" style="margin-top:18px"><h2>Leadership Comments</h2><p class="comments-intro">This section consolidates the latest leadership comments by region, using the current bi-weekly update and the prior May 11 cycle to fill gaps across regions and workstreams while removing repeated messages.</p><p class="comments-intro"><strong>Source:</strong> CEO Status APP | <a href="https://apps.powerapps.com/play/e/924498a7-38a0-eb8e-a8a5-fd1eba0c9a43/a/e3403c2a-925e-40d3-9308-01d411ece869?tenantId=638fcbaf-ba4c-43e1-adae-5475c970fe10&hint=5d126b8d-e9a2-4fde-9bb2-73e0d1a6e4fe&sourcetime=1773677490672&hidenavbar=true" target="_blank" rel="noopener noreferrer">Open source</a></p><div class="comment-summary"><div class="summary-box"><div class="summary-k">Raw inputs reviewed</div><div class="summary-v">79</div></div><div class="summary-box"><div class="summary-k">Regional summaries</div><div class="summary-v">6</div></div><div class="summary-box"><div class="summary-k">Workstreams covered</div><div class="summary-v">5</div></div><div class="summary-box"><div class="summary-k">Update windows used</div><div class="summary-v">May 11 + May 26</div></div></div><div class="comment-grid"><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">MAR</div><div class="comment-meta">Workstreams covered: Training, QA, WFM, Recruiting, Supervisors</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">MAR continues to show the broadest and most advanced activity across Training and QA, with Recruiting already live and Supervisors progressing through activation and client pitches. The region has a sizeable pipeline and several accounts already positioned to move with focused intervention.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">The main constraint remains approvals and legal/compliance gates, which are slowing conversion from identified opportunities into broader deployment. Some accounts also require stronger executive sponsorship to move from pilot interest to adoption.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Prioritize the pending approvals, keep weekly escalation on stalled decisions, and continue fast-track pitches and pilot standardization to convert the active pipeline.</div></div>
-</div><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">BRA</div><div class="comment-meta">Workstreams covered: Training, QA, WFM, Recruiting</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">Brazil shows a healthy pipeline across Training and WFM, while Hallo AI is already live and QA continues to advance through targeted client opportunities. The region has good underlying momentum but remains earlier-stage in conversion than MAR.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">The main blocker is legal and client addendum timing for QA, while WFM still depends on product readiness and rollout maturity to move from approached status into later stages.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Convert the strongest open opportunities, close the pending legal/addendum items, and continue presenting Fab.Operate solutions to new accounts to widen deployable pipeline.</div></div>
-</div><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">NCA</div><div class="comment-meta">Workstreams covered: Supervisors, QA, WFM, Recruiting, Training</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">NCA combines active Centrical pilots in Mexico with broader early-stage activity across CAN in QA, Training, WFM, Recruiting, and Supervisors. The region has meaningful pipeline volume, but much of it is still concentrated in pre-work or approached stages.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">The main regional blocker is the lack of a clear global deployment and legal path for global clients, which continues to delay Centrical, EMA, and some training and recruiting conversions. Contract timing and financial dependencies also affect Hallo AI deployment.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Clarify the global deployment strategy, complete the pending legal reviews, and enforce commitment dates to move priority accounts out of pre-work and into deployment.</div></div>
-</div><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">CSC</div><div class="comment-meta">Workstreams covered: Training, QA, WFM, Recruiting, Supervisors</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">CSC has reactivated the training pipeline with new programs and already had active work across QA, Supervisors, Recruiting, and WFM in the prior cycle. The region is progressing, but most initiatives still require further enablement before scaling.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">Resource capacity, training readiness, and dependency on alignment for global accounts remain the main execution constraints. In parallel, data integration and local tool enablement continue to be important for Supervisors and QA.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Complete the first client assessments and pitches, continue local enablement and data integration, and push the next set of commitments into active deployment.</div></div>
-</div><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">South Cone</div><div class="comment-meta">Workstreams covered: QA, Training, WFM, Recruiting, Supervisors</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">South Cone continues to advance across QA and Training, with EMA-related pilots, biometric use cases, and Fab Assist/Centrical activity already in motion. The region also has a broader base of opportunities across WFM, Recruiting, and Supervisors from the prior cycle.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">Scaling is constrained by knowledge-base platform dependencies, local financial or business-case validation, and some legal or contract readiness items. In some cases, execution is moving, but the regional business case still needs confirmation before broader deployment.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Move current pilots into controlled validation, confirm the local business case for priority accounts, and continue expanding pitches where technical readiness is already in place.</div></div>
-</div><div class="comment-card">
-<div class="comment-head"><div><div class="comment-title">US-Canada</div><div class="comment-meta">Workstreams covered: Supervisors, QA, WFM, Recruiting, Training</div></div></div>
-<div class="comment-block"><div class="comment-label">Summary</div><div class="comment-text">US-Canada continues to progress on Centrical provisioning and data integration, while the prior cycle also showed active coverage across QA, WFM, Recruiting, and Training. The region has relevant volume in scope, but advancement remains highly dependent on central decisions.</div></div>
-<div class="comment-block"><div class="comment-label">Main challenge</div><div class="comment-text">The main blocker is the absence of clear legal definitions and deployment guidance for global accounts, which limits the ability to move a large set of accounts forward. Additional SME enablement is also still needed to support broader rollout.</div></div>
-<div class="comment-block"><div class="comment-label">Next step</div><div class="comment-text">Complete the legal validation path, secure the required SME train-the-trainer support, and continue onboarding the next wave of accounts once prerequisites are unlocked.</div></div>
-</div></div></section><section class="panel" style="margin-top:18px">
-<h2>Detailed Implementation Pipeline</h2>
-<p>For a detailed view of the implementation pipeline, including account-level deployment status, timelines, regional progress, and workstream tracking, please access the Fab.Operate Pipeline Ranking dashboard.</p>
-<a class="footer-link" href="https://tpcompass.teleperformance.co/container/report/open/6109" rel="noopener" target="_blank">Fab.Operate Pipeline Ranking</a>
-<p style="margin-top:12px">This dashboard provides the latest deployment pipeline visibility across regions, accounts, and Internal AI workstreams.</p>
-</section>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const pts = [{"region": "MAR", "x": 139.96352045520405, "y": 115.44128974473801, "size": 80.40057559073786, "rank": 1, "total": 125.25018202892443}, {"region": "BRA", "x": 109.29935483870968, "y": 87.6, "size": 154.36666666666667, "rank": 2, "total": 96.27974193548387}, {"region": "NCA", "x": 147.7431750129519, "y": 57.18727992764504, "size": 81.0582703300756, "rank": 3, "total": 93.40963796176777}, {"region": "CSC", "x": 129.37391304347827, "y": 35.5695652173913, "size": 76.2105263157895, "rank": 4, "total": 73.09130434782608}, {"region": "US-Canada", "x": 86.76984547769845, "y": 52.21018951210189, "size": 117.42916520313781, "rank": 5, "total": 66.03405189834052}, {"region": "SouthCone", "x": 149.51086956521738, "y": 21.853905674281503, "size": 130.68322981366458, "rank": 6, "total": 72.91669123065586}];
-const ctx = document.getElementById('bubbleChart');
-new Chart(ctx, {
-  type: 'bubble',
-  data: {
-    datasets: pts.map((p) => ({
-      label: p.region,
-      data: [{x: p.x, y: p.y, r: Math.max(10, Math.min(38, Math.sqrt(p.size)*1.2))}],
-    }))
-  },
-  options: {
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{
-      legend: {position:'bottom'},
-      tooltip:{
-        callbacks:{
-          label:(context)=> {
-            const p=pts[context.datasetIndex];
-            return `${p.region} | Rank #${p.rank} | Coverage ${p.x.toFixed(2)} | Conversion ${p.y.toFixed(2)} | Total ${p.total.toFixed(2)}`;
-          }
-        }
-      }
-    },
-    scales:{
-      x:{title:{display:true,text:'Coverage score'}, grid:{color:'#e5ebf5'}},
-      y:{title:{display:true,text:'Conversion score'}, grid:{color:'#e5ebf5'}}
-    }
-  }
-});
-</script>
 </body>
 </html>
