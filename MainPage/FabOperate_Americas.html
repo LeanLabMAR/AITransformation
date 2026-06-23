@@ -6,260 +6,721 @@
 <title>Fab.Operate Americas CEO Ranking - Jun 22, 2026</title>
 <style>
 :root {
-  --bg:#f8fafc; --text:#0f172a; --muted:#475569; --line:#e2e8f0; --card:#ffffff;
-  --accent:#0f766e; --accent2:#2563eb; --warn:#b45309; --danger:#b91c1c;
+  --bg:#F8FAFC; --card:#FFFFFF; --ink:#0F172A; --muted:#475569; --line:#E2E8F0;
+  --accent:#0F766E; --accent2:#1D4ED8; --warn:#B45309; --soft:#EFF6FF;
 }
-* { box-sizing:border-box; }
-body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); }
-.wrap { max-width: 1380px; margin:0 auto; padding:28px; }
-header { background:linear-gradient(135deg,#0f172a,#1e293b); color:white; padding:28px; border-radius:18px; }
-h1,h2,h3 { margin:0 0 10px 0; }
-h1 { font-size:32px; }
-h2 { font-size:24px; margin-top:28px; }
-h3 { font-size:18px; }
-p, li { color:var(--muted); line-height:1.45; }
-.grid2 { display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:start; }
-.kpis { display:grid; grid-template-columns: repeat(4,1fr); gap:14px; margin-top:18px; }
-.kpi { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:14px; }
-.kpi .n { font-size:26px; font-weight:700; color:white; }
-.kpi .l { color:#cbd5e1; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
-.section { margin-top:22px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; }
-table { width:100%; border-collapse:collapse; font-size:13px; }
-th, td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
-th { background:#f8fafc; color:#334155; position:sticky; top:0; }
-.small { font-size:12px; color:#64748b; }
-.cards { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:16px; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; }
-.pill { display:inline-block; background:#e2e8f0; color:#0f172a; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:700; vertical-align:middle; }
-ul { margin-top:8px; }
-.bubble { width:100%; height:auto; background:#fff; border:1px solid var(--line); border-radius:12px; }
-.method { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:10px; }
-.method .box { background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:14px; }
-.initiative-block { margin-top:18px; }
-.initiative-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px; }
-.muted { color:#64748b; }
-.footer-note { font-size:12px; color:#64748b; margin-top:12px; }
-@media (max-width: 980px) {
-  .grid2, .cards, .method, .kpis { grid-template-columns:1fr; }
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+.container{max-width:1320px;margin:0 auto;padding:28px}
+.hero{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:20px;padding:32px 34px;margin-bottom:22px}
+.hero h1{margin:0 0 8px;font-size:34px}
+.hero p{margin:6px 0;color:#E2E8F0;max-width:980px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:16px;border-radius:16px}
+.kpi .n{font-size:28px;font-weight:700}
+.kpi .l{font-size:12px;color:#CBD5E1;text-transform:uppercase;letter-spacing:.04em}
+.section{margin:18px 0 24px}
+.section h2{font-size:24px;margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#F1F5F9;font-weight:700;color:#334155;position:sticky;top:0}
+.meta{color:var(--muted);font-size:13px}
+.notice{background:#F8FAFC;border-left:4px solid var(--accent);padding:14px 16px;border-radius:12px;color:#334155}
+.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.insight-card,.region-card,.initiative-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.insight-card h3,.region-card h3,.initiative-card h3{margin:0 0 8px;font-size:18px}
+.region-card{margin-bottom:16px}
+.region-title{font-weight:700;color:#0f172a}
+.comment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.comment-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:#FCFCFD}
+.comment-head{display:flex;justify-content:space-between;gap:10px;font-weight:700;margin-bottom:6px;color:#334155}
+.comment-card p{margin:5px 0;font-size:13px;color:#334155}
+.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#E2E8F0;color:#334155;font-size:12px;font-weight:700}
+.details summary{cursor:pointer;font-weight:700;color:#0f172a;margin-top:8px}
+.bubble-svg{width:100%;height:auto;background:linear-gradient(#fff,#f8fafc);border:1px solid var(--line);border-radius:18px;padding:8px}
+.footer-note{font-size:12px;color:#64748B}
+@media (max-width:1100px){
+ .two-col,.grid,.insight-grid,.comment-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>Fab.Operate Americas CEO Ranking</h1>
-  <p>Reporting cut: <strong>June 22, 2026</strong>. This version updates the regional ranking and refreshes the insights layer using leadership inputs from the CEO status reports of <strong>June 8</strong> and <strong>June 22</strong>.</p>
-  <div class="kpis">
-    <div class="kpi"><div class="n">6</div><div class="l">Sub-regions ranked</div></div>
-    <div class="kpi"><div class="n">9</div><div class="l">Initiatives tracked</div></div>
-    <div class="kpi"><div class="n">2</div><div class="l">CEO status cuts analyzed</div></div>
-    <div class="kpi"><div class="n">BRA</div><div class="l">Current #1 region</div></div>
-  </div>
-</header>
-
-<section class="section">
-  <h2>Methodology</h2>
-  <p>The overall ranking combines <strong>Coverage</strong> and <strong>Conversion</strong>, and then aggregates initiative results using priority weights assigned to each tool. This keeps the ranking simple while still reflecting where execution matters most.</p>
-  <div class="method">
-    <div class="box">
-      <h3>Coverage</h3>
-      <p><strong>(In Deployment + Technical Go-Live + Go-Live) / Total In Scope</strong></p>
-      <p class="small">Measures how much of the addressable portfolio has already entered the implementation funnel.</p>
+<div class="container">
+  <section class="hero">
+    <h1>Fab.Operate Americas CEO Ranking</h1>
+    <p>Updated with the <b>June 22</b> ranking file and a refreshed review of leader comments from <b>June 8</b> and <b>June 22</b>. This version prioritizes the corrected June 22 inputs, uses June 8 only to fill reporting gaps, and translates operational updates into strategic implications for the CEO agenda.</p>
+    <div class="grid">
+      <div class="kpi"><div class="n">#1 NCA</div><div class="l">Overall leader</div></div>
+      <div class="kpi"><div class="n">40 / 60</div><div class="l">Coverage / Conversion mix</div></div>
+      <div class="kpi"><div class="n">9</div><div class="l">Initiatives tracked</div></div>
+      <div class="kpi"><div class="n">ROI review</div><div class="l">CEO action item for each region</div></div>
     </div>
-    <div class="box">
-      <h3>Conversion</h3>
-      <p><strong>(Technical Go-Live + Go-Live) / Total In Scope</strong></p>
-      <p class="small">Measures how much of the addressable portfolio has advanced beyond preparation into execution-ready or live status.</p>
-    </div>
-    <div class="box">
-      <h3>Overall score</h3>
-      <p><strong>40% Coverage + 60% Conversion</strong></p>
-      <p class="small">Initiative scores are then combined using the priority weight assigned to each initiative in the ranking model.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <h2>Executive takeaways</h2>
-  <ul>
-    <li>BRA moves to #1 overall, but the lead is concentrated in Product Training, RTM Bot and Hallo; QA and Supervisors still need recovery.</li><li>NCA is now the strongest region on conversion after BRA, but Datanativ/BMS and Centrical data-readiness continue to limit value capture.</li><li>MAR remains the most balanced portfolio, with the strongest Ema QA position and the clearest path to support other regions on Workforce.</li><li>SouthCone has the highest coverage in the portfolio, yet remains bottom-two because legal and contract closure prevent conversion.</li><li>US-Canada continues to show selective wins, but the main risk has shifted from rollout to monetization and ROI realization.</li>
-  </ul>
-</section>
+  <section class="section two-col">
+    <div class="card">
+      <h2>Methodology</h2>
+      
+<ul>
+<li><b>Coverage</b> = (In Deployment + Technical Go-Live + Go-Live − Live with savings) / Total In Scope</li>
+<li><b>Conversion</b> = (Technical Go-Live + Go-Live − Live with savings) / Total In Scope</li>
+<li><b>Overall regional score</b> = 40% Coverage + 60% Conversion</li>
+<li><b>Initiative contribution</b> is weighted by implementation priority within Fab.Operate, so the ranking emphasizes the initiatives that matter most for the transformation agenda.</li>
+</ul>
 
-<section class="section">
-  <h2>Overall regional ranking</h2>
-  <div class="grid2">
-    <div><table><thead><tr><th>Rank</th><th>Region</th><th>Coverage</th><th>Conversion</th><th>Total score</th></tr></thead><tbody><tr><td>1</td><td>BRA</td><td>31.9%</td><td>20.0%</td><td>24.7</td></tr><tr><td>2</td><td>NCA</td><td>28.7%</td><td>21.9%</td><td>24.6</td></tr><tr><td>3</td><td>MAR</td><td>29.5%</td><td>17.3%</td><td>22.2</td></tr><tr><td>4</td><td>CSC</td><td>29.5%</td><td>16.8%</td><td>21.9</td></tr><tr><td>5</td><td>SouthCone</td><td>33.9%</td><td>5.7%</td><td>17.0</td></tr><tr><td>6</td><td>US-Canada</td><td>24.5%</td><td>11.1%</td><td>16.5</td></tr></tbody></table></div>
+      <div class="notice"><b>Interpretation for CEOs:</b> the ranking should be read as a transformation execution lens, not just a deployment count. Regions score higher when they move a larger share of in-scope accounts into deployable and convertible states, especially in the initiatives with the highest implementation priority.</div>
+    </div>
+  </section>
+
+  <section class="section two-col">
+    <div class="card">
+      <h2>Overall regional ranking</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rank</th><th>Region</th><th>Coverage Score</th><th>Conversion Score</th><th>Total Score</th></tr></thead>
+          <tbody><tr><td><b>#1</b></td><td>NCA</td><td>29.32</td><td>21.96</td><td>24.91</td></tr><tr><td><b>#2</b></td><td>BRA</td><td>29.36</td><td>20.00</td><td>23.75</td></tr><tr><td><b>#3</b></td><td>CSC</td><td>29.54</td><td>16.78</td><td>21.89</td></tr><tr><td><b>#4</b></td><td>US-Canada</td><td>35.70</td><td>12.67</td><td>21.88</td></tr><tr><td><b>#5</b></td><td>MAR</td><td>28.97</td><td>17.00</td><td>21.79</td></tr><tr><td><b>#6</b></td><td>SouthCone</td><td>33.94</td><td>7.69</td><td>18.19</td></tr></tbody>
+        </table>
+      </div>
+      <p class="footer-note">Coverage and conversion scores are shown on the weighted scale used in the ranking file.</p>
+    </div>
     <div>
-      <svg viewBox="0 0 720 380" class="bubble"><line x1="60.0" y1="20" x2="60.0" y2="335" stroke="#e5e7eb"/><text x="60.0" y="368" text-anchor="middle" font-size="11" fill="#64748b">20</text><line x1="228.9" y1="20" x2="228.9" y2="335" stroke="#e5e7eb"/><text x="228.9" y="368" text-anchor="middle" font-size="11" fill="#64748b">25</text><line x1="397.9" y1="20" x2="397.9" y2="335" stroke="#e5e7eb"/><text x="397.9" y="368" text-anchor="middle" font-size="11" fill="#64748b">30</text><line x1="566.8" y1="20" x2="566.8" y2="335" stroke="#e5e7eb"/><text x="566.8" y="368" text-anchor="middle" font-size="11" fill="#64748b">35</text><line x1="60" y1="335.0" x2="700" y2="335.0" stroke="#e5e7eb"/><text x="48" y="339.0" text-anchor="end" font-size="11" fill="#64748b">0</text><line x1="60" y1="276.4" x2="700" y2="276.4" stroke="#e5e7eb"/><text x="48" y="280.4" text-anchor="end" font-size="11" fill="#64748b">5</text><line x1="60" y1="217.7" x2="700" y2="217.7" stroke="#e5e7eb"/><text x="48" y="221.7" text-anchor="end" font-size="11" fill="#64748b">10</text><line x1="60" y1="159.1" x2="700" y2="159.1" stroke="#e5e7eb"/><text x="48" y="163.1" text-anchor="end" font-size="11" fill="#64748b">15</text><line x1="60" y1="100.5" x2="700" y2="100.5" stroke="#e5e7eb"/><text x="48" y="104.5" text-anchor="end" font-size="11" fill="#64748b">20</text><line x1="60" y1="41.8" x2="700" y2="41.8" stroke="#e5e7eb"/><text x="48" y="45.8" text-anchor="end" font-size="11" fill="#64748b">25</text><line x1="60" y1="335" x2="700" y2="335" stroke="#94a3b8"/><line x1="60" y1="20" x2="60" y2="335" stroke="#94a3b8"/><circle cx="460.8" cy="100.4" r="15.3" fill="#0f766e" fill-opacity="0.22" stroke="#0f766e" stroke-width="2"/><text x="460.8" y="104.4" text-anchor="middle" font-size="11" font-weight="700" fill="#0f766e">BRA</text><circle cx="353.5" cy="78.6" r="17.0" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="2"/><text x="353.5" y="82.6" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb">NCA</text><circle cx="381.1" cy="132.6" r="17.5" fill="#7c3aed" fill-opacity="0.22" stroke="#7c3aed" stroke-width="2"/><text x="381.1" y="136.6" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">MAR</text><circle cx="382.4" cy="138.2" r="17.6" fill="#ea580c" fill-opacity="0.22" stroke="#ea580c" stroke-width="2"/><text x="382.4" y="142.2" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">CSC</text><circle cx="531.1" cy="268.1" r="17.3" fill="#dc2626" fill-opacity="0.22" stroke="#dc2626" stroke-width="2"/><text x="531.1" y="272.1" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">SouthCone</text><circle cx="213.2" cy="204.6" r="22.3" fill="#64748b" fill-opacity="0.22" stroke="#64748b" stroke-width="2"/><text x="213.2" y="208.6" text-anchor="middle" font-size="11" font-weight="700" fill="#64748b">US-Canada</text><text x="360.0" y="378" text-anchor="middle" font-size="12" fill="#334155">Coverage score</text><text x="16" y="190.0" transform="rotate(-90 16 190.0)" text-anchor="middle" font-size="12" fill="#334155">Conversion score</text></svg>
-      <p class="footer-note">Bubble chart plots coverage vs. conversion by region. Larger bubbles indicate lower conversion relative to coverage and therefore a heavier execution drag.</p>
+      <h2>Coverage vs. Conversion view</h2>
+      <svg viewBox="0 0 760 380" class="bubble-svg" role="img" aria-label="Coverage versus conversion bubble chart"><line x1="80" y1="40" x2="80" y2="340" stroke="#94A3B8" stroke-width="1.5"/><line x1="80" y1="340" x2="720" y2="340" stroke="#94A3B8" stroke-width="1.5"/><text x="400" y="372" text-anchor="middle" font-size="13" fill="#334155">Coverage score</text><text x="24" y="190" text-anchor="middle" font-size="13" fill="#334155" transform="rotate(-90 24 190)">Conversion score</text><circle cx="113.7" cy="80.0" r="42" fill="#0F766E" fill-opacity="0.18" stroke="#0F766E" stroke-width="2"/><text x="113.7" y="84.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">NCA</text><circle cx="117.4" cy="115.7" r="38" fill="#1D4ED8" fill-opacity="0.18" stroke="#1D4ED8" stroke-width="2"/><text x="117.4" y="119.7" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">BRA</text><circle cx="134.4" cy="174.4" r="34" fill="#7C3AED" fill-opacity="0.18" stroke="#7C3AED" stroke-width="2"/><text x="134.4" y="178.4" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">CSC</text><circle cx="720.0" cy="249.3" r="30" fill="#B45309" fill-opacity="0.18" stroke="#B45309" stroke-width="2"/><text x="720.0" y="253.3" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">US-Canada</text><circle cx="80.0" cy="170.3" r="26" fill="#DC2626" fill-opacity="0.18" stroke="#DC2626" stroke-width="2"/><text x="80.0" y="174.3" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">MAR</text><circle cx="553.0" cy="340.0" r="22" fill="#475569" fill-opacity="0.18" stroke="#475569" stroke-width="2"/><text x="553.0" y="344.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">SouthCone</text></svg>
+      <p class="footer-note">The chart shows the balance between coverage and conversion. Regions further up and to the right combine broader implementation reach with stronger progression toward realized deployment stages.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <h2>Cross-workstream strategic insights from June 8 and June 22 leadership updates</h2>
-  <div class="cards">
-    <div class="card"><h3>Supervisors / Centrical</h3><p>Execution is no longer blocked by lack of interest alone; the recurring blockers are tenant migration, user provisioning, KPI configuration and data readiness. NCA and SouthCone have stronger operational pipelines, while US-Canada is delayed by onboarding and warehouse dependencies. BRA lacks current reporting visibility.</p></div><div class="card"><h3>Training</h3><p>Onboarding and Pre-process are effectively normalized, so the remaining upside sits in Product Training. Across MAR, NCA, SouthCone and US-Canada, the dominant bottleneck is still client/legal approval rather than solution design.</p></div><div class="card"><h3>Quality / Ema QA</h3><p>Quality remains the weakest transformation lever outside MAR. The main pattern is consistent across June 8 and June 22: legal closure, migration from incumbent tools, metadata/SFTP issues and difficulty proving differentiated value when clients already use analytics platforms.</p></div><div class="card"><h3>Workforce</h3><p>RTM Bot is progressing, but Datanativ remains the clearest structural blocker in the portfolio. BMS dependency and manual work are repeated in comments across NCA, CSC, SouthCone and BRA. MAR is the closest region to stabilizing the tool and helping others move faster.</p></div><div class="card"><h3>Recruitment / Hallo</h3><p>Hallo is the most mature initiative in the portfolio. Most regions are already live or in sustainment, so the question has shifted from rollout to value realization and integration follow-through.</p></div>
-  </div>
-</section>
+  <section class="section">
+    <h2>Executive insights for CEO review</h2>
+    <div class="insight-grid"><div class="insight-card"><h3>The portfolio is shifting from deployment readiness to value realization.</h3><p>Compared with the June 8 cut, the June 22 comments show that several regions now have enough live or technical go-live activity to move the discussion beyond implementation status. The main CEO question should now be whether those deployments are producing measurable operational and financial return.</p></div><div class="insight-card"><h3>Global dependencies remain the main source of execution drag.</h3><p>Across WFM, Supervisors, Training, and QA, the same blockers repeat: BMS connection, India-owned updates, tenant/licensing issues, legal/subprocessor approvals, and client-side approvals. These are not local operational gaps only; they are structural dependencies that require coordinated escalation.</p></div><div class="insight-card"><h3>Coverage is no longer enough; conversion quality matters more.</h3><p>The ranking already weights coverage and conversion differently, and the updated comments reinforce why. Some regions have broad activity, but much of it remains in pre-work, technical go-live, or approval stages. CEO attention should favor regions and initiatives that are converting into sustained business outcomes.</p></div><div class="insight-card"><h3>The strongest next management lens is ROI by region and by initiative.</h3><p>The comments now make clear that implementation alone is not the end objective. US-Canada is explicitly flagging ROI concerns; NCA and CSC still need to prove WFM value beyond technical progress; MAR and BRA have stronger proof points that should be validated and potentially scaled.</p></div></div>
+  </section>
 
-<section class="section">
-  <h2>Regional strategic insights</h2>
-  <p>These insights connect ranking results with what leaders reported in the June 8 and June 22 CEO status updates, so the section can be used to inform action and escalation rather than only describe status.</p>
-  <div class="cards">
-    <div class="card">
-      <h3>BRA <span class="pill">Rank #1</span></h3>
-      <p><strong>BRA leads the ranking because execution is concentrated in a few high-performing initiatives, but the portfolio is still uneven.</strong></p>
-      <p>BRA is #1 overall, driven by Product Training, RTM Bot and Hallo, all of which show meaningful implementation progress. Leadership comments also show operational improvement in WFM execution and readiness to support BMS-related work. The main gap is that this momentum is not yet broad-based: Datanativ still depends on BMS/manual work, QA is still waiting on client addenda, and there is no current supervisors update to explain why Centrical remains weak relative to the top regions.</p>
-      <p><strong>Leadership implication:</strong> Protect BRA as a proof point on Training and Workforce, but force a targeted recovery plan for Supervisors and QA so that the region’s leadership is not dependent on only three initiatives.</p>
-      <p class="muted"><strong>Data note:</strong> No leadership update was available for BRA Supervisors in the June 8 / June 22 CEO status inputs.</p>
-    </div>
+  <section class="section">
+    <h2>Regional strategic assessment</h2>
+    <p class="meta">The summaries below link ranking outcomes to the latest leadership input by region and workstream. June 22 comments are used as the primary source; June 8 is used only to complete missing views.</p>
     
-    <div class="card">
-      <h3>NCA <span class="pill">Rank #2</span></h3>
-      <p><strong>NCA is the strongest converter after BRA, but its next unlock depends on resolving structural execution blockers rather than opening more pipeline.</strong></p>
-      <p>NCA ranks #2 overall, with strong scores in Centrical, Product Training, RTM Bot and Hallo. Comments from both June 8 and June 22 show a consistent pattern: Supervisors has real pipeline maturity, but tenant migration, KPI configuration and data integration still delay go-live; WFM remains constrained by Datanativ’s BMS dependency and manual work; QA is active in pre-work but still needs stronger differentiation versus client-owned analytics tools.</p>
-      <p><strong>Leadership implication:</strong> Prioritize blocker removal over pipeline expansion: close BMS/Datanativ decisions, finish Centrical migration and KPI readiness, and sharpen the EMA QA business case for clients already using analytics.</p>
-      
-    </div>
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>NCA</h3>
+          <div class="meta">Overall rank #1 · Strongest initiatives: Product Training (14.0), Centrical (12.7), Hallo (11.4)</div>
+        </div>
+      </div>
+      <p class="region-title">NCA ranks #1, supported by Product Training, Centrical, and RTM Bot, but value realization is still uneven.</p>
+      <p>The updated leader inputs confirm real execution traction in Supervisors and WFM, especially in Mexico, El Salvador, and Guatemala. However, the region is still carrying a major systems dependency: Datanativ remains constrained by the BMS connection, and QA is still largely in pre-work or value-case validation. In other words, NCA is leading the ranking, but not all of that lead has converted into realized operational value yet.</p>
+      <p><b>Management implication:</b> Prioritize two decisions: unblock the BMS dependency for WFM and sharpen the commercial value case for EMA QA where clients already have analytics tools.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in NCA by initiative, especially Centrical, RTM Bot, and Datanativ, to confirm where technical progress is already translating into savings.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · El Salvador</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> • 11 clients (79%) are currently in Pre-work, with use case definition, scope alignment, and operational preparation in progress. • 3 clients (21%) have been Approached, including Kohl’s, Florida Blue, and Blue Cross and Blue Shield of Massachusetts. • AT&amp;T Mobility, AT&amp;T, and AT&amp;T Uverse Spanish were approached global…</p>
+          <p><b>Risk:</b> • Existing analytics tools within client environments may slow adoption and require stronger differentiation of EMA QA’s value and business case. • Clients with existing analytics tools may decline the implementation if …</p>
+          <p><b>Next step:</b> • Continue advancing Pre-work activities and confirm readiness for client pitch discussions. • Follow up with Pre-work accounts, including Choice Hotels, Chime Bank, AT&amp;T AIO, Credit Karma, Marriott, Hilton, and Hyatt, t…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Guatemala</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> The current focus for Guatemala is to validate potential exceptions, as the identified clients either already have analytics tools in place or are currently not in scope for EMA QA. At this moment, there are no Guatemala clients confirmed in scope for EMA QA implementation.</p>
+          <p><b>Risk:</b> • Clients with existing analytics tools may decline EMA QA if the solution does not show clear added value compared to their current setup. • Healthcare clients may require additional validation from internal AI, privacy…</p>
+          <p><b>Next step:</b> • Follow up with accounts that already have analytics tools to confirm whether they remain viable for the pipeline or not as currently we have them out of scope.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · El Salvador</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Implementation and go-live planned for September 29th, 2026 Hallo AI: Deployment currently paused due to Alpharun and SHL contracts (as of Sept 26).Actions are being implemented to mitigate costs and achieve the expected savings.</p>
+          <p><b>Risk:</b> - NCA: Alpharun remain in effect until September 2026, resulting in double cost exposure. NCA: Pending integration between Hallo AI and performance predictor, which may delay full deployment and impact efficiency.</p>
+          <p><b>Next step:</b> hAIreX: Discovery phase on Sept 2026. Hallo AI: Hallo integration with performance predictor.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Guatemala</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Implementation and go-live planned for September 29th, 2026. Hallo AI: Deployment currently paused due to Alpharun and SHL contracts (as of Sept 26).Actions are being implemented to mitigate costs and achieve the expected savings.</p>
+          <p><b>Risk:</b> - NCA: Alpharun remain in effect until September 2026, resulting in double cost exposure. NCA: Pending integration between Hallo AI and performance predictor, which may delay full deployment and impact efficiency.</p>
+          <p><b>Next step:</b> hAIreX: Discovery phase on Sept 2026. Hallo AI: Hallo integration with performance predictor.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Mexico</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> HAIreX; Live since May 7th, currently in sustain phase (stabilization). Hallo AI: Deployment currently paused due to Alpharun and SHL contracts (as of Sept 26).Actions are being implemented to mitigate costs and achieve the expected savings.</p>
+          <p><b>Risk:</b> - NCA: Alpharun remain in effect until September 2026, resulting in double cost exposure. NCA: Pending integration between Hallo AI and performance predictor, which may delay full deployment and impact efficiency.</p>
+          <p><b>Next step:</b> hAIreX: Tool stabilization Hallo AI: Hallo integration with performance predictor.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · El Salvador</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> • 5 programs (20%) are in Technical Go-Live, including Choice Hotels, Gusto, Chime Bank, and LanguageLine Solutions in both El Salvador and Guatemala. Most are completing migration, training, and KPI configuration activities. • 3 programs (12%) are in Go-Live, including Hilton Guatemala, Hilton El Salvador, and Marriot…</p>
+          <p><b>Risk:</b> • Ongoing migration to the new tenant may delay implementation timelines, especially for programs still operating in the legacy environment. • KPI configuration and data integration activities may impact the transition f…</p>
+          <p><b>Next step:</b> • Complete migration, training, and KPI configuration for programs in deployment and Technical Go-Live. • Finalize pending data integrations to support transition into Go-Live. • Continue follow-up with Pre-work accounts…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Guatemala</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> • 5 programs (20%) are in Technical Go-Live, including Choice Hotels, Gusto, Chime Bank, and LanguageLine Solutions in both El Salvador and Guatemala. Most are completing migration, training, and KPI configuration activities. • 3 programs (12%) are in Go-Live, including Hilton Guatemala, Hilton El Salvador, and Marriot…</p>
+          <p><b>Risk:</b> • Ongoing migration to the new tenant may delay implementation timelines, especially for programs still operating in the legacy environment. • KPI configuration and data integration activities may impact the transition f…</p>
+          <p><b>Next step:</b> • Complete migration, training, and KPI configuration for programs in deployment and Technical Go-Live. • Finalize pending data integrations to support transition into Go-Live. • Continue follow-up with Pre-work accounts…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · El Salvador</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> A total of 20 clients under new hire agenda assessment, either in client approval, pre work status or approached to reduce product training days. Licenses for IORAD, Synthesia, EasyGenerator assigned. Regarding SN licenses we have local follow up in place to register SN as provider for us to purchase the licenses. Alre…</p>
+          <p><b>Risk:</b> 89% of the Clients served in CAN are global clients so there is a dependency on Client approval to move forward with agenda reductions. NLSA credentials might take 24 to 72 hrs, this represents a delay in completing the …</p>
+          <p><b>Next step:</b> Commitment to approach or get client approval for 3 clients</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Guatemala</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> 1 Client initial assessment finished. Solutions have been identified. currently finished. 2 more agendas in pre work. Licenses for IORAD, Synthesia, EasyGenerator assigned, Second Nature licenses pending to be assigned once class pilot starts.</p>
+          <p><b>Risk:</b> 89% of the Clients served in CAN are global clients so there is a dependency on Client approval to move forward with agenda reductions. NLSA credentials might take 24 to 72 hrs, this represents a delay in completing the …</p>
+          <p><b>Next step:</b> Commitment to approach or get client approval for 3 Clients</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Mexico</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Reporting 83% of savings achieved. Working on strategy to pitch Clients with global approach i.e Amazon</p>
+          <p><b>Risk:</b> Centene is an important component to achieve the goal. Working with CAN and client solitions to align pitch</p>
+          <p><b>Next step:</b> Continue to save on TP DAYS (onboarding) and to increase Go live Clients</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · El Salvador</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> RTM BOT: A recent account (COX) has just completed its migration from Avaya to TP Genesys. As a result, El Salvador will begin the implementation of the RTM BOT. Initial alignments have already taken place with the Mexico team regarding license requests, bot configuration, and alert setup. Additionally, a request has b…</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Guatemala</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> RTM BOT: A recent account (COX) has just completed its migration from Avaya to TP Genesys. As a result, El Salvador will begin the implementation of the RTM BOT. Initial alignments have already taken place with the Mexico team regarding license requests, bot configuration, and alert setup. Additionally, a request has b…</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Mexico</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> RTM BOT: 7 accounts in &quot;Go live&quot; status. 8 accounts with &quot;Technical go live&quot; status. 5 accounts to be implemented in July 22nd. Datanitiv: Is in hold until BMS connection, no extra accounts on “technician go live”, review sessions with the SSC are ongoing to align with requirements and expedite the removal of the hold …</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        </div></details>
+    </section>
     
-    <div class="card">
-      <h3>MAR <span class="pill">Rank #3</span></h3>
-      <p><strong>MAR remains one of the most balanced regions, with the strongest Quality position and meaningful execution depth, but approvals and platform dependencies still cap value capture.</strong></p>
-      <p>MAR ranks #3 overall and is the current leader in Ema QA, while also holding strong positions in Product Training and Hallo. June 22 comments show MAR is closest to unlocking additional WFM value and is already supporting other regions, but RTM still depends on India-side updates and Datanativ requires version stability and admin fixes. Training comments also show a large approval backlog that still slows conversion from pitch to implementation.</p>
-      <p><strong>Leadership implication:</strong> Use MAR as the regional benchmark for QA and as a support engine for Workforce, but escalate training approvals and India-dependent RTM items so execution can translate faster into scale.</p>
-      
-    </div>
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>BRA</h3>
+          <div class="meta">Overall rank #2 · Strongest initiatives: Product Training (17.2), RTM Bot (12.6), Hallo (11.4)</div>
+        </div>
+      </div>
+      <p class="region-title">BRA ranks #2, driven by Product Training, Hallo, and improving WFM execution, but the portfolio is still concentrated.</p>
+      <p>Brazil shows stronger performance in the weighted initiatives that matter most for the ranking, particularly Product Training and Hiring, and leader comments show the region improving operational discipline in WFM. At the same time, Datanativ still depends on a non-resolved BMS connection, and the updated comment coverage outside WFM remains thinner than in other regions. This suggests that Brazil is moving, but the transformation story is still being carried by a limited set of initiatives.</p>
+      <p><b>Management implication:</b> Protect the current wins in Training and Hiring while validating whether WFM can scale without excessive manual work and whether other workstreams are advancing at the required pace.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in Brazil to confirm whether the strongest current initiatives are producing enterprise-level savings or only isolated wins.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Brazil</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> We submitted the contract addendums to SAMSUNG and MAWDY clients and are awaiting their response.</p>
+          <p><b>Risk:</b> They may not approve or take too long to accept.</p>
+          <p><b>Next step:</b> Finalize this part and begin these implementations.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Brazil</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Currently in discovery phase. Planned go-live: July 13th. Hallo AI: Fully live according to the global guideline.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX: Complete discovery phase and start development. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Brazil</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> We have completed and sent the lesson plans with the reductions for clients in Go-live.</p>
+          <p><b>Risk:</b> Clients with global training programs that do not allow for reduced training time.</p>
+          <p><b>Next step:</b> Analyze all clients that allow the use of AI in training and suggest ways to reduce training time.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Brazil</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> TP Core: On May 25th, the comparative analysis between the India BOT and the Brazil BOT was delivered by the development team in Colombia. So far, the BOT has been implemented in 4 accounts. Regarding costs: 0.98 euros (license per expert - considering 50000 CE) Datanitiv. Following the revised timeline, Brazil remains…</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        </div></details>
+    </section>
     
-    <div class="card">
-      <h3>CSC <span class="pill">Rank #4</span></h3>
-      <p><strong>CSC has credible execution in Workforce and Hallo, but the portfolio still under-converts in the initiatives that matter most for broader transformation.</strong></p>
-      <p>CSC ranks #4 overall. It stands out positively in Datanativ and RTM Bot, and Hallo is already live; however, Product Training remains weak and Ema QA has not yet converted into meaningful progress. The June 22 and June 8 leadership comments reinforce that QA is still mostly in approached/pre-work mode and Training is still working through legal/client approval and enablement readiness.</p>
-      <p><strong>Leadership implication:</strong> Shift CSC attention from pipeline creation to conversion discipline in QA and Training; the region needs fewer early-stage discussions and more closure on client/legal approvals.</p>
-      
-    </div>
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>CSC</h3>
+          <div class="meta">Overall rank #3 · Strongest initiatives: RTM Bot (12.6), Hallo (11.4), Centrical (10.4)</div>
+        </div>
+      </div>
+      <p class="region-title">CSC ranks #3, with strong Datanativ coverage and improving QA pipeline, but still needs conversion rather than more preparation.</p>
+      <p>Leader updates show that CSC has moved part of the discussion from discovery to execution, especially in WFM and early QA approach activity. However, several comments still point to global dependencies such as license provisioning, BMS, and readiness conditions. The risk is that CSC accumulates deployment activity without converting enough of it into tangible, monetizable outcomes.</p>
+      <p><b>Management implication:</b> Shift management attention from pipeline growth to conversion discipline: remove the BMS blocker, accelerate client approach in QA, and ensure that training and supervisors move past readiness into adoption.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in CSC by workstream, focusing on whether the large in-deployment base is creating measurable savings and not just implementation workload.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Costa Rica</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Insulet pre work phase has been completed. Will schedule for Client Approach in the next 15 days.</p>
+          <p><b>Risk:</b> None at the moment.</p>
+          <p><b>Next step:</b> We&#x27;re evaluating other clients to include in the pipeline.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Dominican Republic</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Florida blue and Cardworks have been approached. Will wait on their feedbacks to discuss the possible deployment. Velera will be scheduled for approach in the next 15 days</p>
+          <p><b>Risk:</b> None at the moment.</p>
+          <p><b>Next step:</b> We&#x27;re evaluating new clients to include in the pipeline.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Honduras</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Comcast pre work phase has been completed. Will schedule the Client approach in the next 15 days.</p>
+          <p><b>Risk:</b> None at the moment.</p>
+          <p><b>Next step:</b> We&#x27;re evaluating other clients to include in the pipeline.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Costa Rica</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Go-live planned for August 25th, 2026. Hallo AI: go-live was initiated on Wednesday, May 13th.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX; Discovery phase will start on July 2026. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Dominican Republic</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Go-live planned for August 25th, 2026. Hallo AI: go-live was initiated on Wednesday, May 13th.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX; Discovery phase will start on July 2026. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Honduras</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Go-live planned for August 25th, 2026 Hallo AI: go-live was initiated on Wednesday, May 13th.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX; Discovery phase will start on July 2026. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Costa Rica</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Pre work completed for all accounts. Several accounts in deployment phase, license requests underway. Data integration moving on schedule. Global delay in user provisioning slowing launch progress.</p>
+          <p><b>Risk:</b> Delay globally in the provisioning of new Centrical Licenses.</p>
+          <p><b>Next step:</b> User training for Admins, follow up on centrical basics course.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Dominican Republic</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Pre work completed for all accounts. License requests underway. Data integration moving on schedule. Global delay in user provisioning slowing launch progress.</p>
+          <p><b>Risk:</b> Delay globally in the provisioning of new Centrical Licenses.</p>
+          <p><b>Next step:</b> User training for Admins, follow up on centrical basics course.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Honduras</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Pre work completed for all accounts. Several accounts in deployment phase, license requests underway. Data integration moving on schedule. Global delay in user provisioning slowing launch progress.</p>
+          <p><b>Risk:</b> Delay globally in the provisioning of new Centrical Licenses.</p>
+          <p><b>Next step:</b> User training for Admins, follow up on centrical basics course.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Costa Rica</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Se completo el compromiso bisemanal de 1 cuentas - se buscara el Client y Legal approval. Pendiente la respuesta de Blackbaud para hacer pitch. Compromiso de licencias Second Nature documentado.</p>
+          <p><b>Risk:</b> En revision de los requerimientos de PCs para los trainers que seran duen;os de licencias, para que tengan la capacidad de soportar el perfil admin.creador de las herramientas. Esperando input de leal para finalizar docu…</p>
+          <p><b>Next step:</b> Completar Approached con Blackbaud. Buscar Client y Legal Approval de Sage</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Dominican Republic</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Se completo el compromiso bisemanal de 5 cuentas - se buscara el Client y Legal approval. Compromiso de licencias Second Nature documentado.</p>
+          <p><b>Risk:</b> En revision de los requerimientos de PCs para los trainers que seran duen;os de licencias, para que tengan la capacidad de soportar el perfil admin/creador de las herramientas. Esperando input de leal para finalizar docu…</p>
+          <p><b>Next step:</b> Se buscara el Client y Legal approval.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Honduras</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Se completo el compromiso bisemanal de 2 cuentas - se buscara el Client y Legal approval. Compromiso de licencias Second Nature no documentado pues todo el pais tiene AI nesting desplegado y no sera necesario.</p>
+          <p><b>Risk:</b> En revision de los requerimientos de PCs para los trainers que seran duen;os de licencias, para que tengan la capacidad de soportar el perfil admin.creador de las herramientas. Esperando input de leal para finalizar docu…</p>
+          <p><b>Next step:</b> Client y Legal Approval de Tonal y Lululemon</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Costa Rica</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Datanitiv: Is in hold until BMS connection, no extra accounts on “technician go live”, review sessions with the SSC are ongoing to align with requirements and expedite the removal of the hold as quickly as possible. 4 accounts in “In deplyment” status. , until BMS connection they cannot change the state to go-live.</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Dominican Republic</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> datanitiv: Is in hold until BMS connection, no extra accounts on “technician go live”, review sessions with the SSC are ongoing to align with requirements and expedite the removal of the hold as quickly as possible. 9 accounts in deployment, until BMS connection they cannot change the state to go-live.</p>
+          <p><b>Risk:</b> Datanitv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Honduras</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Is in hold until BMS connection, no extra accounts on “technician go live”, review sessions with the SSC are ongoing to align with requirements and expedite the removal of the hold as quickly as possible. 1 client in deployment, until BMS connection they cannot change the state to go-live.</p>
+          <p><b>Risk:</b> Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        </div></details>
+    </section>
     
-    <div class="card">
-      <h3>SouthCone <span class="pill">Rank #5</span></h3>
-      <p><strong>SouthCone has the broadest coverage in the portfolio, but weak conversion keeps the region in the bottom tier.</strong></p>
-      <p>SouthCone ranks #5 overall despite leading the Americas in coverage. The data and comments point to the same issue: this is not a pipeline problem, it is a closure problem. Centrical is the region’s strongest asset, but QA and Training are slowed by contract closure, legal approvals, subprocessor authorization, and migration from incumbent analytics solutions. WFM remains early and still tied to BMS/manual work assumptions.</p>
-      <p><strong>Leadership implication:</strong> Treat SouthCone as a conversion-recovery case: accelerate legal/contract closure for QA and Training, and use the stronger Supervisors pipeline as the anchor for broader implementation discipline.</p>
-      <p class="muted"><strong>Data note:</strong> The June 22 Training entries for Chile were placeholder values, so the report uses validated June 8 inputs for SouthCone Training analysis.</p>
-    </div>
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>US-Canada</h3>
+          <div class="meta">Overall rank #4 · Strongest initiatives: Centrical (13.9), RTM Bot (12.6), Product Training (8.0)</div>
+        </div>
+      </div>
+      <p class="region-title">US-Canada ranks #4, with the highest coverage in the portfolio, but the critical question is now ROI, not deployment volume.</p>
+      <p>The latest comments materially improve the picture for this region: WFM has the largest number of Go-Live accounts and Supervisors continues moving accounts into Centrical. However, the leaders are now explicitly flagging a more strategic issue: projected implementations are not yet generating the expected results. This is an important shift, because it means US-Canada is no longer primarily blocked by deployment readiness; it is now challenged on value realization.</p>
+      <p><b>Management implication:</b> Move the regional conversation from “how many deployments are live” to “which deployments are producing measurable economic benefit.” Resolve pending onboarding and tenant issues, but anchor leadership review on returns.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in US-Canada by initiative and define where to scale, redesign, or stop investments that are not producing the expected return.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · US-Canada</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> For North America region, we have a total of 102 accounts within TPUSA/A1, Senture and Canada. When excluding accounts with less than 3 QA Analysts (including offshore support), as well as T&amp;S and FedRAMP accounts, we have a total of 25 addressable clients. We have approached 10 of those clients (Mercedes Benz, Meta-Fa…</p>
+          <p><b>Risk:</b> TP Insight requires client approval, which involves discussions with the client. The deployment process has specific nuances that necessitate support from our team and assistance from EMA. Once the client approval is gra…</p>
+          <p><b>Next step:</b> We have completed internal TP Insights demo/overviews with 5 other clients (DoC, Central Florida Expressway, Health Equity, Abbvie &amp; Brinks Security) and are pending follow ups to determine next steps. Meta-Facebook: Sti…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · US-Canada</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> 1. Hallo AI Fully implemented on Apple (US &amp; CA - Jan&#x27;26) Testing Phase in Canada is completed. The Assessment and AI Interview in Canada is also live on Ikea and Google LSA. US will be implemented in September, but will start testing in July. 2. Digital R&amp;S kickoff both for US &amp; CA (Sept) 3.Performance Predictor Globa…</p>
+          <p><b>Risk:</b> Digital R&amp;S has to be modified for US as iCIMS will remain as the ATS. Still on track to roll out in September but changes could cause delays.</p>
+          <p><b>Next step:</b> Continue to roll out Hallo on all Canadian accounts.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · US-Canada</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> 8/26 Accounts are already onboarded in Centrical. (18/26 = 14 US accounts, and 4 Canada accounts are on-hold to be onboarded / License provisioning -- due to Technical issues acc. to Global) 24 accounts are Ongoing Data Integration 11 Accounts with AmplifAI, 4/11 of which are in GDW.</p>
+          <p><b>Risk:</b> Delay in Data Integration/Warehousing completion due to Users not being onboarded (license/tenant provisioned). Current Updates as of 06/19 from Christian Omo shows US/CA accounts are still on-hold for onboarding in spit…</p>
+          <p><b>Next step:</b> Fast-track requirements gathering process to bring accounts to &quot;In-deployment&quot; status Get the issues fixed with the pending/on-hold Onboarding for US/CA Request for the TTT session to be held so Data can be configured an…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · US-Canada</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Onboarding reductions and associated savings are now live, and we are beginning to see measurable ROI from these efforts. To date, 12 of 67 clients are in focus, where we have either secured approval or initiated discussions on AI for Training adoption.</p>
+          <p><b>Risk:</b> Core risks remain concentrated in Enterprise and Regional clients, which represent the largest opportunity for savings. Progress is dependent on stronger engagement with CS partners to secure client approval, gain access…</p>
+          <p><b>Next step:</b> Our immediate focus is on ensuring all addressable clients have a clear path forward and the support needed to initiate projects. Priority is shifting from approvals to execution, with a strong emphasis on converting app…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · US-Canada</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Datanitiv: No additional blockers or issues have been reported at this time. Proceeding according the plan. 31 accounts in “Go live”, this is excellent and the first region with this state. 8 accounts in “Technical Go live”, in future weeks we expect to proceed with go live. 21 accounts “in deployment” RTM BOT: 4 accou…</p>
+          <p><b>Risk:</b> Due to the fact that the projected implementations within the AI Transformation project in the US and Canada regions are not generating the expected monetary benefits, there is a risk of sustaining a negative financial i…</p>
+          <p><b>Next step:</b> The next step is to perform the assessment of the identified risk and evaluate potential mitigation alternatives in order to reduce the possible impact on the project’s financial and strategic objectives.</p>
+        </div>
+        </div></details>
+    </section>
     
-    <div class="card">
-      <h3>US-Canada <span class="pill">Rank #6</span></h3>
-      <p><strong>US-Canada shows isolated execution wins, but the overall portfolio remains constrained by onboarding, data, client approval and ROI realization.</strong></p>
-      <p>US-Canada ranks #6 overall. The region performs well in RTM Bot and has visible Datanativ progress, while Training and Hallo show selective traction. However, comments across both reporting cuts show recurring friction in user provisioning, data warehousing, client approval, and economic validation. The risk in this region is no longer just technical deployment; it is whether implementations convert into the expected financial return.</p>
-      <p><strong>Leadership implication:</strong> Tighten portfolio prioritization around accounts with the clearest monetization path, while fast-tracking onboarding/provisioning and the remaining approvals for Supervisors, Training and QA.</p>
-      
-    </div>
-    </div>
-</section>
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>MAR</h3>
+          <div class="meta">Overall rank #5 · Strongest initiatives: Product Training (15.9), Hallo (11.4), RTM Bot (7.4)</div>
+        </div>
+      </div>
+      <p class="region-title">MAR ranks #5, but remains one of the more balanced regions, with credible progress in WFM, Training, and Ema QA.</p>
+      <p>The updated leader comments show a more nuanced picture than the ranking alone. MAR is not leading overall, but it is demonstrating broader balance: WFM issues have been reduced, Ema QA remains ahead of most regions, and Training has a sizable pipeline. The main constraint is no longer basic readiness; it is conversion. Client approval backlog in Training and India-dependent enhancements in RTM Bot are slowing the move from technical progress to realized impact.</p>
+      <p><b>Management implication:</b> Use MAR as a proof-point region for how to move from technical go-live to benefits realization, while aggressively reducing the approval backlog in Training.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in MAR, especially for WFM and Training, to identify which use cases already justify faster regional scaling.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Colombia</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> QA Business Case, information being collected by the QA&amp;TRN team to determine the real business impact – only missing additional lines from Bancolombia Implementing now Bancolombia to Go Live - New Accounts being added up SURA, Sunrun and SECURITAS</p>
+          <p><b>Risk:</b> Bancolombia: Full automation is at risk because EMA due to lack of : Compare structured data (e.g., Excel/database fields) Against exact information mentioned in call transcripts EMA confirmed this feature is now live - …</p>
+          <p><b>Next step:</b> Pre Work for CapOne on going SURA and Sunrun KickOff with new Tenant already requested and received</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Perú</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> QA Business Case, information being collected by the QA&amp;TRN team to determine the real business impact – only missing additional lines from Bancolombia Implementing now Bancolombia to Go Live - New Accounts being added up SURA, Sunrun and SECURITAS</p>
+          <p><b>Risk:</b> Bancolombia: Full automation is at risk because EMA due to lack of : Compare structured data (e.g., Excel/database fields) Against exact information mentioned in call transcripts EMA confirmed this feature is now live - …</p>
+          <p><b>Next step:</b> Pre Work for CapOne on going SURA and Sunrun KickOff with new Tenant already requested and received</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Colombia</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Currently in discovery phase. Planned go-live: July 10th. Hallo AI: Colombia is already live.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX: Complete discovery phase and start development. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Perú</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Already live, currently in sustain phase (stabilization). Pending corrections by development team. Hallo AI: Peru is already live.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> hAIreX: Complete correction and tool stabilization Hallo AI: Follow up and evaluate the impact of the AI interview on the process</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Colombia</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Strong alignment and support from COOs has been secured for the Centrical deployment. Go‑live timelines have been delayed due to data integration challenges, which have already been escalated to the global team. Initial KPI configurations have been completed, however, they are not yet being properly reflected in the Ce…</p>
+          <p><b>Risk:</b> Data integration and KPI visibility risk: Despite having the technical infrastructure for automated data integration, real KPI data is not yet available or properly mapped, impacting functionality in key accounts. Timeli…</p>
+          <p><b>Next step:</b> Enable the AI feature for Supervisors within TOPS (Peru scope). Work jointly with BI teams to ensure availability and validation of real KPI data. Align and execute a revised deployment plan for July, targeting 4 in Peru…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Perú</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> Strong alignment and support from COOs has been secured for the Centrical deployment. Go‑live timelines have been delayed due to data integration challenges, which have already been escalated to the global team. Initial KPI configurations have been completed, however, they are not yet being properly reflected in the Ce…</p>
+          <p><b>Risk:</b> Data integration and KPI visibility risk: Despite having the technical infrastructure for automated data integration, real KPI data is not yet available or properly mapped, impacting functionality in key accounts. Timeli…</p>
+          <p><b>Next step:</b> Enable the AI feature for Supervisors within TOPS (Peru scope). Work jointly with BI teams to ensure availability and validation of real KPI data. Align and execute a revised deployment plan for July, targeting 40 accoun…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Colombia</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> General Status Pipeline Overview • Total Accounts: 40 • Panamericano Market: 15 accounts (38%) • US Market: 20 accounts (50%) • Offshore: 5 accounts (12%) Pipeline &amp; Engagement Status • Client pitches presented (incl. SOD &amp; formal pitches): ~28 accounts (70%) • Pending client approval (incl. legal/addendum stages): ~18…</p>
+          <p><b>Risk:</b> 2. Key Risks 1. Major Approval Bottleneck • ~18 accounts pending approval (45%)</p>
+          <p><b>Next step:</b> 3. Next Steps 1. Aggressively Reduce Approval Backlog (Top Priority) • Focus on ~18 pending approvals 2. Improve Pitch-to-Implementation Conversion • Target: Increase implementation from 18% → 35%+</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Perú</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> General Status Pipeline Overview • Total Accounts: 40 • Panamericano Market: 15 accounts (38%) • US Market: 20 accounts (50%) • Offshore: 5 accounts (12%)</p>
+          <p><b>Risk:</b> Pipeline &amp; Engagement Status • Client pitches presented (incl. SOD &amp; formal pitches): ~28 accounts (70%) • Pending client approval (incl. legal/addendum stages): ~18 accounts (45%) • Upcoming client pitches (planned/sche…</p>
+          <p><b>Next step:</b> 2. Key Risks 1. Major Approval Bottleneck • ~18 accounts pending approval (45%) 3. Next Steps 1. Aggressively Reduce Approval Backlog (Top Priority) • Focus on ~18 pending approvals 2. Improve Pitch-to-Implementation Con…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Colombia</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> RTM BOT: 17 accounts with “Technical go live” status. Finally, 12 accounts that have not yet started due to various issues related to the transition from Avaya to Genesys. On June 10th, the team from India confirmed a new update to the bot, which includes the requirement related to the service level alert. Datanitiv: M…</p>
+          <p><b>Risk:</b> RTM BOT: At this moment, a request made to the India team is on hold regarding a more detailed visualization of the alert generation for each CE (CE name, BMS ID and Alert name) within the tool’s log. Although the develo…</p>
+          <p><b>Next step:</b> RTM BOT: At this moment, the development team in Colombia has informed that the historical data generation development is already available. However, it is expected that the team in India will generate the new BOT update…</p>
+        </div>
+        </div></details>
+    </section>
+    
+    <section class="region-card">
+      <div class="region-header">
+        <div>
+          <h3>SouthCone</h3>
+          <div class="meta">Overall rank #6 · Strongest initiatives: Centrical (21.9), Hallo (8.0), Datanativ (6.3)</div>
+        </div>
+      </div>
+      <p class="region-title">SouthCone ranks #6, with good Centrical coverage but the weakest conversion in the overall portfolio.</p>
+      <p>The revised comments confirm that South Cone has real activity across Supervisors, QA, Training, and WFM, particularly in Argentina. The problem is conversion: legal and contract closure continue to delay EMA and Training, while BMS/manual work remains a drag for WFM. Chile still appears more limited in scope than Argentina. The result is a region with visible pipeline and implementation effort, but insufficient movement into stable value capture.</p>
+      <p><b>Management implication:</b> Do not broaden scope further until the existing pipeline converts. Leadership should focus on legal closure, contract discipline, and pilot-to-savings conversion, especially in Argentina and Chile.</p>
+      <p><b>Action item:</b> Action item: review the ROI of the transformation in South Cone by initiative before approving further expansion, to ensure pilots and go-lives are producing credible business impact.</p>
+      <details class="details"><summary>Leadership input used in the assessment</summary><div class="comment-grid">
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Argentina</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Linde Status: Contract pending closure Rationale (EMA): Clear operational need (7 QAs) driving automation and estimated data ingestion in 2 weeks GM Status: Awaiting SAM decision. The SAM requested to wait while they coordinate a meeting with national leaders and the client. Conclusion: Well positioned, but no progress…</p>
+          <p><b>Risk:</b> The risk across all three clients is contract closure.</p>
+          <p><b>Next step:</b> planned ingestion (22/6–6/7)</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>QA · Chile</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Pre-work – PANAMERICANO (Text &amp; voice automated) Consalud Isapre Esmax Petrobras Grupo GTD Pre-work – Migration from PANAMERICANO to EMA Tenpo Transbank Chilena Consolidada S.A. Caja Los Andes Client approval required Stellantis → South Cone authorization required Wom - Not in scope</p>
+          <p><b>Risk:</b> The costs and transfer times with PANAMERICANO should be reviewed.</p>
+          <p><b>Next step:</b> WOM → Requires approval Chilena Consolidada S.A., Transbank, Tenpo is prioritized</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Argentina</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Go-live planned for November 2nd, 2026. Hallo AI: Go-live was initiated on May 12th. 24 accounts already live in Argentina.</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> Gradually deploy the tool across all accounts following global guidelines.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Recruiting · Chile</span><span class="tag">Jun 8</span></div>
+          <p><b>Status:</b> hAIreX: Go-live planned for November 2nd, 2026. Hallo AI: Deployment currently paused due to low requirements</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> Hallo AI: Gradually deploy the tool across all accounts following global guidelines.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Argentina</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Centrical Hospital Británico: technical go live CableVision: In diployment Arnet: In diployment Cencosud: In diployment Edenor S.A: In diployment Stellantis: In diployment Fiserv First Data: In diployment FAB: Cencosud: Go live Edenor &amp; HB: in deployment on hold. Development is paused due to reported technical issues t…</p>
+          <p><b>Risk:</b> Risk Centrical: It is a well-known fact across all global teams that we are currently working on a new tenant that is still strictly in the development phase. This process involves running data analytics, deploying the n…</p>
+          <p><b>Next step:</b> Centrical operations training is ongoing and will go live next week, while for FAB assist, we will convene a meeting with the developers next week to request answers and support regarding the reported issue.</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Supervisors · Chile</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Centrical: Zurich (Chilena Consolidada S.A.): In diployment Tenpo: In diployment. Transbank: in deployment. FAB Assist Zurich: Go live Transbank: in Tecnical Go live. Caja los Andes: in deployment. Development is paused due to reported technical issues that have not been resolved by the global development team. Develop…</p>
+          <p><b>Risk:</b> Risk Centrical: It is a well-known fact across all global teams that we are currently working on a new tenant that is still strictly in the development phase. This process involves running data analytics, deploying the n…</p>
+          <p><b>Next step:</b> Centrical: Centrical account creation requested and confirmed, in the process of ETL assembly of data for transfer to Centrical. while for FAB assist, we will convene a meeting with the developers next week to request an…</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Argentina</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> General Motors → Approached Edenor S.A → Legal approval Hospital Británico → Legal approval Cencosud → Go-live (Priority updated on 08/06. Client is not currently reflected in the global L&amp;D tracker.) Fiserv First Data → Legal approval Shell → Pre-work EDEMSA S.A. → In deployment (Priority updated on 08/06. Client is n…</p>
+          <p><b>Risk:</b> There are two major risks for Argentina that have already been communicated: 1 - There is no projection for initial inductions; therefore, training duration optimization will be carried out without being able to move it …</p>
+          <p><b>Next step:</b> **Finalize the legal approvals of the clients listed in the L\&amp;D tracker**</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>Training · Chile</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> CMPC → Not in-scope LanguageLine Solutions → Not in-scope Nestle → Not in-scope Universidad Santo Tomas → Not in-scope VTR Chile → Not in-scope WOM → Not in-scope VCT → Not in-scope AFP Plan Vital → Not started Banco BICE → Not started Consalud Isapre → Not started Esmax Petrobras → Not started Grupo GTD → Not started …</p>
+          <p><b>Risk:</b> </p>
+          <p><b>Next step:</b> pre-work to in deployment Transbank Chilena Consolidada S.A. Caja Los Andes</p>
+        </div>
+        
+        <div class="comment-card">
+          <div class="comment-head"><span>WFM · Argentina</span><span class="tag">Jun 22</span></div>
+          <p><b>Status:</b> Datanitiv: There are 3 accounts planned for implementation, which would be considered Wave 1 (and Pilot). No additional changes compared to explained previous week. 2 accounts in “Deployment” status as pilot. Technical go live date July 1st 1 accounts in “Technical go live” status as pilot Region requires BMS connectio…</p>
+          <p><b>Risk:</b> Datanitiv: Issue with BMS persist, with several manual work to use datanitiv, even with assistance of MAR the manual work will persist.</p>
+          <p><b>Next step:</b> Datanitiv: We don’t have a current solution for BMS connection, MAR will start to provide help with manual work and adapt procedures to datanitiv.</p>
+        </div>
+        </div></details>
+    </section>
+    
+  </section>
 
-<section class="section">
-  <h2>Initiative results by region</h2>
-  <p>This section shows the regional result for each initiative so that progress can be reviewed at tool level, not only in the consolidated regional score.</p>
-  
-    <section class="initiative-block">
+  <section class="section">
+    <h2>Initiative results by region</h2>
+    <p class="meta">This section lets CEOs move from the consolidated ranking to the initiative-level result by region.</p>
+    
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Centrical</h3>
-          <p>Supervisors &middot; Priority weight 0.199</p>
+          <div class="meta">Supervisors workstream · Weight 0.199</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>SouthCone</td><td>10</td><td>0</td><td>10</td><td>0</td><td>0</td><td>100.0%</td><td>0.0%</td><td>19.90</td><td>1</td></tr><tr><td>NCA</td><td>65</td><td>0</td><td>14</td><td>5</td><td>9</td><td>43.1%</td><td>21.5%</td><td>12.86</td><td>2</td></tr><tr><td>CSC</td><td>23</td><td>0</td><td>10</td><td>1</td><td>0</td><td>47.8%</td><td>4.3%</td><td>10.38</td><td>3</td></tr><tr><td>MAR</td><td>77</td><td>3</td><td>25</td><td>1</td><td>0</td><td>33.8%</td><td>1.3%</td><td>6.98</td><td>4</td></tr><tr><td>BRA</td><td>31</td><td>0</td><td>10</td><td>0</td><td>0</td><td>32.3%</td><td>0.0%</td><td>6.42</td><td>5</td></tr><tr><td>US-Canada</td><td>27</td><td>1</td><td>6</td><td>0</td><td>0</td><td>22.2%</td><td>0.0%</td><td>4.42</td><td>6</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>SouthCone</td><td>10</td><td>0</td><td>9</td><td>1</td><td>0</td><td>100.00%</td><td>10.00%</td><td>21.89</td><td>#1</td></tr><tr><td>US-Canada</td><td>33</td><td>1</td><td>23</td><td>0</td><td>0</td><td>69.70%</td><td>0.00%</td><td>13.87</td><td>#2</td></tr><tr><td>NCA</td><td>66</td><td>0</td><td>16</td><td>4</td><td>9</td><td>43.94%</td><td>19.70%</td><td>12.66</td><td>#3</td></tr><tr><td>CSC</td><td>23</td><td>0</td><td>10</td><td>1</td><td>0</td><td>47.83%</td><td>4.35%</td><td>10.38</td><td>#4</td></tr><tr><td>BRA</td><td>31</td><td>0</td><td>10</td><td>0</td><td>0</td><td>32.26%</td><td>0.00%</td><td>6.42</td><td>#5</td></tr><tr><td>MAR</td><td>74</td><td>3</td><td>23</td><td>0</td><td>0</td><td>31.08%</td><td>0.00%</td><td>6.19</td><td>#6</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Fab Assist</h3>
-          <p>Supervisors &middot; Priority weight 0.000</p>
+          <div class="meta">Supervisors workstream · Weight 0.000</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>SouthCone</td><td>12</td><td>0</td><td>2</td><td>1</td><td>2</td><td>41.7%</td><td>25.0%</td><td>0.00</td><td>1</td></tr><tr><td>US-Canada</td><td>26</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>1</td></tr><tr><td>NCA</td><td>67</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>1</td></tr><tr><td>CSC</td><td>38</td><td>32</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>1</td></tr><tr><td>MAR</td><td>77</td><td>77</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>1</td></tr><tr><td>BRA</td><td>28</td><td>28</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>1</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>SouthCone</td><td>10</td><td>0</td><td>2</td><td>0</td><td>3</td><td>50.00%</td><td>30.00%</td><td>0.00</td><td>#1</td></tr><tr><td>US-Canada</td><td>26</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#1</td></tr><tr><td>NCA</td><td>68</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#1</td></tr><tr><td>CSC</td><td>38</td><td>32</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#1</td></tr><tr><td>MAR</td><td>77</td><td>77</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#1</td></tr><tr><td>BRA</td><td>28</td><td>28</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#1</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Onboarding</h3>
-          <p>Training &middot; Priority weight 0.000</p>
+          <div class="meta">Training workstream · Weight 0.000</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>NCA</td><td>107</td><td>0</td><td>0</td><td>0</td><td>107</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>SouthCone</td><td>32</td><td>0</td><td>0</td><td>0</td><td>32</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>BRA</td><td>74</td><td>0</td><td>0</td><td>0</td><td>74</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>CSC</td><td>38</td><td>0</td><td>0</td><td>0</td><td>38</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>MAR</td><td>128</td><td>0</td><td>0</td><td>0</td><td>128</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>US-Canada</td><td>94</td><td>0</td><td>0</td><td>0</td><td>94</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>NCA</td><td>107</td><td>0</td><td>0</td><td>0</td><td>107</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>SouthCone</td><td>32</td><td>0</td><td>0</td><td>0</td><td>32</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>BRA</td><td>74</td><td>0</td><td>0</td><td>0</td><td>74</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>CSC</td><td>38</td><td>0</td><td>0</td><td>0</td><td>38</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>MAR</td><td>128</td><td>0</td><td>0</td><td>0</td><td>128</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>US-Canada</td><td>95</td><td>0</td><td>0</td><td>0</td><td>95</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Pre-process</h3>
-          <p>Training &middot; Priority weight 0.000</p>
+          <div class="meta">Training workstream · Weight 0.000</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>MAR</td><td>20</td><td>0</td><td>0</td><td>0</td><td>20</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>NCA</td><td>32</td><td>0</td><td>0</td><td>0</td><td>32</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>CSC</td><td>36</td><td>0</td><td>0</td><td>0</td><td>36</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>US-Canada</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr><tr><td>SouthCone</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>0.00</td><td>1</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>MAR</td><td>20</td><td>0</td><td>0</td><td>0</td><td>20</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>NCA</td><td>32</td><td>0</td><td>0</td><td>0</td><td>32</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>CSC</td><td>36</td><td>0</td><td>0</td><td>0</td><td>36</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>US-Canada</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr><tr><td>SouthCone</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>0.00</td><td>#1</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Product Training</h3>
-          <p>Training &middot; Priority weight 0.416</p>
+          <div class="meta">Training workstream · Weight 0.416</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>BRA</td><td>75</td><td>58</td><td>3</td><td>0</td><td>14</td><td>22.7%</td><td>18.7%</td><td>17.19</td><td>1</td></tr><tr><td>MAR</td><td>102</td><td>50</td><td>9</td><td>0</td><td>15</td><td>23.5%</td><td>14.7%</td><td>15.91</td><td>2</td></tr><tr><td>SouthCone</td><td>23</td><td>7</td><td>1</td><td>0</td><td>1</td><td>8.7%</td><td>4.3%</td><td>5.43</td><td>4</td></tr><tr><td>CSC</td><td>31</td><td>22</td><td>0</td><td>0</td><td>2</td><td>6.5%</td><td>6.5%</td><td>5.37</td><td>5</td></tr><tr><td>NCA</td><td>89</td><td>25</td><td>2</td><td>0</td><td>13</td><td>16.9%</td><td>14.6%</td><td>13.09</td><td>3</td></tr><tr><td>US-Canada</td><td>73</td><td>50</td><td>3</td><td>0</td><td>2</td><td>6.8%</td><td>2.7%</td><td>3.99</td><td>6</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>BRA</td><td>75</td><td>58</td><td>3</td><td>0</td><td>14</td><td>22.67%</td><td>18.67%</td><td>17.19</td><td>#1</td></tr><tr><td>MAR</td><td>102</td><td>50</td><td>9</td><td>0</td><td>15</td><td>23.53%</td><td>14.71%</td><td>15.91</td><td>#2</td></tr><tr><td>NCA</td><td>89</td><td>25</td><td>2</td><td>0</td><td>14</td><td>17.98%</td><td>15.73%</td><td>14.02</td><td>#3</td></tr><tr><td>US-Canada</td><td>78</td><td>7</td><td>5</td><td>4</td><td>1</td><td>12.82%</td><td>6.41%</td><td>8.00</td><td>#4</td></tr><tr><td>SouthCone</td><td>23</td><td>7</td><td>1</td><td>0</td><td>1</td><td>8.70%</td><td>4.35%</td><td>5.43</td><td>#5</td></tr><tr><td>CSC</td><td>31</td><td>22</td><td>0</td><td>0</td><td>2</td><td>6.45%</td><td>6.45%</td><td>5.37</td><td>#6</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Ema QA</h3>
-          <p>Quality &middot; Priority weight 0.200</p>
+          <div class="meta">Quality workstream · Weight 0.200</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>US-Canada</td><td>27</td><td>12</td><td>2</td><td>0</td><td>0</td><td>7.4%</td><td>0.0%</td><td>1.48</td><td>3</td></tr><tr><td>MAR</td><td>29</td><td>5</td><td>3</td><td>1</td><td>0</td><td>13.8%</td><td>3.4%</td><td>3.45</td><td>1</td></tr><tr><td>NCA</td><td>45</td><td>0</td><td>1</td><td>1</td><td>0</td><td>4.4%</td><td>2.2%</td><td>1.33</td><td>4</td></tr><tr><td>BRA</td><td>8</td><td>2</td><td>1</td><td>0</td><td>0</td><td>12.5%</td><td>0.0%</td><td>2.50</td><td>2</td></tr><tr><td>CSC</td><td>9</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>5</td></tr><tr><td>SouthCone</td><td>10</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>5</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>MAR</td><td>29</td><td>5</td><td>3</td><td>1</td><td>0</td><td>13.79%</td><td>3.45%</td><td>3.45</td><td>#1</td></tr><tr><td>NCA</td><td>45</td><td>0</td><td>1</td><td>1</td><td>0</td><td>4.44%</td><td>2.22%</td><td>1.33</td><td>#2</td></tr><tr><td>US-Canada</td><td>27</td><td>12</td><td>1</td><td>0</td><td>0</td><td>3.70%</td><td>0.00%</td><td>0.74</td><td>#3</td></tr><tr><td>BRA</td><td>8</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#4</td></tr><tr><td>CSC</td><td>8</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#4</td></tr><tr><td>SouthCone</td><td>10</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#4</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Datanativ</h3>
-          <p>Workforce &middot; Priority weight 0.063</p>
+          <div class="meta">Workforce workstream · Weight 0.063</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>CSC</td><td>46</td><td>0</td><td>30</td><td>9</td><td>0</td><td>84.8%</td><td>19.6%</td><td>6.57</td><td>1</td></tr><tr><td>US-Canada</td><td>100</td><td>0</td><td>21</td><td>8</td><td>31</td><td>60.0%</td><td>39.0%</td><td>6.24</td><td>3</td></tr><tr><td>NCA</td><td>125</td><td>0</td><td>23</td><td>21</td><td>0</td><td>35.2%</td><td>16.8%</td><td>3.28</td><td>4</td></tr><tr><td>SouthCone</td><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>75.0%</td><td>25.0%</td><td>6.30</td><td>2</td></tr><tr><td>MAR</td><td>149</td><td>0</td><td>1</td><td>7</td><td>12</td><td>13.4%</td><td>12.8%</td><td>1.65</td><td>6</td></tr><tr><td>BRA</td><td>79</td><td>0</td><td>16</td><td>0</td><td>3</td><td>24.1%</td><td>3.8%</td><td>1.75</td><td>5</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>CSC</td><td>46</td><td>0</td><td>30</td><td>9</td><td>0</td><td>84.78%</td><td>19.57%</td><td>6.57</td><td>#1</td></tr><tr><td>SouthCone</td><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>75.00%</td><td>25.00%</td><td>6.30</td><td>#2</td></tr><tr><td>US-Canada</td><td>99</td><td>0</td><td>20</td><td>8</td><td>31</td><td>59.60%</td><td>39.39%</td><td>6.24</td><td>#3</td></tr><tr><td>NCA</td><td>125</td><td>0</td><td>23</td><td>21</td><td>0</td><td>35.20%</td><td>16.80%</td><td>3.28</td><td>#4</td></tr><tr><td>BRA</td><td>79</td><td>0</td><td>16</td><td>0</td><td>3</td><td>24.05%</td><td>3.80%</td><td>1.75</td><td>#5</td></tr><tr><td>MAR</td><td>149</td><td>0</td><td>1</td><td>7</td><td>12</td><td>13.42%</td><td>12.75%</td><td>1.65</td><td>#6</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>RTM Bot</h3>
-          <p>Workforce &middot; Priority weight 0.063</p>
+          <div class="meta">Workforce workstream · Weight 0.063</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>US-Canada</td><td>4</td><td>0</td><td>0</td><td>0</td><td>4</td><td>100.0%</td><td>100.0%</td><td>12.60</td><td>1</td></tr><tr><td>NCA</td><td>22</td><td>5</td><td>0</td><td>8</td><td>7</td><td>68.2%</td><td>68.2%</td><td>8.59</td><td>4</td></tr><tr><td>MAR</td><td>29</td><td>0</td><td>0</td><td>17</td><td>0</td><td>58.6%</td><td>58.6%</td><td>7.39</td><td>5</td></tr><tr><td>SouthCone</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.00</td><td>6</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>12.60</td><td>1</td></tr><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>12.60</td><td>1</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>US-Canada</td><td>4</td><td>0</td><td>0</td><td>0</td><td>4</td><td>100.00%</td><td>100.00%</td><td>12.60</td><td>#1</td></tr><tr><td>BRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>12.60</td><td>#1</td></tr><tr><td>CSC</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>12.60</td><td>#1</td></tr><tr><td>NCA</td><td>22</td><td>5</td><td>0</td><td>8</td><td>7</td><td>68.18%</td><td>68.18%</td><td>8.59</td><td>#4</td></tr><tr><td>MAR</td><td>29</td><td>0</td><td>0</td><td>17</td><td>0</td><td>58.62%</td><td>58.62%</td><td>7.39</td><td>#5</td></tr><tr><td>SouthCone</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0.00%</td><td>0.00%</td><td>0.00</td><td>#6</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-    <section class="initiative-block">
+    <section class="initiative-card">
       <div class="initiative-head">
         <div>
           <h3>Hallo</h3>
-          <p>Recruitment &middot; Priority weight 0.057</p>
+          <div class="meta">Recruitment workstream · Weight 0.057</div>
         </div>
       </div>
-      <table><thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Score</th><th>Rank</th></tr></thead><tbody><tr><td>BRA</td><td>106</td><td>0</td><td>0</td><td>0</td><td>106</td><td>100.0%</td><td>100.0%</td><td>11.40</td><td>1</td></tr><tr><td>MAR</td><td>170</td><td>0</td><td>0</td><td>0</td><td>170</td><td>100.0%</td><td>100.0%</td><td>11.40</td><td>1</td></tr><tr><td>CSC</td><td>47</td><td>0</td><td>0</td><td>0</td><td>47</td><td>100.0%</td><td>100.0%</td><td>11.40</td><td>1</td></tr><tr><td>SouthCone</td><td>59</td><td>0</td><td>35</td><td>0</td><td>24</td><td>100.0%</td><td>40.7%</td><td>8.02</td><td>5</td></tr><tr><td>US-Canada</td><td>28</td><td>0</td><td>22</td><td>0</td><td>6</td><td>100.0%</td><td>21.4%</td><td>6.92</td><td>6</td></tr><tr><td>NCA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.0%</td><td>100.0%</td><td>11.40</td><td>1</td></tr></tbody></table>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>In Scope</th><th>Not Started</th><th>In Deployment</th><th>Technical Go-Live</th><th>Go-Live</th><th>Coverage</th><th>Conversion</th><th>Total Score</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>BRA</td><td>106</td><td>0</td><td>0</td><td>0</td><td>106</td><td>100.00%</td><td>100.00%</td><td>11.40</td><td>#1</td></tr><tr><td>MAR</td><td>170</td><td>0</td><td>0</td><td>0</td><td>170</td><td>100.00%</td><td>100.00%</td><td>11.40</td><td>#1</td></tr><tr><td>CSC</td><td>47</td><td>0</td><td>0</td><td>0</td><td>47</td><td>100.00%</td><td>100.00%</td><td>11.40</td><td>#1</td></tr><tr><td>NCA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>100.00%</td><td>11.40</td><td>#1</td></tr><tr><td>SouthCone</td><td>59</td><td>0</td><td>35</td><td>0</td><td>24</td><td>100.00%</td><td>40.68%</td><td>8.02</td><td>#5</td></tr><tr><td>US-Canada</td><td>28</td><td>0</td><td>22</td><td>0</td><td>6</td><td>100.00%</td><td>21.43%</td><td>6.92</td><td>#6</td></tr></tbody>
+      </table>
+      </div>
     </section>
     
-</section>
+  </section>
 
-<section class="section">
-  <h2>Leadership input by region and workstream</h2>
-  <p>Source used for this section: CEO status leadership updates submitted for <strong>June 8, 2026</strong> and <strong>June 22, 2026</strong>. June 22 inputs were prioritized when available; June 8 inputs were used to complete gaps and avoid losing context.</p>
-  <table><thead><tr><th>Region</th><th>Workstream</th><th>Owner</th><th>Source</th><th>Current status</th><th>Key risk</th><th>Next step</th></tr></thead><tbody><tr><td>BRA</td><td>Supervisors</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>BRA</td><td>Training</td><td>Andres Munoz</td><td>Jun8</td><td>We have completed and sent the lesson plans with the reductions for clients in Go-live.</td><td>Clients with global training programs that do not allow for reduced training time.</td><td>Analyze all clients that allow the use of AI in training and suggest ways to reduce training time.</td></tr><tr><td>BRA</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>BRA</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>BRA</td><td>Recruitment</td><td>Solange Lobato Arias</td><td>Jun8</td><td>hAIreX: Currently in discovery phase. Planned go-live: July 13th. Hallo AI: Fully live according to the global guideline.</td><td>N/A</td><td>hAIreX: Complete discovery phase and start development. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</td></tr><tr><td>NCA</td><td>Supervisors</td><td>Carlos Polanco Ramirez</td><td>Jun22</td><td>• 5 programs (20%) are in Technical Go-Live, including Choice Hotels, Gusto, Chime Bank, and LanguageLine Solutions in both El Salvador and Guatemala....</td><td>• Ongoing migration to the new tenant may delay implementation timelines, especially for programs still operating in the legacy environment. • KPI con...</td><td>• Complete migration, training, and KPI configuration for programs in deployment and Technical Go-Live. • Finalize pending data integrations to suppor...</td></tr><tr><td>NCA</td><td>Training</td><td>Jael Ontiveros</td><td>Jun8</td><td>Reporting 83% of savings achieved. Working on strategy to pitch Clients with global approach i.e Amazon</td><td>Centene is an important component to achieve the goal. Working with CAN and client solitions to align pitch</td><td>Continue to save on TP DAYS (onboarding) and to increase Go live Clients</td></tr><tr><td>NCA</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>NCA</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>NCA</td><td>Recruitment</td><td>Solange Lobato Arias</td><td>Jun8</td><td>HAIreX; Live since May 7th, currently in sustain phase (stabilization). Hallo AI: Deployment currently paused due to Alpharun and SHL contracts (as of...</td><td>- NCA: Alpharun remain in effect until September 2026, resulting in double cost exposure. NCA: Pending integration between Hallo AI and performance pr...</td><td>hAIreX: Tool stabilization Hallo AI: Hallo integration with performance predictor.</td></tr><tr><td>MAR</td><td>Supervisors</td><td>Marian Escobar Sanchez</td><td>Jun8</td><td>Strong alignment and support from COOs has been secured for the Centrical deployment. Go‑live timelines have been delayed due to data integration chal...</td><td>Data integration and KPI visibility risk: Despite having the technical infrastructure for automated data integration, real KPI data is not yet availab...</td><td>Enable the AI feature for Supervisors within TOPS (Peru scope). Work jointly with BI teams to ensure availability and validation of real KPI data. Ali...</td></tr><tr><td>MAR</td><td>Training</td><td>Darwin Betancourt Cabieles</td><td>Jun22</td><td>General Status Pipeline Overview • Total Accounts: 40 • Panamericano Market: 15 accounts (38%) • US Market: 20 accounts (50%) • Offshore: 5 accounts (...</td><td>Pipeline &amp; Engagement Status • Client pitches presented (incl. SOD &amp; formal pitches): ~28 accounts (70%) • Pending client approval (incl. legal/addend...</td><td>2. Key Risks 1. Major Approval Bottleneck • ~18 accounts pending approval (45%) 3. Next Steps 1. Aggressively Reduce Approval Backlog (Top Priority) •...</td></tr><tr><td>MAR</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>MAR</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>MAR</td><td>Recruitment</td><td>Solange Lobato Arias</td><td>Jun8</td><td>hAIreX: Currently in discovery phase. Planned go-live: July 10th. Hallo AI: Colombia is already live.</td><td>N/A</td><td>hAIreX: Complete discovery phase and start development. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</td></tr><tr><td>CSC</td><td>Supervisors</td><td>Benjamin Michael Bowers</td><td>Jun8</td><td>Pre work completed for all accounts. License requests underway. Data integration moving on schedule. Global delay in user provisioning slowing launch ...</td><td>Delay globally in the provisioning of new Centrical Licenses.</td><td>User training for Admins, follow up on centrical basics course.</td></tr><tr><td>CSC</td><td>Training</td><td>Monica Acosta</td><td>Jun8</td><td>Se completo el compromiso bisemanal de 5 cuentas - se buscara el Client y Legal approval. Compromiso de licencias Second Nature documentado.</td><td>En revision de los requerimientos de PCs para los trainers que seran duen;os de licencias, para que tengan la capacidad de soportar el perfil admin/cr...</td><td>Se buscara el Client y Legal approval.</td></tr><tr><td>CSC</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>CSC</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>CSC</td><td>Recruitment</td><td>Solange Lobato Arias</td><td>Jun8</td><td>hAIreX: Go-live planned for August 25th, 2026. Hallo AI: go-live was initiated on Wednesday, May 13th.</td><td>N/A</td><td>hAIreX; Discovery phase will start on July 2026. Hallo AI: Follow up and evaluate the impact of the AI interview on the process</td></tr><tr><td>SouthCone</td><td>Supervisors</td><td>Macarena Laura Ros Gonzalez</td><td>Jun22</td><td>Centrical: Zurich (Chilena Consolidada S.A.): In diployment Tenpo: In diployment. Transbank: in deployment. FAB Assist Zurich: Go live Transbank: in T...</td><td>Risk Centrical: It is a well-known fact across all global teams that we are currently working on a new tenant that is still strictly in the developmen...</td><td>Centrical: Centrical account creation requested and confirmed, in the process of ETL assembly of data for transfer to Centrical. while for FAB assist,...</td></tr><tr><td>SouthCone</td><td>Training</td><td>Silina Escobar</td><td>Jun22</td><td>CMPC → Not in-scope LanguageLine Solutions → Not in-scope Nestle → Not in-scope Universidad Santo Tomas → Not in-scope VTR Chile → Not in-scope WOM → ...</td><td></td><td>pre-work to in deployment Transbank Chilena Consolidada S.A. Caja Los Andes</td></tr><tr><td>SouthCone</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>SouthCone</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>SouthCone</td><td>Recruitment</td><td>Solange Lobato Arias</td><td>Jun8</td><td>hAIreX: Go-live planned for November 2nd, 2026. Hallo AI: Go-live was initiated on May 12th. 24 accounts already live in Argentina.</td><td>N/A</td><td>Gradually deploy the tool across all accounts following global guidelines.</td></tr><tr><td>US-Canada</td><td>Supervisors</td><td>Kaycelyn Valenzuela</td><td>Jun22</td><td>8/26 Accounts are already onboarded in Centrical. (18/26 = 14 US accounts, and 4 Canada accounts are on-hold to be onboarded / License provisioning --...</td><td>Delay in Data Integration/Warehousing completion due to Users not being onboarded (license/tenant provisioned). Current Updates as of 06/19 from Chris...</td><td>Fast-track requirements gathering process to bring accounts to &quot;In-deployment&quot; status Get the issues fixed with the pending/on-hold Onboarding for US/...</td></tr><tr><td>US-Canada</td><td>Training</td><td>Kamil Johnson</td><td>Jun8</td><td>Onboarding reductions and associated savings are now live, and we are beginning to see measurable ROI from these efforts. To date, 12 of 67 clients ar...</td><td>Core risks remain concentrated in Enterprise and Regional clients, which represent the largest opportunity for savings. Progress is dependent on stron...</td><td>Our immediate focus is on ensuring all addressable clients have a clear path forward and the support needed to initiate projects. Priority is shifting...</td></tr><tr><td>US-Canada</td><td>Quality</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>US-Canada</td><td>Workforce</td><td>—</td><td>—</td><td>No update available.</td><td>—</td><td>—</td></tr><tr><td>US-Canada</td><td>Recruitment</td><td>Colin Brophy</td><td>Jun8</td><td>1. Hallo AI Fully implemented on Apple (US &amp; CA - Jan&#x27;26) Testing Phase in Canada is completed. The Assessment and AI Interview in Canada is also live...</td><td>Digital R&amp;S has to be modified for US as iCIMS will remain as the ATS. Still on track to roll out in September but changes could cause delays.</td><td>Continue to roll out Hallo on all Canadian accounts.</td></tr></tbody></table>
-</section>
-
+  <section class="section">
+    <div class="card">
+      <h2>CEO action item</h2>
+      <div class="notice"><b>Required follow-up:</b> each region should review the <b>ROI of this transformation</b> by initiative. The objective is to confirm which deployments are already generating measurable benefit, which ones still require additional enablement or blocker removal, and which ones should be redesigned before further scale-up.</div>
+      <p class="footer-note" style="margin-top:12px">Comment sources used in this report: <b>Jun 22 Status Fab Operate.xlsx</b> and <b>Jun 8 Status Fab Operate.xlsx</b>. June 22 was prioritized as the main version because leaders corrected and completed several previously inaccurate entries.</p>
+    </div>
+  </section>
 </div>
 </body>
 </html>
